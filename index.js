@@ -31,7 +31,7 @@ function init() {
   scene.add(pointLight)
 
   // 建立物體
-  const geometry = new THREE.BoxGeometry(1.5, 1, 1) // 幾何體
+  const geometry = new THREE.BoxGeometry(2, 1, 1) // 幾何體
   const material = new THREE.MeshPhongMaterial({
     color: 0x0000ff
   }) // 材質
