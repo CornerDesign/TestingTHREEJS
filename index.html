@@ -94,11 +94,8 @@
 			function animate() {
 				window.requestAnimationFrame( animate );
 				controls.update();
-				renderer.autoClear = false;
-            			renderer.clear();
-				renderer.render( scene, camera );
             			renderer.render(backgroundScene , backgroundCamera );
-				
+				renderer.render( scene, camera );
 			}
 			function onWindowResize() {
 				camera.aspect = window.innerWidth / window.innerHeight;
