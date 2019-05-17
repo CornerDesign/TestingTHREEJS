@@ -96,8 +96,9 @@
 				controls.update();
 				renderer.autoClear = false;
             			renderer.clear();
-            			renderer.render(backgroundScene , backgroundCamera );
 				renderer.render( scene, camera );
+            			renderer.render(backgroundScene , backgroundCamera );
+				
 			}
 			function onWindowResize() {
 				camera.aspect = window.innerWidth / window.innerHeight;
