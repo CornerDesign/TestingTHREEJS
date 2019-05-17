@@ -9,8 +9,8 @@ function init() {
   // 建立渲染器
   renderer = new THREE.WebGLRenderer()
   renderer.setSize(window.innerWidth, window.innerHeight) // 場景大小
-  renderer.setClearColor(0, 1.0) // 預設背景顏色
-  renderer.shadowMap.enable = false // 陰影效果
+  renderer.setClearColor(FFFFFF, 1.0) // 預設背景顏色
+  renderer.shadowMap.enable = true // 陰影效果
 
   // 將渲染器的 DOM 綁到網頁上
   document.body.appendChild(renderer.domElement)
