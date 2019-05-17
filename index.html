@@ -48,6 +48,12 @@
 				video = document.getElementById( 'video' );
 				var texture = new THREE.VideoTexture( video );
 				
+				var helperGeometry = new THREE.BoxBufferGeometry( 100, 100, 100, 4, 4, 4 );
+				var helperMaterial = new THREE.MeshBasicMaterial( { color: 0xff00ff, wireframe: true } );
+				var helper = new THREE.Mesh( helperGeometry, helperMaterial );
+				scene.add( helper );
+				
+				
         			var backgroundMesh = new THREE.Mesh(
             			new THREE.PlaneGeometry(2, 2, 0),
             			new THREE.MeshBasicMaterial({
@@ -63,10 +69,7 @@
         			backgroundScene .add(backgroundCamera );
         			backgroundScene .add(backgroundMesh );
 				
-				var helperGeometry = new THREE.BoxBufferGeometry( 100, 100, 100, 4, 4, 4 );
-				var helperMaterial = new THREE.MeshBasicMaterial( { color: 0xff00ff, wireframe: true } );
-				var helper = new THREE.Mesh( helperGeometry, helperMaterial );
-				scene.add( helper );
+				
 				//
 				renderer = new THREE.WebGLRenderer( { antialias: true } );
 				renderer.setPixelRatio( window.devicePixelRatio );
