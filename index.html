@@ -54,6 +54,19 @@
                 var helperMaterial = new THREE.MeshBasicMaterial( { color: 0xff00ff, wireframe: true } );
                 var helper = new THREE.Mesh( helperGeometry, helperMaterial );
                 scene.add( helper );
+                
+                
+                var texture = new THREE.TextureLoader().load( 'textures/fish.png' );
+				var planematerial = new THREE.MeshBasicMaterial( { map: texture } );
+                
+                Planeobject = new THREE.Mesh( new THREE.PlaneBufferGeometry( 21, 14, 4, 4 ), planematerial );
+				Planeobject.position.set( - 30, 0, 0 );
+				scene.add( Planeobject );
+                
+                
+                
+                
+                
                 //
                 renderer = new THREE.WebGLRenderer( { antialias: true } );
                 renderer.setPixelRatio( window.devicePixelRatio );
