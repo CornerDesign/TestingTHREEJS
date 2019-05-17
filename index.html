@@ -65,7 +65,8 @@
                 if ( navigator.mediaDevices && navigator.mediaDevices.getUserMedia ) {
                     var constraints = { 
                         video: {
-                            width: 1280, height: 720, facingMode: { exact: "environment" } 
+                            //width: 1280, height: 720, facingMode: "user" //使用前鏡頭 
+                            width: 1280, height: 720, facingMode: { exact: "environment" }//使用後鏡頭
                         }
                     };
                     navigator.mediaDevices.getUserMedia( constraints ).then( 
