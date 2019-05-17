@@ -55,15 +55,15 @@
                 var helper = new THREE.Mesh( helperGeometry, helperMaterial );
                 scene.add( helper );
                 
-                
-                var texture = new THREE.TextureLoader().load( 'textures/fish.png' );
-				var planematerial = new THREE.MeshBasicMaterial( { map: texture } );
-                
-                Planeobject = new THREE.Mesh( new THREE.PlaneBufferGeometry( 21, 14, 4, 4 ), planematerial );
-				Planeobject.position.set( - 30, 0, 0 );
-				scene.add( Planeobject );
+
                 
                 
+		var texture = new THREE.TextureLoader().load( 'textures/fish.png' );
+		var geometry = new THREE.BoxBufferGeometry( 200, 200, 200 );
+		var material = new THREE.MeshBasicMaterial( { map: texture } );
+		mesh = new THREE.Mesh( geometry, material );
+		mesh.position.set( - 30, 0, 0 );
+		scene.add( mesh );
                 
                 
                 
