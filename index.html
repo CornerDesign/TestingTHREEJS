@@ -48,6 +48,22 @@
 				video = document.getElementById( 'video' );
 				var texture = new THREE.VideoTexture( video );
 				
+        			var backgroundMesh = new THREE.Mesh(
+            			new THREE.PlaneGeometry(2, 2, 0),
+            			new THREE.MeshBasicMaterial({
+					map: texture
+           			}));
+
+        			backgroundMesh .material.depthTest = false;
+        			backgroundMesh .material.depthWrite = false;
+
+        			// Create your background scene
+        			var backgroundScene = new THREE.Scene();
+        			var backgroundCamera = new THREE.Camera();
+        			backgroundScene .add(backgroundCamera );
+        			backgroundScene .add(backgroundMesh );
+				
+				
 				
 
 				var geometry = new THREE.PlaneBufferGeometry( 16,9 );
@@ -93,6 +109,9 @@
 			function animate() {
 				window.requestAnimationFrame( animate );
 				controls.update();
+				renderer.autoClear = false;
+            			renderer.clear();
+            			renderer.render(backgroundScene , backgroundCamera );
 				renderer.render( scene, camera );
 			}
 			function onWindowResize() {
