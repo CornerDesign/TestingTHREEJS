@@ -42,11 +42,11 @@ function init() {
 
 // 建立動畫
 function animate() {
-  cube.rotation.x += 0.05
+  cube.rotation.x += 0.01
   cube.rotation.y += 0.01
 }
 
-// 渲染場景
+// 渲染場景
 function render() {
   animate()
   requestAnimationFrame(render)
