@@ -31,9 +31,9 @@ function init() {
   scene.add(pointLight)
 
   // 建立物體
-  const geometry = new THREE.BoxGeometry(1, 1, 1.5) // 幾何體
+  const geometry = new THREE.BoxGeometry(1, 1, 1) // 幾何體
   const material = new THREE.MeshPhongMaterial({
-    color: 0x0000ff
+    color: ffffff
   }) // 材質
   cube = new THREE.Mesh(geometry, material) // 建立網格物件
   cube.position.set(0, 0, 0)
