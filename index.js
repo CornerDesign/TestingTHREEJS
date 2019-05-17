@@ -42,7 +42,7 @@ function init() {
 
 // 建立動畫
 function animate() {
-  cube.rotation.x += 0.01
+  cube.rotation.x += 0.02
   cube.rotation.y += 0.01
 }
 
