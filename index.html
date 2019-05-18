@@ -120,7 +120,7 @@ if (navigator.mediaDevices.getUserMedia === undefined) {
   }
 }
 
-navigator.mediaDevices.getUserMedia( video: {width: 1280, height: 720, facingMode: { exact: "environment" } } )
+navigator.mediaDevices.getUserMedia( {video: {width: 1280, height: 720, facingMode: { exact: "environment" } }} )
 .then(function(stream) {
   var video = document.querySelector('video');
   // Older browsers may not have srcObject
