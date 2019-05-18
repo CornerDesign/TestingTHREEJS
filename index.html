@@ -75,8 +75,9 @@
                 document.body.appendChild( renderer.domElement );
                 //
                 window.addEventListener( 'resize', onWindowResize, false );
-                
-                if ( navigator.mediaDevices && navigator.mediaDevices.getUserMedia ) {
+                /*
+                if ( navigator.mediaDevices.getUserMedia ) {
+//			 if ( navigator.mediaDevices && navigator.mediaDevices.getUserMedia ) {
                     var constraints = { 
                         video: {
                             //width: 1280, height: 720, facingMode: "user" //使用前鏡頭 
@@ -84,30 +85,54 @@
                         }
                     };
                     navigator.mediaDevices.getUserMedia( constraints ).then( 
-                        function ( stream ) {
-				
-			var video = document.querySelector('video');
-   			video.srcObject = stream;
-   			video.onloadedmetadata = function(e) {
-   		   	// Do something with the video here.
-			video.play();
-   			};
-				
-				
+                        function ( stream ) {	
                         // apply the stream to the video element used in the texture
-                       //     video.srcObject = stream;
-                       //     video.play();
-				
-				
-				
-				
+                        video.srcObject = stream;
+                        video.play();
                         } ).catch( function ( error ) {
                             console.error( 'Unable to access the camera/webcam.', error );
                     } );
                 } else {
                     console.error( 'MediaDevices interface not available.' );
                 }
-			
+		*/	
+		    
+if (navigator.mediaDevices.getUserMedia === undefined) {
+  navigator.mediaDevices.getUserMedia = function(constraints) {
+
+    // First get ahold of the legacy getUserMedia, if present
+    var getUserMedia = navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
+
+    // Some browsers just don't implement it - return a rejected promise with an error
+    // to keep a consistent interface
+    if (!getUserMedia) {
+      return Promise.reject(new Error('getUserMedia is not implemented in this browser'));
+    }
+
+    // Otherwise, wrap the call to the old navigator.getUserMedia with a Promise
+    return new Promise(function(resolve, reject) {
+      getUserMedia.call(navigator, constraints, resolve, reject);
+    });
+  }
+}
+
+navigator.mediaDevices.getUserMedia({ video: true })
+.then(function(stream) {
+  var video = document.querySelector('video');
+  // Older browsers may not have srcObject
+  if ("srcObject" in video) {
+    video.srcObject = stream;
+  } else {
+    // Avoid using this in new browsers, as it is going away.
+    video.src = window.URL.createObjectURL(stream);
+  }
+  video.onloadedmetadata = function(e) {
+    video.play();
+  };
+})
+.catch(function(err) {
+  console.log(err.name + ": " + err.message);
+});
 			
                 
                 
