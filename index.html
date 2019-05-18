@@ -1,149 +1,102 @@
 <!DOCTYPE html>
-<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-<!-- three.js library -->
-<script src='build/three.min.js'></script>
-<!-- ar.js -->
-<script src='js/ar.js'></script>
-<script>THREEx.ArToolkitContext.baseURL = '../'</script>
+<html lang="en">
+	<head>
+		<title>three.js webgl - materials - video - webcam</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<style>
+			body {
+				background-color: #000;
+				color: #fff;
+				margin: 0px;
+				overflow: hidden;
+				font-family:Monospace;
+				font-size:13px;
+				text-align:center;
+				font-weight: bold;
+				text-align:center;
+			}
+			a {
+				color:#0078ff;
+			}
+			#info {
+				color:#fff;
+				position: absolute;
+				top: 5px; width: 100%;
+				z-index:100;
+			}
+		</style>
+	</head>
+	<body>
 
-<body style='margin : 0px; overflow: hidden; font-family: Monospace;'><div style='position: absolute; top: 10px; width:100%; text-align: center; z-index: 1;'>
-	<a href="https://github.com/jeromeetienne/AR.js/" target="_blank">AR.js</a> - three.js camera transform
-	<br/>
-	Contact me any time at <a href='https://twitter.com/jerome_etienne' target='_blank'>@jerome_etienne</a>
-</div><script>
-	//////////////////////////////////////////////////////////////////////////////////
-	//		Init
-	//////////////////////////////////////////////////////////////////////////////////
-	// init renderer
-	var renderer	= new THREE.WebGLRenderer({
-		antialias: true,
-		alpha: true
-	});
-	renderer.setClearColor(new THREE.Color('lightgrey'), 0)
-	renderer.setSize( 640, 480 );
-	renderer.domElement.style.position = 'absolute'
-	renderer.domElement.style.top = '0px'
-	renderer.domElement.style.left = '0px'
-	document.body.appendChild( renderer.domElement );
-	// array of functions for the rendering loop
-	var onRenderFcts= [];
-	// init scene and camera
-	var scene	= new THREE.Scene();
-		
-	//////////////////////////////////////////////////////////////////////////////////
-	//		Initialize a basic camera
-	//////////////////////////////////////////////////////////////////////////////////
-	// Create a camera
-	var camera = new THREE.Camera();
-	scene.add(camera);
-	////////////////////////////////////////////////////////////////////////////////
-	//          handle arToolkitSource
-	////////////////////////////////////////////////////////////////////////////////
-	var arToolkitSource = new THREEx.ArToolkitSource({
-		// to read from the webcam 
-		sourceType : 'webcam',
-		
-		// // to read from an image
-		// sourceType : 'image',
-		// sourceUrl : THREEx.ArToolkitContext.baseURL + '../data/images/img.jpg',		
-		// to read from a video
-		// sourceType : 'video',
-		// sourceUrl : THREEx.ArToolkitContext.baseURL + '../data/videos/headtracking.mp4',		
-	})
-	arToolkitSource.init(function onReady(){
-		onResize()
-	})
-	
-	// handle resize
-	window.addEventListener('resize', function(){
-		onResize()
-	})
-	function onResize(){
-		arToolkitSource.onResize()	
-		arToolkitSource.copySizeTo(renderer.domElement)	
-		if( arToolkitContext.arController !== null ){
-			arToolkitSource.copySizeTo(arToolkitContext.arController.canvas)	
-		}	
-	}
-	////////////////////////////////////////////////////////////////////////////////
-	//          initialize arToolkitContext
-	////////////////////////////////////////////////////////////////////////////////
-	
-	// create atToolkitContext
-	var arToolkitContext = new THREEx.ArToolkitContext({
-		cameraParametersUrl: THREEx.ArToolkitContext.baseURL + '../data/data/camera_para.dat',
-		detectionMode: 'mono',
-	})
-	// initialize it
-	arToolkitContext.init(function onCompleted(){
-		// copy projection matrix to camera
-		camera.projectionMatrix.copy( arToolkitContext.getProjectionMatrix() );
-	})
-	// update artoolkit on every frame
-	onRenderFcts.push(function(){
-		if( arToolkitSource.ready === false )	return
-		arToolkitContext.update( arToolkitSource.domElement )
-		
-		// update scene.visible if the marker is seen
-		scene.visible = camera.visible
-	})
-		
-	////////////////////////////////////////////////////////////////////////////////
-	//          Create a ArMarkerControls
-	////////////////////////////////////////////////////////////////////////////////
-	
-	// init controls for camera
-	var markerControls = new THREEx.ArMarkerControls(arToolkitContext, camera, {
-		type : 'pattern',
-		patternUrl : THREEx.ArToolkitContext.baseURL + '../data/data/patt.hiro',
-		// patternUrl : THREEx.ArToolkitContext.baseURL + '../data/data/patt.kanji',
-		// as we controls the camera, set changeMatrixMode: 'cameraTransformMatrix'
-		changeMatrixMode: 'cameraTransformMatrix'
-	})
-	// as we do changeMatrixMode: 'cameraTransformMatrix', start with invisible scene
-	scene.visible = false
-	//////////////////////////////////////////////////////////////////////////////////
-	//		add an object in the scene
-	//////////////////////////////////////////////////////////////////////////////////
-	// add a torus knot	
-	var geometry	= new THREE.CubeGeometry(1,1,1);
-	var material	= new THREE.MeshNormalMaterial({
-		transparent : true,
-		opacity: 0.5,
-		side: THREE.DoubleSide
-	}); 
-	var mesh	= new THREE.Mesh( geometry, material );
-	mesh.position.y	= geometry.parameters.height/2
-	scene.add( mesh );
-	
-	var geometry	= new THREE.TorusKnotGeometry(0.3,0.1,64,16);
-	var material	= new THREE.MeshNormalMaterial(); 
-	var mesh	= new THREE.Mesh( geometry, material );
-	mesh.position.y	= 0.5
-	scene.add( mesh );
-	
-	onRenderFcts.push(function(delta){
-		mesh.rotation.x += Math.PI*delta
-	})
-	//////////////////////////////////////////////////////////////////////////////////
-	//		render the whole thing on the page
-	//////////////////////////////////////////////////////////////////////////////////
-	// render the scene
-	onRenderFcts.push(function(){
-		renderer.render( scene, camera );
-	})
-	// run the rendering loop
-	var lastTimeMsec= null
-	requestAnimationFrame(function animate(nowMsec){
-		// keep looping
-		requestAnimationFrame( animate );
-		// measure time
-		lastTimeMsec	= lastTimeMsec || nowMsec-1000/60
-		var deltaMsec	= Math.min(200, nowMsec - lastTimeMsec)
-		lastTimeMsec	= nowMsec
-		// call each update function
-		onRenderFcts.forEach(function(onRenderFct){
-			onRenderFct(deltaMsec/1000, nowMsec/1000)
-		})
-	})
-</script></body>
+		<div id="info">
+			<a href="https://threejs.org" target="_blank" rel="noopener">three.js</a> - webgl video webcam input
+		</div>
+
+		<script src="build/three.js"></script>
+		<script src="js/controls/OrbitControls.js"></script>
+		<script src="js/WebGL.js"></script>
+
+		<video id="video" autoplay style="display:none"></video>
+
+		<script>
+			if ( WEBGL.isWebGLAvailable() === false ) {
+				document.body.appendChild( WEBGL.getWebGLErrorMessage() );
+			}
+			var camera, scene, renderer, video;
+			init();
+			animate();
+			function init() {
+				camera = new THREE.PerspectiveCamera( 60, window.innerWidth / window.innerHeight, 0.1, 100 );
+				camera.position.z = 0.01;
+				scene = new THREE.Scene();
+				video = document.getElementById( 'video' );
+				var texture = new THREE.VideoTexture( video );
+				var geometry = new THREE.PlaneBufferGeometry( 16, 9 );
+				geometry.scale( 0.5, 0.5, 0.5 );
+				var material = new THREE.MeshBasicMaterial( { map: texture } );
+				var count = 128;
+				var radius = 32;
+				for ( var i = 1, l = count; i <= l; i ++ ) {
+					var phi = Math.acos( - 1 + ( 2 * i ) / l );
+					var theta = Math.sqrt( l * Math.PI ) * phi;
+					var mesh = new THREE.Mesh( geometry, material );
+					mesh.position.setFromSphericalCoords( radius, phi, theta );
+					mesh.lookAt( camera.position );
+					scene.add( mesh );
+				}
+				renderer = new THREE.WebGLRenderer( { antialias: true } );
+				renderer.setPixelRatio( window.devicePixelRatio );
+				renderer.setSize( window.innerWidth, window.innerHeight );
+				document.body.appendChild( renderer.domElement );
+				var controls = new THREE.OrbitControls( camera, renderer.domElement );
+				controls.enableZoom = false;
+				controls.enablePan = false;
+				window.addEventListener( 'resize', onWindowResize, false );
+				//
+				if ( navigator.mediaDevices && navigator.mediaDevices.getUserMedia ) {
+					var constraints = { video: { width: 1280, height: 720, facingMode: 'user' } };
+					navigator.mediaDevices.getUserMedia( constraints ).then( function ( stream ) {
+						// apply the stream to the video element used in the texture
+						video.srcObject = stream;
+						video.play();
+					} ).catch( function ( error ) {
+						console.error( 'Unable to access the camera/webcam.', error );
+					} );
+				} else {
+					console.error( 'MediaDevices interface not available.' );
+				}
+			}
+			function onWindowResize() {
+				 camera.aspect = window.innerWidth / window.innerHeight;
+				 camera.updateProjectionMatrix();
+				 renderer.setSize( window.innerWidth, window.innerHeight );
+			}
+			function animate() {
+				 requestAnimationFrame( animate );
+				 renderer.render( scene, camera );
+			}
+		</script>
+
+	</body>
+</html>
