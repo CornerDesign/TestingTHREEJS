@@ -99,11 +99,6 @@
 		    
 if (navigator.mediaDevices.getUserMedia === undefined) {
   navigator.mediaDevices.getUserMedia = function(constraints) {
-    video: {
-        //width: 1280, height: 720, facingMode: "user" //使用前鏡頭 
-        width: 1280, height: 720, facingMode: { exact: "environment" }//使用後鏡頭
-        }
-    };
     // First get ahold of the legacy getUserMedia, if present
     var getUserMedia = navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
 
@@ -120,7 +115,7 @@ if (navigator.mediaDevices.getUserMedia === undefined) {
   }
 }
 
-navigator.mediaDevices.getUserMedia({ video: true })
+navigator.mediaDevices.getUserMedia({ video: width: 1280, height: 720, facingMode: { exact: "environment" }//使用後鏡頭})
 .then(function(stream) {
   var video = document.querySelector('video');
   // Older browsers may not have srcObject
