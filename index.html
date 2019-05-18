@@ -86,8 +86,8 @@
                     navigator.mediaDevices.getUserMedia( constraints ).then( 
                         function ( stream ) {
                         // apply the stream to the video element used in the texture
-                            //video.srcObject = stream;
-			video.src = window.URL.createObjectURL( stream );
+                            video.srcObject = stream;
+			//video.src = window.URL.createObjectURL( stream );
                             video.play();
                         } ).catch( function ( error ) {
                             console.error( 'Unable to access the camera/webcam.', error );
