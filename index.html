@@ -85,10 +85,22 @@
                     };
                     navigator.mediaDevices.getUserMedia( constraints ).then( 
                         function ( stream ) {
+				
+			var video = document.querySelector('video');
+   			video.srcObject = stream;
+   			video.onloadedmetadata = function(e) {
+   		   	// Do something with the video here.
+			video.play();
+   			};
+				
+				
                         // apply the stream to the video element used in the texture
-                            video.srcObject = stream;
-			//video.src = window.URL.createObjectURL( stream );
-                            video.play();
+                       //     video.srcObject = stream;
+                       //     video.play();
+				
+				
+				
+				
                         } ).catch( function ( error ) {
                             console.error( 'Unable to access the camera/webcam.', error );
                     } );
