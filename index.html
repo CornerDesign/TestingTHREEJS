@@ -1,154 +1,78 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <title>deviceorientation</title>
-        <meta charset="utf-8">
-        <meta name="viewport" content="user-scalable=no, initial-scale=1">
-        <style>
-            body {
-                margin: 0px;
-                background-color: #000000;
-                overflow: hidden;
-            }
-            #info {
-                position: absolute;
-                top: 0px; width: 100%;
-                color: #ffffff;
-                padding: 5px;
-                font-family:Monospace;
-                font-size:13px;
-                font-weight: bold;
-                text-align:center;
-                box-sizing: border-box;
-            }
-            a {
-                color: #ff8800;
-            }
-        </style>
-    </head>
-    <body>
-        <script src="build/three.js"></script>
-        <script src="js/controls/DeviceOrientationControls.js"></script>
-        <script src="js/WebGL.js"></script>
-	<script src='js/threex.videotexture.js'></script>
-	<script src='js/threex.webcamtexture.js'></script>
-        <video id="video" autoplay style="display:none"></video>
-        
-        <script>
-            if ( WEBGL.isWebGLAvailable() === false ) {
-                document.body.appendChild( WEBGL.getWebGLErrorMessage() );
-            }
-            
-            var camera, scene, renderer, controls ,video,webcamTexture;
-            init();
-            animate();
-            function init() {
-                camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 1, 1100 );
-                controls = new THREE.DeviceOrientationControls( camera );
-                scene = new THREE.Scene();
-//                video = document.getElementById( 'video' );
-//                var texture = new THREE.VideoTexture( video );
-                webcamTexture	= new THREEx.WebcamTexture()
-		onRenderFcts.push(function(delta, now){
-			webcamTexture.update(delta, now)
-		})  
-		    
-                scene.background = webcamTexture.texture;
-
-		    	// use the texture in a THREE.Mesh
-		var geometry	= new THREE.CubeGeometry(1,1,1);
-		var material	= new THREE.MeshBasicMaterial({
-			map	: webcamTexture.texture
-		});
-		var mesh	= new THREE.Mesh( geometry, material );
-		scene.add( mesh );
-		onRenderFcts.push(function(delta, now){
-			mesh.rotation.x += 1 * delta;
-			mesh.rotation.y += 2 * delta;		
-		})
+<script src="build/three.js"></script>
+<script src="js/controls/DeviceOrientationControls.js"></script>
+<script src="js/WebGL.js"></script>
+<script src='../threex.webcamtexture.js'></script>
+<body style='margin: 0px; background-color: #bbbbbb; overflow: hidden;'><script>
 	
-		  // create the webcamTexture
-
-		    
-		    
-		    
-		    
-		    
-		    
-                var helperGeometry = new THREE.BoxBufferGeometry( 100, 100, 100, 4, 4, 4 );
-                var helperMaterial = new THREE.MeshBasicMaterial( { color: 0xff00ff, wireframe: true } );
-                var helper = new THREE.Mesh( helperGeometry, helperMaterial );
-		helper.position.set( 130, 100, 100 );
-                scene.add( helper );
-                
-
-                
-                
-		var texture = new THREE.TextureLoader().load( 'textures/fish.png' );
-		var geometry = new THREE.BoxBufferGeometry( 20, 20, 20 );
-		var material = new THREE.MeshBasicMaterial( { map: texture } );
-		mesh = new THREE.Mesh( geometry, material );
-		mesh.position.set( 130, 100, 100 );
-		scene.add( mesh );
-                
-                
-                
-                //
-                renderer = new THREE.WebGLRenderer( { antialias: true } );
-                renderer.setPixelRatio( window.devicePixelRatio );
-                renderer.setSize( window.innerWidth, window.innerHeight );
-                document.body.appendChild( renderer.domElement );
-                //
-                window.addEventListener( 'resize', onWindowResize, false );
-/*
-                if ( navigator.mediaDevices.getUserMedia ) {
-//			 if ( navigator.mediaDevices && navigator.mediaDevices.getUserMedia ) {
-                    var constraints = { 
-                        video: {
-                            //width: 1280, height: 720, facingMode: "user" //使用前鏡頭 
-                            width: 1280, height: 720, facingMode: { exact: "environment" }//使用後鏡頭
-                        }
-                    };
-                    navigator.mediaDevices.getUserMedia( constraints ).then( 
-                        function ( stream ) {	
-                        // apply the stream to the video element used in the texture
-                        video.srcObject = stream;
-                        video.play();
-                        } ).catch( function ( error ) {
-                            console.error( 'Unable to access the camera/webcam.', error );
-                    } );
-                } else {
-                    console.error( 'MediaDevices interface not available.' );
-                }
-*/	
-	/*    
-		var constraints = { audio: true, video: { width: 1280, height: 720, facingMode: { exact: "environment" } } }; 
-		navigator.mediaDevices.getUserMedia(constraints).then(function(mediaStream) {
-  			var video = document.querySelector('video');
-  			video.srcObject = mediaStream;
-  			video.onloadedmetadata = function(e) {
-    				video.play();
-  			};
+	var renderer	= new THREE.WebGLRenderer();
+	renderer.setSize( window.innerWidth, window.innerHeight );
+	document.body.appendChild( renderer.domElement );
+	var onRenderFcts	= [];
+	var scene	= new THREE.Scene();
+	var camera	= new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.01, 100 );
+	camera.position.z = 3;
+	//////////////////////////////////////////////////////////////////////////////////
+	//		add an object and make it move					//
+	//////////////////////////////////////////////////////////////////////////////////
+	
+	// create the webcamTexture
+	var webcamTexture	= new THREEx.WebcamTexture()
+	onRenderFcts.push(function(delta, now){
+		webcamTexture.update(delta, now)
+	})
+	
+	// use the texture in a THREE.Mesh
+	var geometry	= new THREE.CubeGeometry(1,1,1);
+	var material	= new THREE.MeshBasicMaterial({
+		map	: webcamTexture.texture
+	});
+	var mesh	= new THREE.Mesh( geometry, material );
+	scene.add( mesh );
+	onRenderFcts.push(function(delta, now){
+		mesh.rotation.x += 1 * delta;
+		mesh.rotation.y += 2 * delta;		
+	})
+	
+	//////////////////////////////////////////////////////////////////////////////////
+	//		Camera Controls							//
+	//////////////////////////////////////////////////////////////////////////////////
+	var mouse	= {x : 0, y : 0}
+	document.addEventListener('mousemove', function(event){
+		mouse.x	= (event.clientX / window.innerWidth ) - 0.5
+		mouse.y	= (event.clientY / window.innerHeight) - 0.5
+	}, false)
+	onRenderFcts.push(function(delta, now){
+		camera.position.x += (mouse.x*5 - camera.position.x) * (delta*3)
+		camera.position.y += (mouse.y*5 - camera.position.y) * (delta*3)
+		camera.lookAt( scene.position )
+	})
+	//////////////////////////////////////////////////////////////////////////////////
+	//		render the whole thing on the page
+	//////////////////////////////////////////////////////////////////////////////////
+	// handle window resize
+	window.addEventListener('resize', function(){
+		renderer.setSize( window.innerWidth, window.innerHeight )
+		camera.aspect	= window.innerWidth / window.innerHeight
+		camera.updateProjectionMatrix()		
+	}, false)
+	// render the scene
+	onRenderFcts.push(function(){
+		renderer.render( scene, camera );		
+	})
+	
+	// run the rendering loop
+	var lastTimeMsec= null
+	requestAnimationFrame(function animate(nowMsec){
+		// keep looping
+		requestAnimationFrame( animate );
+		// measure time
+		lastTimeMsec	= lastTimeMsec || nowMsec-1000/60
+		var deltaMsec	= Math.min(200, nowMsec - lastTimeMsec)
+		lastTimeMsec	= nowMsec
+		// call each update function
+		onRenderFcts.forEach(function(onRenderFct){
+			onRenderFct(deltaMsec/1000, nowMsec/1000)
 		})
-		.catch(function(err) { console.log(err.name + ": " + err.message); }); // always check for errors at the end.
-	*/		
-                
-                
-                
-            }
-		
-		
-		
-            function animate() {
-                window.requestAnimationFrame( animate );
-                controls.update();
-                renderer.render( scene, camera );
-            }
-            function onWindowResize() {
-                camera.aspect = window.innerWidth / window.innerHeight;
-                camera.updateProjectionMatrix();
-                renderer.setSize( window.innerWidth, window.innerHeight );
-            }
-        </script>
-    </body>
-</html>
+	})
+</script></body>
