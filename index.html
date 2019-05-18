@@ -115,7 +115,7 @@ if (navigator.mediaDevices.getUserMedia === undefined) {
   }
 }
 
-navigator.mediaDevices.getUserMedia({ video: facingMode:  "environment" })
+navigator.mediaDevices.getUserMedia( video: true )
 .then(function(stream) {
   var video = document.querySelector('video');
   // Older browsers may not have srcObject
