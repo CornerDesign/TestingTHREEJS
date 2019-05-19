@@ -30,8 +30,8 @@
         <script src="build/three.js"></script>
         <script src="js/controls/DeviceOrientationControls.js"></script>
         <script src="js/WebGL.js"></script>
-	<script src="js/threex.domevents.js"></script>
-	<script src="js/TweenMax.min.js"></script>
+    <script src="js/threex.domevents.js"></script>
+    <script src="js/TweenMax.min.js"></script>
         <video id="video" autoplay style="display:none"></video>
         
         <script>
@@ -40,23 +40,12 @@
             }
             
             var camera, scene, renderer, controls ,video;
-	    var cameraOrtho, sceneOrtho;
-	    var spriteC;
-		
             init();
             animate();
             function init() {
-		var width = window.innerWidth;
-		var height = window.innerHeight;
-		    
-                camera = new THREE.PerspectiveCamera( 75, width / height, 1, 1100 );
-		controls = new THREE.DeviceOrientationControls( camera );
-		cameraOrtho = new THREE.OrthographicCamera(- width / 2, width / 2, height / 2, - height / 2, 1, 1100 );
-		cameraOrtho.position.z = 10;
-                
+                camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 1, 1100 );
+                controls = new THREE.DeviceOrientationControls( camera );
                 scene = new THREE.Scene();
-		sceneOrtho = new THREE.Scene();
-		    
                 video = document.getElementById( 'video' );
                 var texture = new THREE.VideoTexture( video );
                 
@@ -65,50 +54,44 @@
                 var helperGeometry = new THREE.BoxBufferGeometry( 100, 100, 100, 4, 4, 4 );
                 var helperMaterial = new THREE.MeshBasicMaterial( { color: 0xff00ff, wireframe: true } );
                 var helper = new THREE.Mesh( helperGeometry, helperMaterial );
-        	helper.position.set( 0, 0, 0 );
+            helper.position.set( 0, 0, 0 );
                 scene.add( helper );
   */                  
-		    
-		    
-		var textureLoader = new THREE.TextureLoader();
-		textureLoader.load( 'textures/fish.png', createHUDSprites );   
-		    
-		    
-		var texture = new THREE.TextureLoader().load( 'textures/fish.png' );
-		var geometry = new THREE.PlaneGeometry( 50,50);
-		var material = new THREE.MeshBasicMaterial( { map: texture } );
-		planemesh = new THREE.Mesh( geometry, material );
-		planemesh.rotation.y = 90 ;
-		planemesh.position.set( -100, 0, 0 );
-		scene.add( planemesh );
+            
+        var texture = new THREE.TextureLoader().load( 'textures/fish.png' );
+        var geometry = new THREE.PlaneGeometry( 50,50);
+        var material = new THREE.MeshBasicMaterial( { map: texture } );
+        planemesh = new THREE.Mesh( geometry, material );
+        planemesh.rotation.y = 90 ;
+        planemesh.position.set( -100, 0, 0 );
+        scene.add( planemesh );
                 
-		var texture = new THREE.TextureLoader().load( 'textures/fish.png' );
-		var geometry = new THREE.PlaneGeometry( 50,50);
-		var material = new THREE.MeshBasicMaterial( { map: texture } );
-		planemesh2 = new THREE.Mesh( geometry, material );
-		planemesh2.rotation.y = 90 ;
-		planemesh2.position.set( -100, 50, 0 );
-		scene.add( planemesh2 );
-		    
-		    
+        var texture = new THREE.TextureLoader().load( 'textures/fish.png' );
+        var geometry = new THREE.PlaneGeometry( 50,50);
+        var material = new THREE.MeshBasicMaterial( { map: texture } );
+        planemesh2 = new THREE.Mesh( geometry, material );
+        planemesh2.rotation.y = 90 ;
+        planemesh2.position.set( -100, 50, 0 );
+        scene.add( planemesh2 );
+            
+            
                 /* textingbox
-        	var texture = new THREE.TextureLoader().load( 'textures/fish.png' );
-        	var geometry = new THREE.BoxBufferGeometry( 20, 20, 20 );
-        	var material = new THREE.MeshBasicMaterial( { map: texture } );
-        	boxmesh = new THREE.Mesh( geometry, material );
-        	boxmesh.position.set( -100, 0, 0 );
-        	scene.add( boxmesh );
-		*/
-		    
-                // renderer
+            var texture = new THREE.TextureLoader().load( 'textures/fish.png' );
+            var geometry = new THREE.BoxBufferGeometry( 20, 20, 20 );
+            var material = new THREE.MeshBasicMaterial( { map: texture } );
+            boxmesh = new THREE.Mesh( geometry, material );
+            boxmesh.position.set( -100, 0, 0 );
+            scene.add( boxmesh );
+        */
+            
+                //
                 renderer = new THREE.WebGLRenderer( { antialias: true } );
                 renderer.setPixelRatio( window.devicePixelRatio );
                 renderer.setSize( window.innerWidth, window.innerHeight );
-		renderer.autoClear = false; // To allow render overlay on top of sprited sphere
                 document.body.appendChild( renderer.domElement );
                 //
                 window.addEventListener( 'resize', onWindowResize, false );
-                		    
+                            
                 if ( navigator.mediaDevices && navigator.mediaDevices.getUserMedia ) {
                     var constraints = {
                         video: {
@@ -128,37 +111,27 @@
                     console.error( 'MediaDevices interface not available.' );
                 }
             
-            	
+                
             }
-		
-	    var domEvents = new THREEx.DomEvents(camera, renderer.domElement);
-	    domEvents.addEventListener(planemesh , 'touchstart' , event =>{
-		this.t1 = new TimelineMax();
-		this.t1.to(planemesh.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut});
-		})
-	    domEvents.addEventListener(planemesh2 , 'touchstart' , event =>{
-		this.t2 = new TimelineMax();
-		this.t2.to(planemesh2.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut});
-	    })
-
-		
-	    function createHUDSprites( texture ) {
-		var material = new THREE.SpriteMaterial( { map: texture } );
-		var width = material.map.image.width;
-		var height = material.map.image.height;
-		spriteC = new THREE.Sprite( material );
-		spriteC.center.set( 0.5, 0.5 );
-		spriteC.scale.set( width, height, 1 );
-		sceneOrtho.add( spriteC );
-		updateHUDSprites();
-	    }
-	    function updateHUDSprites() {
-		var width = window.innerWidth / 2;
-		var height = window.innerHeight / 2;
-		spriteC.position.set( 0, 0, 1 ); // center
-	    }
-		
-		
+        
+        var domEvents = new THREEx.DomEvents(camera, renderer.domElement);
+        domEvents.addEventListener(planemesh , 'touchstart' , event =>{
+        this.t1 = new TimelineMax();
+        this.t1.to(planemesh.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut});
+        })
+        domEvents.addEventListener(planemesh2 , 'touchstart' , event =>{
+        this.t2 = new TimelineMax();
+        this.t2.to(planemesh2.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut});
+        })
+        domEvents.addEventListener(spritemesh , 'touchstart' , event =>{
+        this.t3 = new TimelineMax();
+        this.t3.to(spritemesh.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut});
+        })
+        
+        
+        
+        
+        
             function animate() {
                 window.requestAnimationFrame( animate );
                 controls.update();
@@ -167,14 +140,6 @@
             function onWindowResize() {
                 camera.aspect = window.innerWidth / window.innerHeight;
                 camera.updateProjectionMatrix();
-		    
-		cameraOrtho.left = - width / 2;
-		cameraOrtho.right = width / 2;
-		cameraOrtho.top = height / 2;
-		cameraOrtho.bottom = - height / 2;
-		cameraOrtho.updateProjectionMatrix();
-		updateHUDSprites();
-		    
                 renderer.setSize( window.innerWidth, window.innerHeight );
             }
         </script>
