@@ -72,7 +72,7 @@
         	scene.add( mesh );
 		    
 		    
-		const domEvents = new THREEx.DomEvents(camera , renderer.domElement)
+		const domEvents = new THREEx.DomEvents(camera , renderer.domElement);
 		
 		domEvents.addEventListener(mesh, 'click', event => {
 			boxmesh.position.set( -90, 0, 0 );
