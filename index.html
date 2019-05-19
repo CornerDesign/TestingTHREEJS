@@ -44,8 +44,9 @@
             function init() {
                 camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 1, 1100 );
                 camera2 = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 1, 1100 );
+                camera2.position.z = 1;
                 controls = new THREE.DeviceOrientationControls( camera );
-                controls2 = new THREE.DeviceOrientationControls( camera2 );
+//                controls2 = new THREE.DeviceOrientationControls( camera2 );
                 scene = new THREE.Scene();
                 scene2 = new THREE.Scene();
                 video = document.getElementById( 'video' );
@@ -79,11 +80,11 @@
               
               
         var texture = new THREE.TextureLoader().load( 'textures/fish.png' );
-        var geometry = new THREE.PlaneGeometry( 50,50);
+        var geometry = new THREE.PlaneGeometry( 1,1);
         var material = new THREE.MeshBasicMaterial( { map: texture } );
         planemesh3 = new THREE.Mesh( geometry, material );
         planemesh3.rotation.y = 90 ;
-        planemesh3.position.set( -105, 75, 0 );
+        planemesh3.position.set( 0, 0, 0 );
         scene2.add( planemesh3 );
             
                 /* textingbox
