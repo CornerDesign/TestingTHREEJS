@@ -57,10 +57,12 @@
                 scene.add( helper );
                 
 		    
-		var geometry = new THREE.PlaneBufferGeometry( 5, 20, 32 );
+		var geometry = new THREE.PlaneGeometry( 100,100,100,100 );
 		var material = new THREE.MeshBasicMaterial( {color: 0xffff00, side: THREE.DoubleSide} );
 		var plane = new THREE.Mesh( geometry, material );
-		plane.position.set( 100, 0, 0 );
+		plane.rotation.x = -90 *Math.PI / 100 ;
+		plane.position.y = -100;
+		plane.position.set( -100, 50, 0 );
 		scene.add( plane );
                 
                 
