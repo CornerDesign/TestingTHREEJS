@@ -68,7 +68,7 @@
 		    
 		var texture = new THREE.TextureLoader().load( 'textures/fish.png' );
 		var geometry = new THREE.PlaneGeometry( 50,50);
-		var material = new THREE.MeshBasicMaterial( { map: texture } );
+		var material = new THREE.SpriteMaterial( { map: texture } );
 		planemesh = new THREE.Mesh( geometry, material );
 		planemesh.rotation.y = 90 ;
 		planemesh.position.set( -100, 0, 0 );
