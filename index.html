@@ -40,12 +40,19 @@
             }
             
             var camera, scene, renderer, controls ,video;
+	    var cameraOrtho, sceneOrtho;
+		
             init();
             animate();
             function init() {
                 camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 1, 1100 );
-                controls = new THREE.DeviceOrientationControls( camera );
+		controls = new THREE.DeviceOrientationControls( camera );
+		cameraOrtho = new THREE.OrthographicCamera( - width / 2, width / 2, height / 2, - height / 2, 1, 10 );
+		cameraOrtho.position.z = 10;
+                
                 scene = new THREE.Scene();
+		sceneOrtho = new THREE.Scene();
+		    
                 video = document.getElementById( 'video' );
                 var texture = new THREE.VideoTexture( video );
                 
@@ -56,15 +63,7 @@
                 var helper = new THREE.Mesh( helperGeometry, helperMaterial );
         	helper.position.set( 0, 0, 0 );
                 scene.add( helper );
-  */              
-		var texture = new THREE.TextureLoader().load( 'textures/fish.png' );
-		var material = new THREE.SpriteMaterial( { map: texture } );
-		spritemesh = new THREE.Mesh( geometry, material );
-		spritemesh.position.set( -100, 0, 50 );
-		spritemesh.scale.set( 64, 64, 1 );
-		scene.add( spritemesh );
-
-		    
+  */                  
 		    
 		var texture = new THREE.TextureLoader().load( 'textures/fish.png' );
 		var geometry = new THREE.PlaneGeometry( 50,50);
@@ -136,8 +135,21 @@
 	    this.t3.to(spritemesh.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut});
 	    })
 		
-		
-		
+	    function createHUDSprites( texture ) {
+		var material = new THREE.SpriteMaterial( { map: texture } );
+		var width = material.map.image.width;
+		var height = material.map.image.height;
+		spriteC = new THREE.Sprite( material );
+		spriteC.center.set( 0.5, 0.5 );
+		spriteC.scale.set( width, height, 1 );
+		sceneOrtho.add( spriteC );
+		updateHUDSprites();
+	    }
+	    function updateHUDSprites() {
+		var width = window.innerWidth / 2;
+		var height = window.innerHeight / 2;
+		spriteC.position.set( 0, 0, 1 ); // center
+	    }
 		
 		
             function animate() {
@@ -148,6 +160,14 @@
             function onWindowResize() {
                 camera.aspect = window.innerWidth / window.innerHeight;
                 camera.updateProjectionMatrix();
+		    
+		cameraOrtho.left = - width / 2;
+		cameraOrtho.right = width / 2;
+		cameraOrtho.top = height / 2;
+		cameraOrtho.bottom = - height / 2;
+		cameraOrtho.updateProjectionMatrix();
+		updateHUDSprites();
+		    
                 renderer.setSize( window.innerWidth, window.innerHeight );
             }
         </script>
