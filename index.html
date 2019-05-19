@@ -50,29 +50,28 @@
                 
                 scene.background = texture;
 
-                
-                
-                var planetexture = new THREE.TextureLoader().load( 'textures/fish.png' );
-                var planegeometry = new THREE.PlaneGeometry( 50, 50, 32 );
-                var planematerial = new THREE.MeshBasicMaterial( { map: planetexture } );
-                planemesh = new THREE.Mesh( planegeometry, planematerial );
-                planemesh.position.set( 100, 100, 100 );
-                scene.add( planemesh );;
-                
-                var texture = new THREE.TextureLoader().load( 'textures/fish.png' );
-				var geometry = new THREE.BoxBufferGeometry( 20, 20, 20 );
-				var material = new THREE.MeshBasicMaterial( { map: texture } );
-				mesh = new THREE.Mesh( geometry, material );
-                mesh.position.set( 100, 100, 100 );
-				scene.add( mesh );
-                
-                
-                
-                
                 var helperGeometry = new THREE.BoxBufferGeometry( 100, 100, 100, 4, 4, 4 );
                 var helperMaterial = new THREE.MeshBasicMaterial( { color: 0xff00ff, wireframe: true } );
                 var helper = new THREE.Mesh( helperGeometry, helperMaterial );
+        helper.position.set( 130, 100, 100 );
                 scene.add( helper );
+                
+
+                
+                
+        	var texture = new THREE.TextureLoader().load( 'textures/fish.png' );
+        	var geometry = new THREE.BoxBufferGeometry( 20, 20, 20 );
+        	var material = new THREE.MeshBasicMaterial( { map: texture } );
+        	mesh = new THREE.Mesh( geometry, material );
+        	mesh.position.set( 130, 100, 100 );
+        	scene.add( mesh );
+		    
+		    
+		    
+		    
+                
+                
+                
                 //
                 renderer = new THREE.WebGLRenderer( { antialias: true } );
                 renderer.setPixelRatio( window.devicePixelRatio );
@@ -80,12 +79,6 @@
                 document.body.appendChild( renderer.domElement );
                 //
                 window.addEventListener( 'resize', onWindowResize, false );
-                
-                
-                
-                
-                
-                
                 
                 if ( navigator.mediaDevices && navigator.mediaDevices.getUserMedia ) {
                     var constraints = {
@@ -95,16 +88,22 @@
                         }
                     };
                     navigator.mediaDevices.getUserMedia( constraints ).then(
-                        function ( stream ) {
+                        function ( stream ) {    
                         // apply the stream to the video element used in the texture
-                            video.srcObject = stream;
-                            video.play();
+                        video.srcObject = stream;
+                        video.play();
+                
+                
+                
+                
                         } ).catch( function ( error ) {
                             console.error( 'Unable to access the camera/webcam.', error );
                     } );
                 } else {
                     console.error( 'MediaDevices interface not available.' );
                 }
+            
+            
                 
                 
                 
