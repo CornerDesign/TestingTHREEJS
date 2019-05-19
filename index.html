@@ -31,6 +31,7 @@
         <script src="js/controls/DeviceOrientationControls.js"></script>
         <script src="js/WebGL.js"></script>
 	<script src="js/threex.domevents.js"></script>
+	<script src="js/TweenMax.min.js"></script>
         <video id="video" autoplay style="display:none"></video>
         
         <script>
@@ -106,10 +107,15 @@
             	
             }
 	
+
+		
+		
+		
 		
 		var domEvents = new THREEx.DomEvents(camera, renderer.domElement);
 		domEvents.addEventListener(planemesh , 'touchstart' , event =>{
-		planemesh.rotation.y = 150 ;
+			this.t1 = new TimelineMax();
+			this.t1.to(planemesh.scale, 1 , { 0.1,ease:Expo.easeout})
 		})
 		
 		
