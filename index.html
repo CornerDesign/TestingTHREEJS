@@ -58,7 +58,8 @@
                 scene.add( helper );
   */              
 		for ( var i = 0; i < 50; i ++ ) {
-			var material = new THREE.SpriteMaterial( { color: Math.random() * 0xffffff } );
+			var texture = new THREE.TextureLoader().load( 'textures/fish.png' );
+			var material = new THREE.SpriteMaterial( { map: texture } );
 			var sprite = new THREE.Sprite( material );
 			sprite.position.x = Math.random() * 1000 - 500;
 			sprite.position.y = Math.random() * 1000 - 500;
