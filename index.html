@@ -62,7 +62,7 @@
                     
             
         var texture = new THREE.TextureLoader().load( 'textures/art.jpg' );
-        var geometry = new THREE.PlaneGeometry( 50,50);
+        var geometry = new THREE.PlaneGeometry( 50,50,4);
         var material = new THREE.MeshBasicMaterial( { map: texture } );
         planemesh = new THREE.Mesh( geometry, material );
         planemesh.rotation.y = 40 ;
@@ -70,7 +70,7 @@
         scene.add( planemesh );
                 
         var texture = new THREE.TextureLoader().load( 'textures/art.jpg' );
-        var geometry = new THREE.PlaneGeometry( 50,50);
+        var geometry = new THREE.PlaneGeometry( 50,50,4);
         var material = new THREE.MeshBasicMaterial( { map: texture } );
         planemesh2 = new THREE.Mesh( geometry, material );
         planemesh2.rotation.y = 90 ;
@@ -80,7 +80,7 @@
               
               
         var texture = new THREE.TextureLoader().load( 'textures/art.jpg' );
-        var geometry = new THREE.PlaneGeometry( 1,1);
+        var geometry = new THREE.PlaneGeometry( 1,1,4);
         var material = new THREE.MeshBasicMaterial( { map: texture } );
         planemesh3 = new THREE.Mesh( geometry, material );
         planemesh3.rotation.y = 0 ;
