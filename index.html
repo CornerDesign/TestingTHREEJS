@@ -50,9 +50,9 @@
                 scene = new THREE.Scene();
                 scene2 = new THREE.Scene();
                 video = document.getElementById( 'video' );
-                var texture = new THREE.VideoTexture( video );
+                var Vtexture = new THREE.VideoTexture( video );
                 
-//                scene.background = texture;
+ //               scene.background = Vtexture;
 /*
                 var helperGeometry = new THREE.BoxBufferGeometry( 100, 100, 100, 4, 4, 4 );
                 var helperMaterial = new THREE.MeshBasicMaterial( { color: 0xff00ff, wireframe: true } );
@@ -126,7 +126,7 @@
             
                 
             }
-        
+        //Touching Object
         var domEvents = new THREEx.DomEvents(camera, renderer.domElement);
         domEvents.addEventListener(planemesh , 'touchstart' , event =>{
         this.t1 = new TimelineMax();
@@ -144,12 +144,12 @@
         })
         */
         
-            function animate() {
-                window.requestAnimationFrame( animate );
-                controls.update();
-                renderer.clear();
-                renderer.render( scene, camera );
-               renderer.render( scene2, camera2 );
+         function animate() {
+            window.requestAnimationFrame( animate );
+            controls.update();
+            renderer.clear();
+            renderer.render( scene, camera );
+            renderer.render( scene2, camera2 );
             }
             function onWindowResize() {
                 camera.aspect = window.innerWidth / window.innerHeight;
