@@ -121,8 +121,8 @@
 		var domEvents = new THREEx.DomEvents(camera, renderer.domElement);
 		domEvents.addEventListener(planemesh , 'touchstart' , event =>{
 			this.t1 = new TimelineMax();
-			this.t1.to(planemesh.scale, 1 , { x: 0,ease:Expo.easeOut});
-			this.t1.to(planemesh.scale, 1 , { z: 0,ease:Expo.easeOut});
+			this.t1.to(planemesh.scale, 1 , { x,y,z: 0,ease:Expo.easeOut});
+			this.t1.to(planemesh.scale, 1 , { x,y,z,ease:Expo.easeOut});
 		})
 		domEvents.addEventListener(planemesh2 , 'touchstart' , event =>{
 			this.t2 = new TimelineMax();
