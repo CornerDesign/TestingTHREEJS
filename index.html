@@ -57,6 +57,15 @@
         	helper.position.set( 0, 0, 0 );
                 scene.add( helper );
   */              
+		var spriteMap = new THREE.TextureLoader().load( 'textures/fish.png' );
+		var spriteMaterial = new THREE.SpriteMaterial( { map: spriteMap, color: 0xffffff } );
+		var sprite = new THREE.Sprite( spriteMaterial );
+		sprite.position(0,0,0);
+		sprite.scale.set(20, 20, 1)
+		scene.add( sprite );
+		    
+		
+		    
 		var texture = new THREE.TextureLoader().load( 'textures/fish.png' );
 		var geometry = new THREE.PlaneGeometry( 50,50);
 		var material = new THREE.MeshBasicMaterial( { map: texture } );
@@ -112,21 +121,16 @@
             
             	
             }
-	
-
 		
-		
-		
-		
-		var domEvents = new THREEx.DomEvents(camera, renderer.domElement);
-		domEvents.addEventListener(planemesh , 'touchstart' , event =>{
-			this.t1 = new TimelineMax();
-			this.t1.to(planemesh.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut});
+	    var domEvents = new THREEx.DomEvents(camera, renderer.domElement);
+	    domEvents.addEventListener(planemesh , 'touchstart' , event =>{
+		this.t1 = new TimelineMax();
+		this.t1.to(planemesh.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut});
 		})
-		domEvents.addEventListener(planemesh2 , 'touchstart' , event =>{
-			this.t2 = new TimelineMax();
-			this.t2.to(planemesh2.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut});
-		})
+	    domEvents.addEventListener(planemesh2 , 'touchstart' , event =>{
+		this.t2 = new TimelineMax();
+		this.t2.to(planemesh2.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut});
+	    })
 		
 		
             function animate() {
