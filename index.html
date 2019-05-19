@@ -125,8 +125,8 @@
 		})
 		domEvents.addEventListener(planemesh2 , 'touchstart' , event =>{
 			this.t2 = new TimelineMax();
+			this.t2.to(planemesh2.scale, 1 , { y: 0,ease:Expo.easeOut});
 			this.t2.to(planemesh2.scale, 1 , { x: 0,ease:Expo.easeOut});
-			this.t2.to(planemesh2.scale, 1 , { z: 0,ease:Expo.easeOut});
 		})
 		
 		
