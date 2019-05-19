@@ -48,7 +48,7 @@
             function init() {
                 camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 1, 1100 );
 		controls = new THREE.DeviceOrientationControls( camera );
-		cameraOrtho = new THREE.OrthographicCamera( -window.innerWidth/2,window.innerWidth/2,-window.innerHeight/2, window.innerHeight/2, 1, 1100 );
+		cameraOrtho = new THREE.OrthographicCamera(- width / 2, width / 2, height / 2, - height / 2, 1, 10 );
 		cameraOrtho.position.z = 10;
                 
                 scene = new THREE.Scene();
