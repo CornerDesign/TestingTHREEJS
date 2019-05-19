@@ -37,6 +37,15 @@
             if ( WEBGL.isWebGLAvailable() === false ) {
                 document.body.appendChild( WEBGL.getWebGLErrorMessage() );
             }
+            var buttons = document.getElementsByTagName("button");
+                for (let i = 0; i < buttons.length; i++) {
+                buttons[i].addEventListener("click", onButtonClick, false);
+                };
+
+            function onButtonClick(event) {
+                alert(event.target.id);
+            }
+
             
             var camera,camera2, scene,scene2, renderer, controls ,video;
             init();
@@ -60,16 +69,6 @@
             helper.position.set( 0, 0, 0 );
                 scene.add( helper );
   */                  
-            var buttons = document.getElementsByTagName("button");
-for (let i = 0; i < buttons.length; i++) {
-  buttons[i].addEventListener("click", onButtonClick, false);
-};
-
-function onButtonClick(event) {
-  alert(event.target.id);
-}
-
-                
                 
                 
         var texture = new THREE.TextureLoader().load( 'textures/art.jpg' );
