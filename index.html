@@ -98,19 +98,29 @@
 	renderer.setSize( window.innerWidth, window.innerHeight );
 	document.body.appendChild( renderer.domElement );
 	//
-//	window.addEventListener( 'resize', onWindowResize, false );
+	window.addEventListener( 'resize', onWindowResize, false );
 	}
+	
+	var stats = new Stats();
+	document.body.appendChild( stats.dom );
+	// render the scene
+	onRenderFcts.push(function(){
+		renderer.render( scene, camera );
+		stats.update();
+	})
+	
+	/*
 	function animate() {
 		window.requestAnimationFrame( animate );
 		controls.update();
 		renderer.render( scene, camera );
 	}
-/*	function onWindowResize() {
+	function onWindowResize() {
 		camera.aspect = window.innerWidth / window.innerHeight;
 		camera.updateProjectionMatrix();
 		renderer.setSize( window.innerWidth, window.innerHeight );
-	}
-*/
+	}*/
+
 	
 	
 	
