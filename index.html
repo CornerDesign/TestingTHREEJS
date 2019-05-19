@@ -83,7 +83,7 @@
         var material = new THREE.MeshBasicMaterial( { map: texture } );
         planemesh3 = new THREE.Mesh( geometry, material );
         planemesh3.rotation.y = 90 ;
-        planemesh3.position.set( -90, 75, 0 );
+        planemesh3.position.set( -105, 75, 0 );
         scene2.add( planemesh3 );
             
                 /* textingbox
@@ -135,13 +135,13 @@
         this.t2 = new TimelineMax();
         this.t2.to(planemesh2.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut});
         })
-        /*
+        
         var domEvents2 = new THREEx.DomEvents(camera2, renderer.domElement);
         domEvents.addEventListener(planemesh3 , 'touchstart' , event =>{
         this.t3 = new TimelineMax();
         this.t3.to(planemesh3.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut});
         })
-        */
+        
         
          function animate() {
             window.requestAnimationFrame( animate );
