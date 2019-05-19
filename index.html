@@ -78,12 +78,12 @@
             
               
               
-        var texture3 = new THREE.TextureLoader().load( 'textures/fish.png' );
-        var geometry3 = new THREE.PlaneGeometry( 50,50);
-        var material3 = new THREE.MeshBasicMaterial( { map: texture3 } );
-        planemesh3 = new THREE.Mesh( geometry3, material3 );
+        var texture = new THREE.TextureLoader().load( 'textures/fish.png' );
+        var geometry = new THREE.PlaneGeometry( 50,50);
+        var material = new THREE.MeshBasicMaterial( { map: texture } );
+        planemesh3 = new THREE.Mesh( geometry, material );
         planemesh3.rotation.y = 90 ;
-        planemesh3.position.set( -100, 125, 0 );
+        planemesh3.position.set( -100, 75, 0 );
         scene2.add( planemesh3 );
             
                 /* textingbox
