@@ -65,7 +65,13 @@
 		planemesh.position.set( -100, 0, 0 );
 		scene.add( planemesh );
                 
-
+		var texture = new THREE.TextureLoader().load( 'textures/fish.png' );
+		var geometry = new THREE.PlaneGeometry( 50,50);
+		var material = new THREE.MeshBasicMaterial( { map: texture } );
+		planemesh2 = new THREE.Mesh( geometry, material );
+		planemesh2.rotation.y = 90 ;
+		planemesh2.position.set( -100, 50, 0 );
+		scene.add( planemesh2 );
 		    
 		    
                 /* textingbox
@@ -118,7 +124,11 @@
 			this.t1.to(planemesh.scale, 1 , { x: 0,ease:Expo.easeOut});
 			this.t1.to(planemesh.scale, 1 , { y: 0,ease:Expo.easeOut});
 		})
-		
+		domEvents.addEventListener(planemesh2 , 'touchstart' , event =>{
+			this.t2 = new TimelineMax();
+			this.t2.to(planemesh2.scale, 1 , { x: 0,ease:Expo.easeOut});
+			this.t2.to(planemesh2.scale, 1 , { y: 0,ease:Expo.easeOut});
+		})
 		
 		
             function animate() {
