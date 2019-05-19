@@ -39,13 +39,15 @@
                 document.body.appendChild( WEBGL.getWebGLErrorMessage() );
             }
             
-            var camera, scene, renderer, controls ,video;
+            var camera,camera2, scene,scene2, renderer, controls ,video;
             init();
             animate();
             function init() {
                 camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 1, 1100 );
+                camera2 = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 1, 1100 );
                 controls = new THREE.DeviceOrientationControls( camera );
                 scene = new THREE.Scene();
+                scene2 = new THREE.Scene();
                 video = document.getElementById( 'video' );
                 var texture = new THREE.VideoTexture( video );
                 
@@ -74,6 +76,15 @@
         planemesh2.position.set( -100, 50, 0 );
         scene.add( planemesh2 );
             
+              
+              
+        var texture3 = new THREE.TextureLoader().load( 'textures/fish.png' );
+        var geometry3 = new THREE.PlaneGeometry( 50,50);
+        var material3 = new THREE.MeshBasicMaterial( { map: texture3 } );
+        planemesh3 = new THREE.Mesh( geometry3, material3 );
+        planemesh3.rotation.y = 90 ;
+        planemesh3.position.set( -100, 125, 0 );
+        scene2.add( planemesh3 );
             
                 /* textingbox
             var texture = new THREE.TextureLoader().load( 'textures/fish.png' );
@@ -123,14 +134,20 @@
         this.t2 = new TimelineMax();
         this.t2.to(planemesh2.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut});
         })
-        
-        
+          
+        var domEvents2 = new THREEx.DomEvents(camera2, renderer.domElement);
+        domEvents.addEventListener(planemesh3 , 'touchstart' , event =>{
+        this.t3 = new TimelineMax();
+        this.t3.to(planemesh3.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut});
+        })
         
         
             function animate() {
                 window.requestAnimationFrame( animate );
                 controls.update();
+               renderer.clear();
                 renderer.render( scene, camera );
+               renderer.render( scene2, camera2 );
             }
             function onWindowResize() {
                 camera.aspect = window.innerWidth / window.innerHeight;
