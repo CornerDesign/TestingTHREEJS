@@ -49,13 +49,13 @@
                 var texture = new THREE.VideoTexture( video );
                 
                 scene.background = texture;
-
+/*
                 var helperGeometry = new THREE.BoxBufferGeometry( 100, 100, 100, 4, 4, 4 );
                 var helperMaterial = new THREE.MeshBasicMaterial( { color: 0xff00ff, wireframe: true } );
                 var helper = new THREE.Mesh( helperGeometry, helperMaterial );
         	helper.position.set( 0, 0, 0 );
                 scene.add( helper );
-                
+  */              
 		var texture = new THREE.TextureLoader().load( 'textures/fish.png' );
 		var geometry = new THREE.PlaneBufferGeometry( 100,100);
 		var material = new THREE.MeshBasicMaterial( { map: texture } );
