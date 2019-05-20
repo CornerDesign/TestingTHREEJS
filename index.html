@@ -91,7 +91,7 @@
                 document.body.appendChild( renderer.domElement );
                 //
                 window.addEventListener( 'resize', onWindowResize, false );
-                
+                /*
                 if ( navigator.mediaDevices && navigator.mediaDevices.getUserMedia ) {
                     var constraints = { video: { width: 1280, height: 720, facingMode: 'user' } };
                     navigator.mediaDevices.getUserMedia( constraints ).then( function ( stream ) {
@@ -104,7 +104,8 @@
                 } else {
                     console.error( 'MediaDevices interface not available.' );
                 }
-            }
+            }*/
+		    
             //Touching Object
             var domEvents = new THREEx.DomEvents(camera, renderer.domElement);
             domEvents.addEventListener(planemesh , 'touchstart' , event =>{
