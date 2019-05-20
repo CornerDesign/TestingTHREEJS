@@ -28,7 +28,10 @@
     </head>
     <body>
 	    
-	<div id = "container"></div> 
+	<div id = "container"></div>
+	if ( WEBGL.isWebGLAvailable() === false ) {
+                document.body.appendChild( WEBGL.getWebGLErrorMessage() );
+        }
 
     </body>
 	<script src="build/three.js"></script>
