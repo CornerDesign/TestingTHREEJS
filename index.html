@@ -70,7 +70,7 @@
                 var geometry = new THREE.PlaneGeometry( 50,50,4);
                 var material = new THREE.MeshBasicMaterial( { map: texture } );
                 planemesh = new THREE.Mesh( geometry, material );
-                planemesh.rotation.y = 90 ;
+                planemesh.rotation.y = -90 ;
                 planemesh.position.set( 100, 20, 0 );
                 scene.add( planemesh );
                 
