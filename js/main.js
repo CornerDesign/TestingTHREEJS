@@ -1,8 +1,13 @@
+<script src="build/three.js"></script>
+<script src="js/main.js"></script>
+<script src="js/controls/DeviceOrientationControls.js"></script>
+<script src="js/WebGL.js"></script>
+<script src="js/threex.domevents.js"></script>
+<script src="js/TweenMax.min.js"></script>
+
 var container = document.getElementById('container');
 
 
-
-            
             var camera, scene, renderer, controls ,video;
             init();
             animate();
