@@ -1,9 +1,7 @@
 var container = document.getElementById('container');
 
 
-if ( WEBGL.isWebGLAvailable() === false ) {
-                document.body.appendChild( WEBGL.getWebGLErrorMessage() );
-            }
+
             
             var camera, scene, renderer, controls ,video;
             init();
