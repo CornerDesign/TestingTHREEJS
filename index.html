@@ -50,7 +50,7 @@
                 <h3>main message </h2>
                 <h2>Submit Button</h2>
                 <p>The <strong>input type="submit"</strong> defines a button for submitting form data to a form-handler:</p>
-		    <input type="button" value="Clear canvas">
+		   <button onclick="StartGamefunction()">Click me</button>
 		
 /*
                 <form action="/action_page.php">
@@ -83,12 +83,10 @@
         <video id="video" autoplay style="display:none"></video>
         
         <script>
-		var clearBtn = document.querySelector('input[type="button"]');
 		var StartGame = false;
-		clearBtn.onclick = function() {
+		function StartGamefunction(){
 			StartGame = true;
-		}
-		
+		}		
 		
 		
 		
