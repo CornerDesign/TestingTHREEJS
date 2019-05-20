@@ -1,5 +1,4 @@
 <script src="build/three.js"></script>
-<script src="js/main.js"></script>
 <script src="js/controls/DeviceOrientationControls.js"></script>
 <script src="js/WebGL.js"></script>
 <script src="js/threex.domevents.js"></script>
