@@ -10,7 +10,7 @@
 				background-color: #000000;
 				overflow: hidden;
 			}
-			#info {
+			#header {
 				position: absolute;
 				top: 100px; width: 100%;
 				color: #ffffff;
@@ -27,11 +27,30 @@
 		</style>
 	</head>
 	<body>
+		<div id = "container">
+		
+			<div id="header">
+				<h2>Home Page </h2>
+			</div>
+			<div id="Main">
+				<h3>main message </h2>
+				<h2>Submit Button</h2>
+				<p>The <strong>input type="submit"</strong> defines a button for submitting form data to a form-handler:</p>
 
-		<div id="info">
-			<a href="http://threejs.org" target="_blank" rel="noopener">three.js</a> - equirectangular panorama demo with DeviceOrientation controls.
-			photo by <a href="http://www.flickr.com/photos/jonragnarsson/2294472375/" target="_blank" rel="noopener">Jón Ragnarsson</a>.
+				<form action="/action_page.php">
+				First name:<br>
+				<input type="text" name="firstname" value="Mickey">
+				<br>
+				Last name:<br>
+				<input type="text" name="lastname" value="Mouse">
+				<br><br>
+				<input type="submit" value="Submit">
+				</form> 
+				<p>If you click "Submit", the form-data will be sent to a page called "/action_page.php".</p>
+			</div>
 		</div>
+		
+		
 
 		<script src="build/three.js"></script>
         <script src="js/controls/DeviceOrientationControls.js"></script>
