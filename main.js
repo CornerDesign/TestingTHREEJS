@@ -1,5 +1,9 @@
 var container = document.getElementById('container');
-
+renderer = new THREE.WebGLRenderer( { antialias: true } );
+renderer.setPixelRatio( window.devicePixelRatio );
+renderer.setSize( window.innerWidth, window.innerHeight );
+container.appendChild( renderer.domElement );
+//document.body.appendChild( renderer.domElement );
 
             var camera, scene, renderer, controls ,video;
             init();
@@ -47,10 +51,7 @@ var container = document.getElementById('container');
                 
                 
                 //
-                renderer = new THREE.WebGLRenderer( { antialias: true } );
-                renderer.setPixelRatio( window.devicePixelRatio );
-                renderer.setSize( window.innerWidth, window.innerHeight );
-                document.body.appendChild( renderer.domElement );
+               
                 //
                 window.addEventListener( 'resize', onWindowResize, false );
                 /*
