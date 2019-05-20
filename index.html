@@ -51,23 +51,7 @@
                 <h2>Submit Button</h2>
                 <p>The <strong>input type="submit"</strong> defines a button for submitting form data to a form-handler:</p>
 		   <button onclick="StartGamefunction()">Click me</button>
-		
-/*
-                <form action="/action_page.php">
-                First name:<br>
-                <input type="text" name="firstname" value="Mickey">
-                <br>
-                Last name:<br>
-                <input type="text" name="lastname" value="Mouse">
-                <br><br>
-                <input type="button" value="start">
-                </form>
-                <p>If you click "Submit", the form-data will be sent to a page called "/action_page.php".</p>
-*/		    
-		    
-		    
-		    
-		    
+		    <p id="demo"></p>
             </div>
             */
         </div>
@@ -86,28 +70,12 @@
 		var StartGame = false;
 		function StartGamefunction(){
 			StartGame = true;
-		}		
-		
-		
-		
-		
+			document.getElementById("demo").innerHTML = "Hello World";
+		}
             if ( WEBGL.isWebGLAvailable() === false ) {
                 document.body.appendChild( WEBGL.getWebGLErrorMessage() );
             }
-            if(StartGame == true){
-	    	init();
-            	animate();
-		    
-	    	var domEvents = new THREEx.DomEvents(camera, renderer.domElement);
-	    	domEvents.addEventListener(planemesh , 'touchstart' , event =>{
-            		this.t1 = new TimelineMax();
-            		this.t1.to(planemesh.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut});
-            	})
-	    	domEvents.addEventListener(planemesh2 , 'touchstart' , event =>{
-           		this.t2 = new TimelineMax();
-            		this.t2.to(planemesh2.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut});
-        	})
-	    }
+            
 		
             var camera, scene, renderer, controls ,video;
             
@@ -181,7 +149,16 @@
             
                 
             }
-
+		
+var domEvents = new THREEx.DomEvents(camera, renderer.domElement);
+	    	domEvents.addEventListener(planemesh , 'touchstart' , event =>{
+            		this.t1 = new TimelineMax();
+            		this.t1.to(planemesh.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut});
+            	})
+	    	domEvents.addEventListener(planemesh2 , 'touchstart' , event =>{
+           		this.t2 = new TimelineMax();
+            		this.t2.to(planemesh2.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut});
+        	})
         
         
        
