@@ -242,24 +242,10 @@
 		scene.visible = camera.visible
 	})
 		
-	////////////////////////////////////////////////////////////////////////////////
-	//          Create a ArMarkerControls
-	////////////////////////////////////////////////////////////////////////////////
-	
-	// init controls for camera
-	//var markerControls = new THREEx.ArMarkerControls(arToolkitContext, camera, {
-	//	type : 'pattern',
-	//	patternUrl : THREEx.ArToolkitContext.baseURL + '../data/data/patt.hiro',
-		// patternUrl : THREEx.ArToolkitContext.baseURL + '../data/data/patt.kanji',
-		// as we controls the camera, set changeMatrixMode: 'cameraTransformMatrix'
-	//	changeMatrixMode: 'cameraTransformMatrix'
-	//})
-	// as we do changeMatrixMode: 'cameraTransformMatrix', start with invisible scene
-	
 	//////////////////////////////////////////////////////////////////////////////////
 	//		add an object in the scene
+	//////////////////////////////////////////////////////////////////////////////////
 		
-	
 	var helperGeometry = new THREE.BoxBufferGeometry( 100, 100, 100, 4, 4, 4 );
                 var helperMaterial = new THREE.MeshBasicMaterial( { color: 0xff00ff, wireframe: true } );
                 var helper = new THREE.Mesh( helperGeometry, helperMaterial );
@@ -283,41 +269,23 @@
 	window.addEventListener( 'resize', onWindowResize, false );
 	}
 	
-            
 	//////////////////////////////////////////////////////////////////////////////////
-	
-	
-//	onRenderFcts.push(function(delta){
-//		mesh.rotation.x += Math.PI*delta
-//	})
+	//		add model
 	//////////////////////////////////////////////////////////////////////////////////
-	//		render the whole thing on the page
-	//////////////////////////////////////////////////////////////////////////////////
-	// render the scene
-//	onRenderFcts.push(function(){
-//		renderer.render( scene, camera );
-//	})
-	// run the rendering loop
-/*	var lastTimeMsec= null
-	requestAnimationFrame(function animate(nowMsec){
-		// keep looping
-		requestAnimationFrame( animate );
-		// measure time
-		lastTimeMsec	= lastTimeMsec || nowMsec-1000/60
-		var deltaMsec	= Math.min(200, nowMsec - lastTimeMsec)
-		lastTimeMsec	= nowMsec
-		// call each update function
-		onRenderFcts.forEach(function(onRenderFct){
-			onRenderFct(deltaMsec/1000, nowMsec/1000)
-		})
-	})
-	*/
-	
+	var loader = new THREE.JSONLoader();
+	loader.load( 'model/testcube.json'  , handle_load);
+	function handle_load(geometry,materials){
+		var mesh = new three.mesh(geometry,materials);
+		scene.add(mesh);
+		mesh.position.z = -10;
+	}
+		
+		
 	
 	
 		
 
-		
+	//////////////////////////////////////////////////////////////////////////////////
 		
 	function animate() {
                 window.requestAnimationFrame( animate );
