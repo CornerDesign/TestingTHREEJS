@@ -83,6 +83,8 @@
 	var CountNumber = 0 ;
 	function StartGamefunction(){
         	StartGame = true;
+		TweenMax.to("#header", 0.5 , { y:-100,opacity:0});
+		TweenMax.to("#Main", 0.5 , { y:-200,opacity:0,delay:0.25});
         	var x = document.getElementById("header");
 		x.style.display = "none";
 		var y = document.getElementById("Main");
