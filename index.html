@@ -129,9 +129,13 @@
         <script>
 	var StartGame = false;
 	var CountNumber = 0 ;
-		TweenMax.to("#container", 1 , {opacity:100,delay:0 });
-		TweenMax.to("#header", 1 , { opacity:100,delay:0.25});
-		TweenMax.to("#Main", 1 , { opacity:100,delay:0.5});
+		
+	funtion fadeIn(){
+			TweenMax.to("#container", 1 , {opacity:100,delay:0 });
+			TweenMax.to("#header", 1 , { opacity:100,delay:0.25});
+			TweenMax.to("#Main", 1 , { opacity:100,delay:0.5});
+		}
+		
 	function StartGamefunction(){
         	StartGame = true;
 		TweenMax.to("#header", 0.5 , { y:-100,opacity:0});
