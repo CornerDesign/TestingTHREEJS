@@ -66,6 +66,9 @@
 			<button class ="mybtn" onclick="StartGamefunction()"> Clicknybtn </button>
 			<button class ="mybtn" onclick="StartGamefunction()"> Clicknybtn </button>
             	</div>
+		<div id="Debug">
+                	<p id="Counting"></p>
+            	</div>
         </div>
 	    
         <script src="build/three.js"></script>
@@ -92,6 +95,7 @@
                     this.t1 = new TimelineMax();
                     this.t1.to(planemesh.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut});
 			CountNumber++;
+			document.getElementById("Counting").innerHTML = CountNumber;
 			if(CountNumber > 2){
 				var x = document.getElementById("header");
 				x.style.display = "block";
@@ -103,6 +107,7 @@
                    this.t2 = new TimelineMax();
                    this.t2.to(planemesh2.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut});
 			CountNumber++;
+			document.getElementById("Counting").innerHTML = CountNumber;
 			if(CountNumber > 2){
 				var x = document.getElementById("header");
 				x.style.display = "block";
