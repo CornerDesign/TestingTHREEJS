@@ -259,6 +259,7 @@
         planemesh.rotation.y = 90 ;
         planemesh.position.set( -100, 0, 0 );
         scene.add( planemesh );
+	
                 
         var texture = new THREE.TextureLoader().load( 'textures/fish.png' );
         var geometry = new THREE.PlaneGeometry( 50,50);
@@ -299,6 +300,11 @@
 	function animate() {
                 window.requestAnimationFrame( animate );
                 controls.update();
+		
+		scene.planemesh.lookAt( camera.position );
+		scene.planemesh2.lookAt( camera.position );
+		
+		
                 renderer.render( scene, camera );
             }
             function onWindowResize() {
