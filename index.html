@@ -81,11 +81,7 @@
 	function StartGamefunction(){
         	StartGame = true;
         	var x = document.getElementById("container");
-		if (x.style.display === "none") {
-			x.style.display = "block";
-		} else {
-			x.style.display = "none";
-  		}	
+		x.style.display = "block";
 		init();
 		animate();
 		
@@ -93,12 +89,18 @@
             	domEvents.addEventListener(planemesh , 'touchstart' , event =>{
                     this.t1 = new TimelineMax();
                     this.t1.to(planemesh.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut});
-			CountNumber =CountNumber+1;
+			CountNumber++;
+			if(CountNumber > 2){
+				var x = document.getElementById("container");
+					x.style.display = "none";
+  				}	
+			}
                 })
            	domEvents.addEventListener(planemesh2 , 'touchstart' , event =>{
                    this.t2 = new TimelineMax();
                    this.t2.to(planemesh2.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut});
 			CountNumber =CountNumber+1;
+			if()
             	})
 		
 	}
