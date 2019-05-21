@@ -80,8 +80,10 @@
 	var CountNumber = 0 ;
 	function StartGamefunction(){
         	StartGame = true;
-        	var x = document.getElementById("container");
-		x.style.display = "none";
+        	var x = document.getElementById("header");
+		x.style.display = "block";
+		var y = document.getElementById("Main");
+		y.style.display = "block";
 		init();
 		animate();
 		
@@ -91,8 +93,10 @@
                     this.t1.to(planemesh.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut});
 			CountNumber++;
 			if(CountNumber > 2){
-				var x = document.getElementById("container");
+				var x = document.getElementById("header");
 				x.style.display = "block";
+				var y = document.getElementById("Main");
+				y.style.display = "block";
   			}	
                 })
            	domEvents.addEventListener(planemesh2 , 'touchstart' , event =>{
@@ -100,8 +104,10 @@
                    this.t2.to(planemesh2.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut});
 			CountNumber++;
 			if(CountNumber > 2){
-				var x = document.getElementById("container");
+				var x = document.getElementById("header");
 				x.style.display = "block";
+				var y = document.getElementById("Main");
+				y.style.display = "block";
 			}
             	})
 		
