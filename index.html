@@ -126,7 +126,6 @@
 
         <script>
 	Tutorial.style.display = "none";
-	TweenMax.from("#container", 0.5 , {opacity:0 });
 	TweenMax.from("#header", 0.5 , { y:5,opacity:0 ,delay:1});
 	TweenMax.from("#Main", 0.5 , { y:5,opacity:0 ,delay:1.25});
 	var StartGame = false;
@@ -136,9 +135,8 @@
         	StartGame = true;
 		TweenMax.to("#header", 0.5 , { y:-5,opacity:0});
 		TweenMax.to("#Main", 0.5 , { y:-5,opacity:0,delay:0.25});
-		TweenMax.to("#container", 0.5 , {opacity:0,delay:1 });
 		Tutorial.style.display = "block";
-
+		TweenMax.from("#Tutorial", 0.5 , { y:5,opacity:0 ,delay:1});
 		init();
 		animate();
 		
@@ -149,12 +147,10 @@
 			CountNumber++;
 			document.getElementById("Counting").innerHTML = CountNumber;
 			if(CountNumber >= 2){
-				var x = document.getElementById("container");
+				var x = document.getElementById("header");
 				x.style.display = "block";
-				var y = document.getElementById("header");
+				var y = document.getElementById("Main");
 				y.style.display = "block";
-				var z = document.getElementById("Main");
-				z.style.display = "block";
 				
   			}	
                 })
@@ -164,12 +160,10 @@
 			CountNumber++;
 			document.getElementById("Counting").innerHTML = CountNumber;
 			if(CountNumber >= 2){
-				var x = document.getElementById("container");
+				var x = document.getElementById("header");
 				x.style.display = "block";
-				var y = document.getElementById("header");
+				var y = document.getElementById("Main");
 				y.style.display = "block";
-				var z = document.getElementById("Main");
-				z.style.display = "block";
 			}
             	})
 		
