@@ -59,7 +59,7 @@
 	})
 	
 	// handle resize
-/*	window.addEventListener('resize', function(){
+	window.addEventListener('resize', function(){
 		onResize()
 	})
 		
@@ -69,7 +69,7 @@
 		if( arToolkitContext.arController !== null ){
 			arToolkitSource.copySizeTo(arToolkitContext.arController.canvas)	
 		}	
-	}*/
+	}
 	////////////////////////////////////////////////////////////////////////////////
 	//          initialize arToolkitContext
 	////////////////////////////////////////////////////////////////////////////////
@@ -98,13 +98,13 @@
 	////////////////////////////////////////////////////////////////////////////////
 	
 	// init controls for camera
-	var markerControls = new THREEx.ArMarkerControls(arToolkitContext, camera, {
-		type : 'pattern',
-		patternUrl : THREEx.ArToolkitContext.baseURL + '../data/data/patt.hiro',
+	//var markerControls = new THREEx.ArMarkerControls(arToolkitContext, camera, {
+	//	type : 'pattern',
+	//	patternUrl : THREEx.ArToolkitContext.baseURL + '../data/data/patt.hiro',
 		// patternUrl : THREEx.ArToolkitContext.baseURL + '../data/data/patt.kanji',
 		// as we controls the camera, set changeMatrixMode: 'cameraTransformMatrix'
-		changeMatrixMode: 'cameraTransformMatrix'
-	})
+	//	changeMatrixMode: 'cameraTransformMatrix'
+	//})
 	// as we do changeMatrixMode: 'cameraTransformMatrix', start with invisible scene
 	//scene.visible = false
 	//////////////////////////////////////////////////////////////////////////////////
