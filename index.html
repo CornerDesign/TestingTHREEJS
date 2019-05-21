@@ -52,14 +52,7 @@
 	////////////////////////////////////////////////////////////////////////////////
 	var arToolkitSource = new THREEx.ArToolkitSource({
 		// to read from the webcam 
-		sourceType : 'webcam',
-		
-		// // to read from an image
-		// sourceType : 'image',
-		// sourceUrl : THREEx.ArToolkitContext.baseURL + '../data/images/img.jpg',		
-		// to read from a video
-		// sourceType : 'video',
-		// sourceUrl : THREEx.ArToolkitContext.baseURL + '../data/videos/headtracking.mp4',		
+		sourceType : 'webcam',		
 	})
 	arToolkitSource.init(function onReady(){
 		onResize()
@@ -69,6 +62,7 @@
 	window.addEventListener('resize', function(){
 		onResize()
 	})
+		
 	function onResize(){
 		arToolkitSource.onResize()	
 		arToolkitSource.copySizeTo(renderer.domElement)	
@@ -147,7 +141,19 @@
 		})
 	})
 	*/
+	animate();
+	window.addEventListener( 'resize', onWindowResize, false );
 		
+	function animate() {
+                window.requestAnimationFrame( animate );
+                controls.update();
+                renderer.render( scene, camera );
+            }
+            function onWindowResize() {
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize( window.innerWidth, window.innerHeight );
+            }
         </script>
     </body>
 </html>
