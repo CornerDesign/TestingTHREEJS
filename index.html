@@ -104,7 +104,8 @@
 			<button class ="mybtn clickmybtn" onclick="StartGamefunction()"> English </button>
             	</div>
 		<div id="Tutorial">
-			<p><img id = "tutorialimg " src="textures/phoneturn.png" alt="tutorial" weight="75% ></p>
+			<img id = "tutorialimg " src="textures/phoneturn.png" alt="tutorial" weight="60% >
+				<br/>
 			<h2 id = "tutorialtext ">旋轉手機尋找能力寶石</h2>
             	</div>
 		    
@@ -123,11 +124,10 @@
    	<script src="js/TweenMax.min.js"></script>
 
         <script>
-//	Tutorial.style.display = "none";
+	Tutorial.style.display = "none";
 	TweenMax.from("#container", 0.5 , {opacity:0 });
 	TweenMax.from("#header", 0.5 , { y:5,opacity:0 ,delay:1});
 	TweenMax.from("#Main", 0.5 , { y:5,opacity:0 ,delay:1.25});
-	TweenMax.from("#Tutorial", 0.5 , {opacity:0,delay:2 });
 	var StartGame = false;
 	var CountNumber = 0 ;
 				
@@ -138,12 +138,7 @@
 		TweenMax.to("#container", 0.5 , {opacity:0,delay:1 });
 		Tutorial.style.display = "block";
 		TweenMax.from("#Tutorial", 0.5 , {opacity:0,delay:2 });
-		/*
-        	var x = document.getElementById("header");
-		x.style.display = "none";
-		var y = document.getElementById("Main");
-		y.style.display = "none";
-		*/
+		
 		init();
 		animate();
 		
