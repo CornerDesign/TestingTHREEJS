@@ -41,6 +41,22 @@
         </style>
     </head>
     <body>
+	    
+	    <div id = "container">
+            <div id="header">
+
+            </div>
+            
+            <div id="Main">
+                <h3>main message </h2>
+                <h2>Submit Button</h2>
+                <p>The <strong>input type="submit"</strong> defines a button for submitting form data to a form-handler:</p>
+           <button onclick="StartGamefunction()">Click me</button>
+            <p id="demo"></p>
+            </div>
+            
+        </div>
+	    
         <script src="build/three.js"></script>
 	<script src="js/ar.js"></script>
         <script src="js/controls/DeviceOrientationControls.js"></script>
@@ -51,6 +67,18 @@
         //<video id="video" autoplay style="display:none"></video>
         
         <script>
+	var StartGame = false;
+	function StartGamefunction(){
+        	StartGame = true;
+        	document.getElementById("demo").innerHTML = "Hello World";
+		init();
+		animate();
+		
+	}
+		
+		
+		
+		
 		// init renderer
 	var renderer	= new THREE.WebGLRenderer({
 		antialias: true,
@@ -140,7 +168,7 @@
                 var helperMaterial = new THREE.MeshBasicMaterial( { color: 0xff00ff, wireframe: true } );
                 var helper = new THREE.Mesh( helperGeometry, helperMaterial );
                 scene.add( helper );	
-		
+	function init(){
 	var texture = new THREE.TextureLoader().load( 'textures/fish.png' );
         var geometry = new THREE.PlaneGeometry( 50,50);
         var material = new THREE.MeshBasicMaterial( { map: texture } );
@@ -156,6 +184,8 @@
         planemesh2.rotation.y = 90 ;
         planemesh2.position.set( -100, 50, 0 );
         scene.add( planemesh2 );
+	}
+	
             
 	//////////////////////////////////////////////////////////////////////////////////
 	
@@ -185,7 +215,7 @@
 		})
 	})
 	*/
-	animate();
+	
 	window.addEventListener( 'resize', onWindowResize, false );
 	
 		
