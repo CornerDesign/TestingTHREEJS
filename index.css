@@ -35,7 +35,7 @@ a {
 }
 
 #mybtn{
-	margin-top:40px;
+  margin-top:40px;
   width:20px;
   flex: 1 1 auto;
   padding:17px;
@@ -45,4 +45,4 @@ a {
   position:relative;
   letter-spacing:2px;
   color:white;
-		}
+}
