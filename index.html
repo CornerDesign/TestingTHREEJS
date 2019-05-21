@@ -81,7 +81,7 @@
 	function StartGamefunction(){
         	StartGame = true;
         	var x = document.getElementById("container");
-		x.style.display = "block";
+		x.style.display = "none";
 		init();
 		animate();
 		
@@ -92,7 +92,7 @@
 			CountNumber++;
 			if(CountNumber > 2){
 				var x = document.getElementById("container");
-					x.style.display = "none";
+					x.style.display = "block";
   				}	
 			}
                 })
