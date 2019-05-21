@@ -268,14 +268,14 @@
         planemesh2.position.set( -100, 50, 0 );
         scene.add( planemesh2 );
 	window.addEventListener( 'resize', onWindowResize, false );
-	}
+	
 	
 	//////////////////////////////////////////////////////////////////////////////////
 	//		add model
 	//////////////////////////////////////////////////////////////////////////////////
 	var loader = new THREE.GLTFLoader();
 	loader.load( 'model/testmodel.glb' , handle_load);
-	var mesh;
+	var modelmesh;
 	function handle_load(gltf){
 		modelmesh = gltf.scene.children[0];
 		scene.add(modelmesh);
@@ -283,7 +283,7 @@
 	}
 		
 		
-	
+}
 	
 		
 
