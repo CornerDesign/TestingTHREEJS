@@ -277,10 +277,9 @@
 	loader.load( 'model/testmodel.glb' , handle_load);
 	var mesh;
 	function handle_load(gltf){
-		mesh = gltf.scene.children[0];
-		mesh.material = new THREE.MeshLambertMaterial();
-		scene.add(mesh);
-		mesh.position.set( -100, 0, 50 );
+		modelmesh = gltf.scene.children[0];
+		scene.add(modelmesh);
+		modelmesh.position.set( -100, 0, 50 );
 	}
 		
 		
