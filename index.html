@@ -63,9 +63,7 @@
         <script src="js/WebGL.js"></script>
     	<script src="js/threex.domevents.js"></script>
    	<script src="js/TweenMax.min.js"></script>
-	
-        //<video id="video" autoplay style="display:none"></video>
-        
+
         <script>
 	var StartGame = false;
 	function StartGamefunction(){
@@ -74,15 +72,15 @@
 		init();
 		animate();
 		
-			var domEvents = new THREEx.DomEvents(camera, renderer.domElement);
-            domEvents.addEventListener(planemesh , 'touchstart' , event =>{
+		var domEvents = new THREEx.DomEvents(camera, renderer.domElement);
+            	domEvents.addEventListener(planemesh , 'touchstart' , event =>{
                     this.t1 = new TimelineMax();
                     this.t1.to(planemesh.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut});
                 })
-            domEvents.addEventListener(planemesh2 , 'touchstart' , event =>{
+           	domEvents.addEventListener(planemesh2 , 'touchstart' , event =>{
                    this.t2 = new TimelineMax();
-                    this.t2.to(planemesh2.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut});
-            })	
+                   this.t2.to(planemesh2.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut});
+            	})	
 	}
 		
 //	renderer.setClearColor(new THREE.Color('lightgrey'), 0)
@@ -95,7 +93,14 @@
 	var onRenderFcts= [];
 	// init scene and camera
 	var scene	= new THREE.Scene();
+	var renderer	= new THREE.WebGLRenderer({
+		antialias: true,
+		alpha: true
+	});
+
 		
+		
+	function init(){	
 	//////////////////////////////////////////////////////////////////////////////////
 	//		Initialize a basic camera
 	//////////////////////////////////////////////////////////////////////////////////
@@ -103,15 +108,8 @@
 	var camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 1, 1100 );
 	controls = new THREE.DeviceOrientationControls( camera );
 	scene.add(camera);
-
-		
-		
-	function init(){	
 		// init renderer
-	var renderer	= new THREE.WebGLRenderer({
-		antialias: true,
-		alpha: true
-	});
+	
 	
 	////////////////////////////////////////////////////////////////////////////////
 	//          handle arToolkitSource
