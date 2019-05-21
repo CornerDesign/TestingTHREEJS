@@ -53,8 +53,22 @@
   display: inline-block;
   font-size: 16px;
   letter-spacing:2px;
-  margin: 4px 10px;
-  cursor: pointer;
+  margin: 4px 10px;  
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  cursor: pointer;  
+}
+	   
+.clickmybtn {
+  background-color: #000000;
+  color: #e6e6e6;
+  border: 2px solid #e6e6e6;
+}
+
+.clickmybtn:hover {
+  background-color: #555555;
+  border: 2px solid #555555;
+  color: white;
 }
     </style>
     <body>
@@ -65,8 +79,8 @@
             	<div id="Main">
 			<h1>Find your power stone</h1>
                 	<h2>尋找你的能力寶石</h2>
-			<button class ="mybtn" onclick="StartGamefunction()"> 繁體中文 </button>
-			<button class ="mybtn" onclick="StartGamefunction()"> English </button>
+			<button class ="mybtn clickmybtn" onclick="StartGamefunction()"> 繁體中文 </button>
+			<button class ="mybtn clickmybtn" onclick="StartGamefunction()"> 繁體中文 </button>
             	</div>
 		<div id="Debug">
                 	<p id="Counting"></p>
