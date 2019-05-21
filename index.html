@@ -69,9 +69,6 @@
 	function StartGamefunction(){
         	StartGame = true;
         	document.getElementById("demo").innerHTML = "Hello World";
-		
-		var camera, scene, renderer, controls;
-		
 		init();
 		animate();
 		
@@ -83,15 +80,12 @@
            	domEvents.addEventListener(planemesh2 , 'touchstart' , event =>{
                    this.t2 = new TimelineMax();
                    this.t2.to(planemesh2.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut});
-            	})	
+            	})
+		
 	}
 		
-	
-	
-		
-		
-	function init(){	
-		renderer = new THREE.WebGLRenderer({
+	var camera, scene, renderer, controls;
+	renderer = new THREE.WebGLRenderer({
 		antialias: true,
 		alpha: true
 	});
@@ -101,6 +95,8 @@
 	renderer.domElement.style.top = '0px'
 	renderer.domElement.style.left = '0px'
 	document.body.appendChild( renderer.domElement );
+	function init(){	
+		
 	// array of functions for the rendering loop
 	var onRenderFcts= [];
 	// init scene and camera
