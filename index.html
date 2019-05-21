@@ -84,7 +84,11 @@
 	}
 		
 	
-	var renderer	= new THREE.WebGLRenderer({
+	
+		
+		
+	function init(){	
+		var renderer	= new THREE.WebGLRenderer({
 		antialias: true,
 		alpha: true
 	});
@@ -97,9 +101,6 @@
 	// array of functions for the rendering loop
 	var onRenderFcts= [];
 	// init scene and camera
-		
-		
-	function init(){	
 		
 	var scene	= new THREE.Scene();
 	
