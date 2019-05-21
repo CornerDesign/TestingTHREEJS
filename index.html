@@ -122,6 +122,7 @@
         <script src="js/WebGL.js"></script>
     	<script src="js/threex.domevents.js"></script>
    	<script src="js/TweenMax.min.js"></script>
+   	<script src="js/GLTFLoader.js"></script>
 
         <script>
 	Tutorial.style.display = "none";
@@ -272,10 +273,11 @@
 	//////////////////////////////////////////////////////////////////////////////////
 	//		add model
 	//////////////////////////////////////////////////////////////////////////////////
-	var loader = new THREE.JSONLoader();
-	loader.load( 'model/testcube.json'  , handle_load);
-	function handle_load(geometry,materials){
-		var mesh = new three.mesh(geometry,materials);
+	var loader = new THREE.GLTFLoader();
+	loader.load( 'model/testmodel.glb'  , handle_load);
+	var mesh;
+	function handle_load(gltf){
+		mesh = gltf.scenechildren[0];
 		scene.add(mesh);
 		mesh.position.z = -10;
 	}
