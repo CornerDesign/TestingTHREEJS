@@ -84,10 +84,10 @@
 	}
 		
 	
-
-		
-		
-	
+	var renderer	= new THREE.WebGLRenderer({
+		antialias: true,
+		alpha: true
+	});
 	renderer.setClearColor(new THREE.Color('lightgrey'), 0)
 	renderer.setSize( 640, 480 );
 	renderer.domElement.style.position = 'absolute'
@@ -97,11 +97,12 @@
 	// array of functions for the rendering loop
 	var onRenderFcts= [];
 	// init scene and camera
+		
+		
+	function init(){	
+		
 	var scene	= new THREE.Scene();
-	var renderer	= new THREE.WebGLRenderer({
-		antialias: true,
-		alpha: true
-	});
+	
 	//////////////////////////////////////////////////////////////////////////////////
 	//		Initialize a basic camera
 	//////////////////////////////////////////////////////////////////////////////////
@@ -175,7 +176,7 @@
 	//////////////////////////////////////////////////////////////////////////////////
 	//		add an object in the scene
 		
-	function init(){
+	
 	var helperGeometry = new THREE.BoxBufferGeometry( 100, 100, 100, 4, 4, 4 );
                 var helperMaterial = new THREE.MeshBasicMaterial( { color: 0xff00ff, wireframe: true } );
                 var helper = new THREE.Mesh( helperGeometry, helperMaterial );
