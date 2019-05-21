@@ -10,10 +10,15 @@
     <style>
 	body {
                 margin: 0px;
+		overflow: hidden; 
+            }
+	#container{
+		margin: 0px;
 		background-color: #000000;
 		background-image:url("textures/BackgroundStar.jpg");
 		overflow: hidden; 
-            }
+	}
+	    
         #header {
                 position: absolute;
                 top: 0px; width: 100%;
@@ -101,6 +106,7 @@
         	StartGame = true;
 		TweenMax.to("#header", 0.5 , { y:-100,opacity:0});
 		TweenMax.to("#Main", 0.5 , { y:-200,opacity:0,delay:0.25});
+		TweenMax.to("#container", 0.5 , {opacity:0,delay:1 });
 		/*
         	var x = document.getElementById("header");
 		x.style.display = "none";
@@ -117,10 +123,13 @@
 			CountNumber++;
 			document.getElementById("Counting").innerHTML = CountNumber;
 			if(CountNumber >= 2){
-				var x = document.getElementById("header");
+				var x = document.getElementById("container");
 				x.style.display = "block";
-				var y = document.getElementById("Main");
+				var y = document.getElementById("header");
 				y.style.display = "block";
+				var z = document.getElementById("Main");
+				z.style.display = "block";
+				
   			}	
                 })
            	domEvents.addEventListener(planemesh2 , 'touchstart' , event =>{
@@ -129,10 +138,12 @@
 			CountNumber++;
 			document.getElementById("Counting").innerHTML = CountNumber;
 			if(CountNumber >= 2){
-				var x = document.getElementById("header");
+				var x = document.getElementById("container");
 				x.style.display = "block";
-				var y = document.getElementById("Main");
+				var y = document.getElementById("header");
 				y.style.display = "block";
+				var z = document.getElementById("Main");
+				z.style.display = "block";
 			}
             	})
 		
