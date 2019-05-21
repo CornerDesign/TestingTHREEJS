@@ -127,14 +127,20 @@
    	<script src="js/TweenMax.min.js"></script>
 
         <script>
+	var fadeinok = false;
+	if(fadeinok == false){
+		fadeIn();
+
+	}
 	var StartGame = false;
 	var CountNumber = 0 ;
 		
-	funtion fadeIn(){
-			TweenMax.to("#container", 1 , {opacity:100,delay:0 });
-			TweenMax.to("#header", 1 , { opacity:100,delay:0.25});
-			TweenMax.to("#Main", 1 , { opacity:100,delay:0.5});
-		}
+	function fadeIn(){
+		TweenMax.to("#container", 1 , {opacity:100,delay:0 });
+		TweenMax.to("#header", 1 , { opacity:100,delay:0.25});
+		TweenMax.to("#Main", 1 , { opacity:100,delay:0.5});
+		fadeinok = true;
+	}
 		
 	function StartGamefunction(){
         	StartGame = true;
