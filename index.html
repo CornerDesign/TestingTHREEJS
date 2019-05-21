@@ -85,6 +85,7 @@
 	}
 		
 	var camera, scene, renderer, controls;
+	function init(){	
 	renderer = new THREE.WebGLRenderer({
 		antialias: true,
 		alpha: true
@@ -95,8 +96,6 @@
 	renderer.domElement.style.top = '0px'
 	renderer.domElement.style.left = '0px'
 	document.body.appendChild( renderer.domElement );
-	function init(){	
-		
 	// array of functions for the rendering loop
 	var onRenderFcts= [];
 	// init scene and camera
