@@ -14,6 +14,7 @@
 		overflow: hidden; 
             }
 	#container{
+		opacity: 0;
 		margin: 0px;
 		background-color: #000000;
 		background-image:url("textures/BackgroundStar.jpg");
@@ -22,6 +23,7 @@
 	}
 	    
         #header {
+		opacity: 0;
                 position: absolute;
                 top: 0px; width: 100%;
                 color: #ffffff;
@@ -34,6 +36,7 @@
         }
             
         #Main {
+		opacity: 0;
                 position: absolute;
                 top: 100px; width: 100%;
                 color: #ffffff;
@@ -127,8 +130,8 @@
 	var StartGame = false;
 	var CountNumber = 0 ;
 	TweenMax.to("#container", 0.5 , {opacity:100,delay:0});
-	TweenMax.to("#header", 0.5 , { y:-100,opacity:100,delay:.75});
-	TweenMax.to("#Main", 0.5 , { y:-200,opacity:0,delay:1});
+	TweenMax.to("#header", 0.5 , { y:0,opacity:100,delay:.75});
+	TweenMax.to("#Main", 0.5 , { y:0,opacity:100,delay:1});
 	Tutorialy.style.display = "none";
 	function StartGamefunction(){
         	StartGame = true;
