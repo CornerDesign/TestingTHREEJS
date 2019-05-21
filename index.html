@@ -5,6 +5,7 @@
         <title>deviceorientation</title>
         <meta charset="utf-8">
         <meta name="viewport" content="user-scalable=no, initial-scale=1">
+	<link rel = "stylesheet" herf="master.css">
         <style>
             body {
                 margin: 0px;
@@ -38,6 +39,23 @@
             a {
                 color: #ff8800;
             }
+		button{
+			display:block;
+			padding:24px 48px;
+			font-weight:700;
+			font-size:12px;
+			letter-spacing:6px;
+			color:#FFF;
+			border:2px solid #FFF;
+			text-transform:uppercase;
+			outline:none;
+			overflow:hidden;
+			background:none;
+			z-index =1;
+			transition:0.8 ease-out;
+		}
+		
+		
         </style>
     </head>
     <body>
@@ -51,7 +69,8 @@
                 <h3>main message </h2>
                 <h2>Submit Button</h2>
                 <p>The <strong>input type="submit"</strong> defines a button for submitting form data to a form-handler:</p>
-           <button onclick="StartGamefunction()">Click me</button>
+		<button class="mybtn" onclick="StartGamefunction()"> Click me </button>
+//           <button onclick="StartGamefunction()">Click me</button>
             <p id="demo"></p>
             </div>
             
@@ -93,8 +112,8 @@
 	renderer.setClearColor(new THREE.Color('lightgrey'), 0)
 	renderer.setSize( 640, 480 );
 	renderer.domElement.style.position = 'absolute'
-//	renderer.domElement.style.top = '0px'
-//	renderer.domElement.style.left = '0px'
+	renderer.domElement.style.top = '0px'
+	renderer.domElement.style.left = '0px'
 	document.body.appendChild( renderer.domElement );
 	// array of functions for the rendering loop
 	var onRenderFcts= [];
