@@ -3,8 +3,8 @@ html ,body {
 }
 
 body{
-                background-color: #000000;
-                overflow: hidden;
+	background-color: #000000;
+	overflow: hidden;
 }
 
 #header {
@@ -34,7 +34,7 @@ a {
   color: #ff8800;
 }
 
-#button{
+#mybtn{
 	margin-top:40px;
   width:20px;
   flex: 1 1 auto;
