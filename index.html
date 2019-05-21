@@ -46,6 +46,7 @@
 		z-index = 1;
         }
 	#Tutorial {
+		opacity = 0;
                 position: absolute;
                 top: 100px; width: 100%;
                 color: white;
@@ -123,26 +124,13 @@
    	<script src="js/TweenMax.min.js"></script>
 
         <script>
-	var fadeinok = false;
-	if(fadeinok == false){
-		TweenMax.to("#header", 0.5 , { opacity:0});
-		TweenMax.to("#Main", 0.5 , { opacity:0});
-		TweenMax.to("#container", 0.5 , {opacity:0});
-		Tutorial.style.display = "none";
-		TweenMax.to("#Tutorial", 0.5 , {opacity:0});
-		fadeIn();
-
-	}
+	TweenMax.from("#header", 0.5 , { opacity:0});
+	TweenMax.from("#Main", 0.5 , { opacity:0});
+	TweenMax.from("#container", 0.5 , {opacity:0});
+	Tutorial.style.display = "none";
 	var StartGame = false;
 	var CountNumber = 0 ;
-		
-	function fadeIn(){
-		TweenMax.to("#container", 1 , {opacity:100,delay:0 });
-		TweenMax.to("#header", 1 , { opacity:100,delay:1.25});
-		TweenMax.to("#Main", 1 , { opacity:100,delay:1.5});
-		fadeinok = true;
-	}
-		
+				
 	function StartGamefunction(){
         	StartGame = true;
 		TweenMax.to("#header", 0.5 , { y:-100,opacity:0});
