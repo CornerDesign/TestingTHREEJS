@@ -69,6 +69,9 @@
 	function StartGamefunction(){
         	StartGame = true;
         	document.getElementById("demo").innerHTML = "Hello World";
+		
+		var camera, scene, renderer, controls;
+		
 		init();
 		animate();
 		
@@ -88,7 +91,7 @@
 		
 		
 	function init(){	
-		var renderer	= new THREE.WebGLRenderer({
+		renderer = new THREE.WebGLRenderer({
 		antialias: true,
 		alpha: true
 	});
@@ -102,13 +105,13 @@
 	var onRenderFcts= [];
 	// init scene and camera
 		
-	var scene	= new THREE.Scene();
+	scene	= new THREE.Scene();
 	
 	//////////////////////////////////////////////////////////////////////////////////
 	//		Initialize a basic camera
 	//////////////////////////////////////////////////////////////////////////////////
 	// Create a camera
-	var camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 1, 1100 );
+	camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 1, 1100 );
 	controls = new THREE.DeviceOrientationControls( camera );
 	scene.add(camera);
 		// init renderer
