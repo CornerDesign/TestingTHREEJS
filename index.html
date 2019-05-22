@@ -150,12 +150,11 @@
                     this.t1.to(planemesh.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut});
 			CountNumber++;
 			document.getElementById("Counting").innerHTML = CountNumber;
-			if(CountNumber >= 2){
+			if(CountNumber >= 3){
 				var x = document.getElementById("header");
 				x.style.display = "block";
 				var y = document.getElementById("Main");
 				y.style.display = "block";
-				
   			}	
                 })
            	domEvents.addEventListener(planemesh2 , 'touchstart' , event =>{
@@ -163,7 +162,19 @@
                    this.t2.to(planemesh2.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut});
 			CountNumber++;
 			document.getElementById("Counting").innerHTML = CountNumber;
-			if(CountNumber >= 2){
+			if(CountNumber >= 3){
+				var x = document.getElementById("header");
+				x.style.display = "block";
+				var y = document.getElementById("Main");
+				y.style.display = "block";
+			}
+            	})
+		domEvents.addEventListener(ourObj , 'touchstart' , event =>{
+                   this.t3 = new TimelineMax();
+                   this.t3.to(ourObj.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut});
+			CountNumber++;
+			document.getElementById("Counting").innerHTML = CountNumber;
+			if(CountNumber >= 3){
 				var x = document.getElementById("header");
 				x.style.display = "block";
 				var y = document.getElementById("Main");
