@@ -208,8 +208,8 @@
 	var camera, scene, renderer, controls;	
 	function init(){	
 	renderer = new THREE.WebGLRenderer({
-		antialias: true,
-		alpha: false
+		antialias: false,
+		alpha: true
 	});
 	renderer.setClearColor(new THREE.Color('lightgrey'), 0)
 	renderer.setSize( 640, 480 );
