@@ -186,7 +186,7 @@
 				y.style.display = "block";
 				
 				var EndGameAnim = new TimelineLite();
-				EndGameAnim.to("#EndingGame", 0.5 , { y:-5,opacity:0},onComplete: function() {
+				EndGameAnim.to("#EndingGame", 0.5 , { y:-5,opacity:0 ,onComplete: function() {
 					renderer.domElement.style.top = '350px';
     				}})
   			}	
@@ -204,7 +204,7 @@
 				var y = document.getElementById("EndingGame");
 				y.style.display = "block";
 				var EndGameAnim = new TimelineLite();
-				EndGameAnim.to("#EndingGame", 0.5 , { y:-5,opacity:0},onComplete: function() {
+				EndGameAnim.to("#EndingGame", 0.5 , { y:-5,opacity:0,onComplete: function() {
 					renderer.domElement.style.top = '350px';
     				}})
 				
