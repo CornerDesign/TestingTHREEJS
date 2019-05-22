@@ -138,7 +138,7 @@
 		TweenMax.to("#header", 0.5 , { y:-5,opacity:0});
 		TweenMax.to("#Main", 0.5 , { y:-5,opacity:0,delay:0.25});
 		Tutorial.style.display = "block";
-		TweenMax.from("#Tutorial", 0.5 , { y:5,opacity:0 ,delay:1});
+		TweenMax.from("#Tutorial", 0.5 , { y:5,opacity:0 ,delay:1} );
 		init();
 		animate();
 		
@@ -320,7 +320,7 @@
 			ourObj = object;
 			object.position.set( -100, 50, 50 );
    			this.t4 = new TimelineMax();
-			this.t4.to(ourObj.rotation,1 , {y:1,x:0,z:0 , ease: Power0.easeNone , repeat:-1})
+			this.t4.to(ourObj.rotation,1 , {y:.1,x:0,z:0 , ease: Power0.easeNone , repeat:-1})
 		});
 	
 	});
