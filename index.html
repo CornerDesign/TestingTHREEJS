@@ -148,7 +148,7 @@
 	var StartGame = false;
 	var CountNumber = 0 ;
 	var Language = "Chinese";
-		
+	var isPlay = true;
 	function LanguageFunction(language){
 		Tutorial.style.display = "block";
 		if(language == 1){
@@ -186,6 +186,7 @@
 				var y = document.getElementById("EndingGame");
 				y.style.display = "block";
 				TweenMax.from("#EndingGame", 0.5 , { y:-5,opacity:0});
+				isPlay = false;
   			}	
                 })
            	domEvents.addEventListener(planemesh2 , 'touchstart' , event =>{
@@ -201,6 +202,7 @@
 				var y = document.getElementById("EndingGame");
 				y.style.display = "block";
 				TweenMax.from("#EndingGame", 0.5 , { y:-5,opacity:0});
+				isPlay = false;
 			}
             	})
             	
@@ -221,7 +223,6 @@
 	// array of functions for the rendering loop
 	var onRenderFcts= [];
 	// init scene and camera
-		
 	scene	= new THREE.Scene();
 	
 	//////////////////////////////////////////////////////////////////////////////////
@@ -369,9 +370,10 @@
 	//////////////////////////////////////////////////////////////////////////////////
 
 	function animate() {
+		if (!isPlay) return;
+		   
                 window.requestAnimationFrame( animate );
                 controls.update();
-		
                 renderer.render( scene, camera );
             }
             function onWindowResize() {
