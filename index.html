@@ -179,14 +179,11 @@
 			document.getElementById("Counting").innerHTML = CountNumber;
 			if(CountNumber >= 2){
 				controls.enable = false;
-				var x = document.getElementById("Background");
-				x.style.display = "block";
-				TweenMax.to("#Background", 0.5 , { y:5,opacity:1});
-				var y = document.getElementById("EndingGame");
-				y.style.display = "block";
-				
+				document.getElementById("Background").style.display = "block";
+				TweenMax.to("#Background", 0.5 , { y:0,opacity:1});
+				document.getElementById("EndingGame").style.display = "block";
 				var EndGameAnim = new TimelineLite();
-				EndGameAnim.to("#EndingGame", 0.5 , { y:-5,opacity:0 ,onComplete: function() {
+				EndGameAnim.to("#EndingGame", 0.5 , { y:0,opacity:1 ,onComplete: function() {
 					renderer.domElement.style.top = '350px';
     				}})
   			}	
@@ -198,19 +195,15 @@
 			document.getElementById("Counting").innerHTML = CountNumber;
 			if(CountNumber >= 2){
 				controls.enable = false;
-				var x = document.getElementById("Background");
-				x.style.display = "block";
-				TweenMax.to("#Background", 0.5 , { y:5,opacity:1});
-				var y = document.getElementById("EndingGame");
-				y.style.display = "block";
+				document.getElementById("Background").style.display = "block";
+				TweenMax.to("#Background", 0.5 , { y:0,opacity:1});
+				document.getElementById("EndingGame").style.display = "block";
 				var EndGameAnim = new TimelineLite();
-				EndGameAnim.to("#EndingGame", 0.5 , { y:-5,opacity:0,onComplete: function() {
+				EndGameAnim.to("#EndingGame", 0.5 , { y:0,opacity:1 ,onComplete: function() {
 					renderer.domElement.style.top = '350px';
     				}})
-				
-			}
-            	})
-            	
+  			}	
+                })
 	}
 		
 	var camera, scene, renderer, controls;	
