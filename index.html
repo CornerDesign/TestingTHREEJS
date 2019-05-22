@@ -302,9 +302,10 @@
 		modelmesh = new THREE.Mesh( geometry, material );
 		scene.add(modelmesh);
 		modelmesh.position.set( -100, 50, 50 );
+		this.t4 = new TimelineMax();
+        	this.t4.to(modelmesh.rotation,1800 , {y:360,x:0,z:0 , ease: Power0.easeNone , repeat:-1});
 	}
-	this.t4 = new TimelineMax();
-        this.t4.to(modelmesh.rotation,1800 , {y:360,x:0,z:0 , ease: Power0.easeNone , repeat:-1});
+
 	
 
 		
