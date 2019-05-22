@@ -316,7 +316,7 @@
 		//Load Obj
 		var objLoader = new THREE.OBJLoader();
 		objLoader.setMaterials(materials);
-		objLoader.Load('model/Diamond.obj',function(object){
+		objLoader.load('model/Diamond.obj',function(object){
 			scene.add(object);
 			object.position.set( -100, 50, 50 );
 		});
