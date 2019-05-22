@@ -281,7 +281,7 @@
 	//////////////////////////////////////////////////////////////////////////////////
 	//		add model
 	//////////////////////////////////////////////////////////////////////////////////
-	
+	/*
 	var loader = new THREE.GLTFLoader();
 	loader.load( 'model/testmodel.glb' , handle_load);
 	var modelmesh;
@@ -294,6 +294,7 @@
 		this.t4 = new TimelineMax();
         	this.t4.to(modelmesh.rotation,1800 , {y:360,x:0,z:0 , ease: Power0.easeNone , repeat:-1});
 	}
+		*/
 
 	
 
@@ -309,7 +310,7 @@
 	var light = new THREE.AmbientLight( 0x222222 );
 	scene.add( light );
 		
-	/*
+	
    var ourObj;
     // Create a material
     var mtlLoader = new THREE.MTLLoader();
@@ -328,7 +329,7 @@
     
     });
 		
-*/
+
 		
 	window.addEventListener( 'resize', onWindowResize, false );	
 }
