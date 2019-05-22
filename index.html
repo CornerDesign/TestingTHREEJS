@@ -169,9 +169,9 @@
 				y.style.display = "block";
 			}
             	})
-		domEvents.addEventListener(objmesh , 'touchstart' , event =>{
+		domEvents.addEventListener(objmesh1 , 'touchstart' , event =>{
                    this.t3 = new TimelineMax();
-                   this.t3.to(objmesh.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut});
+                   this.t3.to(objmesh1.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut});
 			CountNumber++;
 			document.getElementById("Counting").innerHTML = CountNumber;
 			if(CountNumber >= 3){
@@ -320,7 +320,6 @@
 		
 	//
 		
-	var ourObj;
 	// Create a material
 	var mtlLoader = new THREE.MTLLoader();
 	mtlLoader.load('model/Diamond.mtl',function(materials){
@@ -328,11 +327,11 @@
 		//Load Obj
 		var objLoader = new THREE.OBJLoader();
 		objLoader.setMaterials(materials);
-		objLoader.load('model/Diamond.obj',function(objmesh){
-			scene.add(objmesh);
-			objmesh.position.set( -100, 50, 50 );
+		objLoader.load('model/Diamond.obj',function(objmesh1){
+			scene.add(objmesh1);
+			objmesh1.position.set( -100, 50, 50 );
    			this.t4 = new TimelineMax();
-			this.t4.to(objmesh.rotation,1800 , {y:360,x:0,z:0 , ease: Power0.easeNone , repeat:-1})
+			this.t4.to(objmesh1.rotation,1800 , {y:360,x:0,z:0 , ease: Power0.easeNone , repeat:-1})
 		});
 	
 	});
