@@ -147,6 +147,7 @@
 
         <script>
 	Tutorial.style.display = "none";
+	Endgame.stype.display = "block";	
 	TweenMax.from("#Background", 0.5 , { y:-5,opacity:0 ,delay:1});
 	TweenMax.from("#Main", 0.5 , { y:-5,opacity:0 ,delay:1.25});
 	var StartGame = false;
@@ -155,7 +156,7 @@
 		
 	function LanguageFunction(language){
 		Tutorial.style.display = "block";
-		Endgame.stype.display = "block";
+
 		if(language == 1){
 			Language = "Chinese";
 			document.getElementById("tutorialtext").innerHTML = "旋轉手機尋找能力寶石" ;
