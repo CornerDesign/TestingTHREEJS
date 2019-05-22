@@ -248,7 +248,7 @@
 	//		add an object in the scene
 	//////////////////////////////////////////////////////////////////////////////////
 		
-	var cameraTarget = new THREE.Mesh( new THREE.CubeGeometry(0,0,0));
+	//var cameraTarget = new THREE.Mesh( new THREE.CubeGeometry(0,0,0));
 	/*	
 	var helperGeometry = new THREE.BoxBufferGeometry( 100, 100, 100, 4, 4, 4 );
                 var helperMaterial = new THREE.MeshBasicMaterial( { color: 0xff00ff, wireframe: true } );
@@ -272,7 +272,7 @@
         planemesh2 = new THREE.Mesh( geometry, material );
         //planemesh2.rotation.y = 90 ;
         planemesh2.position.set( 0,100, 100 );
-	planemesh2.lookAt( cameraTarget.position );
+	planemesh2.lookAt( camera.position );
         scene.add( planemesh2 );
 
 	
