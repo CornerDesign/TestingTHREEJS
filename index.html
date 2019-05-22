@@ -282,6 +282,10 @@
 		scene.add(modelmesh);
 		modelmesh.position.set( -3, 0, 0 );
 	}
+	var cameraTarget = new THREE.Mesh( new THREE.CubeGeometry(0,0,0));
+	
+		
+		
 	var light = new THREE.DirectionalLight( 0xffffff );
 	light.position.set( 1, 1, 1 );
 	scene.add( light );
@@ -308,7 +312,10 @@
 		scene.planemesh.lookAt( 0,0,0);
 		scene.planemesh2.lookAt( 0,0,0);
 		
-		
+		planemesh.lookAt( cameraTarget.position );
+		planemesh2.lookAt( cameraTarget.position );
+		planemesh.lookAt( cameraTarget.position );
+		modelmesh.lookAt( cameraTarget.position );
                 renderer.render( scene, camera );
             }
             function onWindowResize() {
