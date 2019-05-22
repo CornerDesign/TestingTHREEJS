@@ -133,16 +133,20 @@
 	TweenMax.from("#Main", 0.5 , { y:-5,opacity:0 ,delay:1.25});
 	var StartGame = false;
 	var CountNumber = 0 ;
-				
+	var Language = "Chinese";
 		
 	function LanguageFunction(language){
 		if(language == "Chinese"){
+			Language = "Chinese";
+			document.getElementById("tutorialtext").innerHTML = "旋轉手機尋找能力寶石" ;
 			console.log("chinese");
 		}if(language == "English"){
+			Language = "English";
+			document.getElementById("tutorialtext").innerHTML = "Turn your Phone to find power stone" ;
 			console.log("English");
 		}
+		StartGamefunction();
 	}
-		
 	function StartGamefunction(){
         	StartGame = true;
 		TweenMax.to("#header", 0.5 , { y:-5,opacity:0});
