@@ -169,9 +169,9 @@
 				y.style.display = "block";
 			}
             	})
-            	domEvents.addEventListener(diamondmesh , 'touchstart' , event =>{
+            	domEvents.addEventListener(ourObj , 'touchstart' , event =>{
                     this.t3 = new TimelineMax();
-                    this.t3.to(diamondmesh.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut});
+                    this.t3.to(ourObj.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut});
 			CountNumber++;
 			document.getElementById("Counting").innerHTML = CountNumber;
 			if(CountNumber >= 3){
@@ -292,8 +292,8 @@
 	//////////////////////////////////////////////////////////////////////////////////
 	//		add model
 	//////////////////////////////////////////////////////////////////////////////////
-	/*
-		var loader = new THREE.GLTFLoader();
+	
+	var loader = new THREE.GLTFLoader();
 	loader.load( 'model/testmodel.glb' , handle_load);
 	var modelmesh;
 	function handle_load(gltf){
@@ -301,10 +301,9 @@
 		modelmesh.material = new THREE.MeshLambertMaterial();
 		modelmesh = new THREE.Mesh( geometry, material );
 		scene.add(modelmesh);
-		modelmesh.position.set( -10, 0, 0 );
-		modelmesh.lookAt( cameraTarget.position );
+		modelmesh.position.set( -100, 50, 50 );
 	}
-	*/
+	
 
 		
 	//Add a light
@@ -318,25 +317,26 @@
 	var light = new THREE.AmbientLight( 0x222222 );
 	scene.add( light );
 		
-	
-	// Create a material
-	var mtlLoader = new THREE.MTLLoader();
-	mtlLoader.load('model/Diamond.mtl',function(materials){
-		materials.preload();
-		//Load Obj
-		var objLoader = new THREE.OBJLoader();
-		objLoader.setMaterials(materials);
-		objLoader.load('model/Diamond.obj',function(mesh){
-			diamondmesh = new THREE.Mesh( mesh, materials );
-			scene.add(diamondmesh);
-			diamondmesh.position.set( -100, 50, 50 );
-   			this.t4 = new TimelineMax();
-			this.t4.to(diamondmesh.rotation,1800 , {y:360,x:0,z:0 , ease: Power0.easeNone , repeat:-1})
-		});
-	
-	});
+	/*
+   var ourObj;
+    // Create a material
+    var mtlLoader = new THREE.MTLLoader();
+    mtlLoader.load('model/Diamond.mtl',function(materials){
+        materials.preload();
+        //Load Obj
+        var objLoader = new THREE.OBJLoader();
+        objLoader.setMaterials(materials);
+        objLoader.load('model/Diamond.obj',function(object){
+            scene.add(object);
+            ourObj = object;
+            object.position.set( -100, 50, 50 );
+               this.t4 = new TimelineMax();
+            this.t4.to(ourObj.rotation,1800 , {y:360,x:0,z:0 , ease: Power0.easeNone , repeat:-1})
+        });
+    
+    });
 		
-
+*/
 		
 	window.addEventListener( 'resize', onWindowResize, false );	
 }
