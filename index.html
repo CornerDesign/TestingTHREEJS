@@ -184,9 +184,11 @@
 				TweenMax.to("#Background", 0.5 , { y:5,opacity:1});
 				var y = document.getElementById("EndingGame");
 				y.style.display = "block";
-				TweenMax.from("#EndingGame", 0.5 , { y:-5,opacity:0}, onComplete:function(){
-               			renderer.domElement.style.top = '350px';
-            }});
+				
+				var EndGameAnim = new TimelineLite();
+				EndGameAnim.to("#EndingGame", 0.5 , { y:-5,opacity:0},onComplete: function() {
+					renderer.domElement.style.top = '350px';
+    				}})
   			}	
                 })
            	domEvents.addEventListener(planemesh2 , 'touchstart' , event =>{
@@ -201,9 +203,10 @@
 				TweenMax.to("#Background", 0.5 , { y:5,opacity:1});
 				var y = document.getElementById("EndingGame");
 				y.style.display = "block";
-				TweenMax.from("#EndingGame", 0.5 , { y:-5,opacity:0}, onComplete:function(){
-               			renderer.domElement.style.top = '350px';
-            }});
+				var EndGameAnim = new TimelineLite();
+				EndGameAnim.to("#EndingGame", 0.5 , { y:-5,opacity:0},onComplete: function() {
+					renderer.domElement.style.top = '350px';
+    				}})
 				
 			}
             	})
