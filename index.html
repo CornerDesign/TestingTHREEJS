@@ -319,7 +319,8 @@
 			scene.add(object);
 			ourObj = object;
 			object.position.set( -100, 50, 50 );
-   			TweenMax.to("object", 5, {rotationz:360, ease:Expo.easeOut});
+   			this.t4 = new TimelineMax();
+			this.t4.from(ourobject.scale,5,{y:0,x:0,z:0,ease:Expo.eaaseOut})
 		});
 	
 	});
