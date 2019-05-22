@@ -56,9 +56,9 @@
                 font-weight: bold;
                 text-align:center;
                 box-sizing: border-box;
-		z-index = 100;
+		z-index = 1;
         }
-	#Endgame {
+	#EndingGame {
 		position: absolute;
                 top: 100px; width: 100%;
                 color: #ffffff;
@@ -122,7 +122,7 @@
 				<br/>
 			<h3 id = "tutorialtext">旋轉手機尋找能力寶石</h3>
             	</div>
-		<div id="Endgame">
+		<div id="EndingGame">
 			<h1 id = "Endtext ">恭喜你找到所有能力寶石</h1>
                 	<h2 id = "Endtext2 ">Congraulation</h2>
 			<button class ="mybtn clickmybtn" onclick="location.href='https://www.google.com.tw'"> 填問卷去 </button>
@@ -145,7 +145,7 @@
 
         <script>
 	Tutorial.style.display = "none";
-	Endgame.stype.display = "none";	
+	EndingGame.stype.display = "none";	
 	TweenMax.from("#Background", 0.5 , { y:-5,opacity:0 ,delay:1});
 	TweenMax.from("#Main", 0.5 , { y:-5,opacity:0 ,delay:1.25});
 	var StartGame = false;
@@ -185,9 +185,9 @@
 				var x = document.getElementById("Background");
 				x.style.display = "block";
 				TweenMax.to("#Background", 0.5 , { y:5,opacity:0});
-				var y = document.getElementById("Endgame");
+				var y = document.getElementById("EndingGame");
 				y.style.display = "block";
-				TweenMax.from("#Endgame", 0.5 , { y:-5,opacity:0});
+				TweenMax.from("#EndingGame", 0.5 , { y:-5,opacity:0});
   			}	
                 })
            	domEvents.addEventListener(planemesh2 , 'touchstart' , event =>{
@@ -198,8 +198,10 @@
 			if(CountNumber >= 3){
 				var x = document.getElementById("Background");
 				x.style.display = "block";
-				var y = document.getElementById("Main");
+				TweenMax.to("#Background", 0.5 , { y:5,opacity:0});
+				var y = document.getElementById("EndingGame");
 				y.style.display = "block";
+				TweenMax.from("#EndingGame", 0.5 , { y:-5,opacity:0});
 			}
             	})
             	
