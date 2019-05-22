@@ -123,6 +123,8 @@
     	<script src="js/threex.domevents.js"></script>
    	<script src="js/TweenMax.min.js"></script>
    	<script src="js/GLTFLoader.js"></script>
+	<script src="js/OBJLoader.js"></script>
+	<script src="js/GLTFLoader.js"></script>
 
         <script>
 	Tutorial.style.display = "none";
@@ -289,13 +291,9 @@
 		modelmesh.lookAt( cameraTarget.position );
 	}
 	
-			
-	
 
-
-	
 		
-		
+	//Add a light
 	var light = new THREE.DirectionalLight( 0xffffff );
 	light.position.set( 1, 1, 1 );
 	scene.add( light );
@@ -305,6 +303,23 @@
 	// 环境光,无处不在
 	var light = new THREE.AmbientLight( 0x222222 );
 	scene.add( light );
+		
+	//
+	var ourObj;
+	// Create a material
+	var mtlLoader = new THREE.MTLLoader();
+	mtlLoader.load('model/Diamond.mtl',function(materials){
+		materials.preload();
+		
+		//Load Obj
+		var objLoader = new THREE.OBJLoader();
+		objLoader.setLaterials(materials);
+		objLoader.Load('model/Diamond.obj',function(object){
+			scene.add(object);
+			object.position.set( 100, 50, 50 );
+		});
+	
+	});
 		
 
 		
