@@ -32,7 +32,6 @@
                 font-weight: bold;
                 text-align:center;
                 box-sizing: border-box;
-		opacity = 0;
         }
             
         #Main {
@@ -46,7 +45,6 @@
                 text-align:center;
                 box-sizing: border-box;
 		z-index = 1;
-		opacity = 0;
         }
 	#Tutorial {
                 position: absolute;
@@ -58,8 +56,7 @@
                 font-weight: bold;
                 text-align:center;
                 box-sizing: border-box;
-		z-index = 1;
-		opacity = 0;
+		z-index = 100;
         }
 	
         a {
@@ -132,8 +129,8 @@
 
         <script>
 	Tutorial.style.display = "none";
-//	TweenMax.to("#header", 0.5 , { y:5,opacity:1 ,delay:1});
-//	TweenMax.to("#Main", 0.5 , { y:5,opacity:1 ,delay:1.25});
+	TweenMax.from("#header", 0.5 , { y:-5,opacity:0 ,delay:1});
+	TweenMax.from("#Main", 0.5 , { y:-5,opacity:0 ,delay:1.25});
 	var StartGame = false;
 	var CountNumber = 0 ;
 				
@@ -142,8 +139,8 @@
 		TweenMax.to("#header", 0.5 , { y:-5,opacity:0});
 		TweenMax.to("#Main", 0.5 , { y:-5,opacity:0,delay:0.25});
 		Tutorial.style.display = "block";
-		TweenMax.to("#Tutorial", 0.5 , { y:5,opacity:1 ,delay:1} );
-		TweenMax.to("#Tutorial", 0.5 , { opacity:0 ,delay:10} );
+		TweenMax.from("#Tutorial", 0.5 , { y:-5,opacity:0 ,delay:1} );
+		TweenMax.to("#Tutorial", 0.5 , { opacity:0 ,delay:5} );
 		init();
 		animate();
 		
