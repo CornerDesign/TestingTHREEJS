@@ -319,6 +319,7 @@
 			scene.add(object);
 			ourObj = object;
 			object.position.set( -100, 50, 50 );
+			TweenMax.to(object, 3, {rotation:"360", ease:Linear.easeNone, repeat:-1});
 		});
 	
 	});
@@ -335,7 +336,6 @@
 	function animate() {
                 window.requestAnimationFrame( animate );
                 controls.update();
-		ourObj.rotation.z += .03;
 		
                 renderer.render( scene, camera );
             }
