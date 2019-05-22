@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-        <title>deviceorientation</title>
-        <meta charset="utf-8">
-        <meta name="viewport" content="user-scalable=no, initial-scale=1">
-	<script src = "https://code.jquery.com/jquery-3.3.1.js"></script>
-	<script src="build/three.js"></script>
-    </head>
-    <style>
+        	<title>deviceorientation</title>
+        	<meta charset="utf-8">
+        	<meta name="viewport" content="user-scalable=no, initial-scale=1">
+		<script src = "https://code.jquery.com/jquery-3.3.1.js"></script>
+		<script src="build/three.js"></script>
+	</head>
+	<style>
 	body {
                 margin: 0px;
 		background-color: #000000;
@@ -18,7 +18,6 @@
 
 		overflow:hidden;
 	}
-	    
         #Background {
 		background-color: #000000;
 		background-image:url("textures/BackgroundStar.jpg");
@@ -33,7 +32,6 @@
                 text-align:center;
                 box-sizing: border-box;
         }
-            
         #Main {
                 position: absolute;
                 top: 100px; width: 100%;
@@ -73,7 +71,7 @@
         a {
                 color: #ff8800;
         }
-
+		
 .mybtn{
   background-color: rgba(0, 0, 0, 0);
   border: 2px solid;
@@ -91,7 +89,7 @@
   transition-duration: 0.4s;
   cursor: pointer;  
 }
-	   
+
 .clickmybtn {
   background-color: rgba(0, 0, 0, 0);
   color: #e6e6e6;
@@ -181,9 +179,10 @@
 			CountNumber++;
 			document.getElementById("Counting").innerHTML = CountNumber;
 			if(CountNumber >= 2){
+				controls.enable = false;
 				var x = document.getElementById("Background");
 				x.style.display = "block";
-				TweenMax.to("#Background", 0.5 , { y:5,opacity:0});
+				TweenMax.to("#Background", 0.5 , { y:5,opacity:1});
 				var y = document.getElementById("EndingGame");
 				y.style.display = "block";
 				TweenMax.from("#EndingGame", 0.5 , { y:-5,opacity:0});
@@ -195,9 +194,10 @@
 			CountNumber++;
 			document.getElementById("Counting").innerHTML = CountNumber;
 			if(CountNumber >= 2){
+				controls.enable = false;
 				var x = document.getElementById("Background");
 				x.style.display = "block";
-				TweenMax.to("#Background", 0.5 , { y:5,opacity:0});
+				TweenMax.to("#Background", 0.5 , { y:5,opacity:1});
 				var y = document.getElementById("EndingGame");
 				y.style.display = "block";
 				TweenMax.from("#EndingGame", 0.5 , { y:-5,opacity:0});
@@ -366,11 +366,8 @@
 		
 	window.addEventListener( 'resize', onWindowResize, false );	
 }
-	
-		
-
 	//////////////////////////////////////////////////////////////////////////////////
-		
+
 	function animate() {
                 window.requestAnimationFrame( animate );
                 controls.update();
