@@ -171,6 +171,12 @@
 	}
 		
 	var camera, scene, renderer, controls;
+		
+	var ourObj;
+	// Create a material
+	var mtlLoader = new THREE.MTLLoader();
+		
+		
 	function init(){	
 	renderer = new THREE.WebGLRenderer({
 		antialias: true,
@@ -305,9 +311,7 @@
 	scene.add( light );
 		
 	//
-	var ourObj;
-	// Create a material
-	var mtlLoader = new THREE.MTLLoader();
+
 	mtlLoader.load('model/Diamond.mtl',function(materials){
 		materials.preload();
 		
