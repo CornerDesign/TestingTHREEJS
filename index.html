@@ -19,7 +19,7 @@
 		overflow:hidden;
 	}
 	    
-        #header {
+        #Background {
 		background-color: #000000;
 		background-image:url("textures/BackgroundStar.jpg");
 		height: -webkit-fill-available;
@@ -107,7 +107,7 @@
     </style>
     <body>
 	    <div id = "container">
-            	<div id="header">
+            	<div id="Background">
 			
            	</div>
             	<div id="Main">
@@ -147,7 +147,7 @@
 
         <script>
 	Tutorial.style.display = "none";
-	TweenMax.from("#header", 0.5 , { y:-5,opacity:0 ,delay:1});
+	TweenMax.from("#Background", 0.5 , { y:-5,opacity:0 ,delay:1});
 	TweenMax.from("#Main", 0.5 , { y:-5,opacity:0 ,delay:1.25});
 	var StartGame = false;
 	var CountNumber = 0 ;
@@ -169,7 +169,7 @@
 	}
 	function StartGamefunction(){
         	StartGame = true;
-		TweenMax.to("#header", 0.5 , { y:-5,opacity:0});
+		TweenMax.to("#Background", 0.5 , { y:-5,opacity:0});
 		TweenMax.to("#Main", 0.5 , { y:-5,opacity:0,delay:0.25});
 		
 		TweenMax.from("#Tutorial", 0.5 , { y:-5,opacity:0 ,delay:1} );
@@ -184,10 +184,12 @@
 			CountNumber++;
 			document.getElementById("Counting").innerHTML = CountNumber;
 			if(CountNumber >= 3){
-				var x = document.getElementById("header");
+				var x = document.getElementById("Background");
 				x.style.display = "block";
-				var y = document.getElementById("Main");
+				TweenMax.to("#Background", 0.5 , { y:5,opacity:0});
+				var y = document.getElementById("Endgame");
 				y.style.display = "block";
+				TweenMax.from("#Endgame", 0.5 , { y:-5,opacity:0});
   			}	
                 })
            	domEvents.addEventListener(planemesh2 , 'touchstart' , event =>{
@@ -196,7 +198,7 @@
 			CountNumber++;
 			document.getElementById("Counting").innerHTML = CountNumber;
 			if(CountNumber >= 3){
-				var x = document.getElementById("header");
+				var x = document.getElementById("Background");
 				x.style.display = "block";
 				var y = document.getElementById("Main");
 				y.style.display = "block";
