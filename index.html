@@ -169,18 +169,7 @@
 				y.style.display = "block";
 			}
             	})
-            	domEvents.addEventListener(modelmesh , 'touchstart' , event =>{
-                    this.t3 = new TimelineMax();
-                    this.t3.to(modelmesh.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut});
-			CountNumber++;
-			document.getElementById("Counting").innerHTML = CountNumber;
-			if(CountNumber >= 3){
-				var x = document.getElementById("header");
-				x.style.display = "block";
-				var y = document.getElementById("Main");
-				y.style.display = "block";
-  			}	
-                })
+            	
 	}
 		
 	var camera, scene, renderer, controls;	
