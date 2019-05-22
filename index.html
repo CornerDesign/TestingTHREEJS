@@ -282,13 +282,17 @@
 		scene.add(modelmesh);
 		modelmesh.position.set( -3, 0, 0 );
 	}
+	var light = new THREE.DirectionalLight( 0xffffff );
+	light.position.set( 1, 1, 1 );
+	scene.add( light );
+	var light = new THREE.DirectionalLight( 0x002288 );
+	light.position.set( -1, -1, -1 );
+	scene.add( light );
+	// 环境光,无处不在
+	var light = new THREE.AmbientLight( 0x222222 );
+	scene.add( light );
 		
-		var ambientLight = new THREE.AmbientLight(0xFFFFFF,0.8);
-		scene.add(ambientLight);
-		
-		
-		
-		
+
 		
 	window.addEventListener( 'resize', onWindowResize, false );	
 }
@@ -301,8 +305,8 @@
                 window.requestAnimationFrame( animate );
                 controls.update();
 		
-		scene.planemesh.lookAt( camera.position );
-		scene.planemesh2.lookAt( camera.position );
+		scene.planemesh.lookAt( 0,0,0);
+		scene.planemesh2.lookAt( 0,0,0);
 		
 		
                 renderer.render( scene, camera );
