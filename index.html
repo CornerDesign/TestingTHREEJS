@@ -296,6 +296,7 @@
 	function handle_load(gltf){
 		modelmesh = gltf.scene.children[0];
 		modelmesh.material = new THREE.MeshLambertMaterial();
+		modelmesh = new THREE.Mesh( geometry, material );
 		scene.add(modelmesh);
 		modelmesh.position.set( -10, 0, 0 );
 		modelmesh.lookAt( cameraTarget.position );
