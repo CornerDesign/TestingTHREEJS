@@ -136,6 +136,7 @@
 	var Language = "Chinese";
 		
 	function LanguageFunction(language){
+		Tutorial.style.display = "block";
 		if(language == 1){
 			Language = "Chinese";
 			document.getElementById("tutorialtext").innerHTML = "旋轉手機尋找能力寶石" ;
@@ -151,7 +152,7 @@
         	StartGame = true;
 		TweenMax.to("#header", 0.5 , { y:-5,opacity:0});
 		TweenMax.to("#Main", 0.5 , { y:-5,opacity:0,delay:0.25});
-		Tutorial.style.display = "block";
+		
 		TweenMax.from("#Tutorial", 0.5 , { y:-5,opacity:0 ,delay:1} );
 		TweenMax.to("#Tutorial", 0.5 , { opacity:0 ,delay:5} );
 		init();
