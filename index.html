@@ -320,11 +320,19 @@
         var objLoader = new THREE.OBJLoader();
         objLoader.setMaterials(materials);
         objLoader.load('model/Diamond.obj',function(object){
-            scene.add(object);
-            ourObj = object;
-            object.position.set( -150, 0, 0 );
-               this.t4 = new TimelineMax();
-            this.t4.to(ourObj.rotation,900 , {y:360,x:0,z:0 , ease: Power0.easeNone , repeat:-1})
+		
+	for(var i = 0 ; i<10 ; i++){
+		object.position.x = (Math.random()-0.3) *150;
+		object.position.y =(Math.random()-0.3) *150;
+		object.position.z =( Math.random()-0.3) *150;
+	 	scene.add(object);
+	}		
+		
+//            scene.add(object);
+//            ourObj = object;
+//            object.position.set( -150, 0, 0 );
+//               this.t4 = new TimelineMax();
+//            this.t4.to(ourObj.rotation,900 , {y:360,x:0,z:0 , ease: Power0.easeNone , repeat:-1})
         });
     
     });
