@@ -124,7 +124,7 @@
    	<script src="js/TweenMax.min.js"></script>
    	<script src="js/GLTFLoader.js"></script>
 	<script src="js/OBJLoader.js"></script>
-	<script src="js/GLTFLoader.js"></script>
+	<script src="js/MTLLoader.js"></script>
 
         <script>
 	Tutorial.style.display = "none";
@@ -170,13 +170,7 @@
             	})
 	}
 		
-	var camera, scene, renderer, controls;
-		
-	var ourObj;
-	// Create a material
-	var mtlLoader = new THREE.MTLLoader();
-		
-		
+	var camera, scene, renderer, controls;	
 	function init(){	
 	renderer = new THREE.WebGLRenderer({
 		antialias: true,
@@ -311,7 +305,10 @@
 	scene.add( light );
 		
 	//
-
+		
+	var ourObj;
+	// Create a material
+	var mtlLoader = new THREE.MTLLoader();
 	mtlLoader.load('model/Diamond.mtl',function(materials){
 		materials.preload();
 		
