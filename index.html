@@ -312,7 +312,6 @@
 	var mtlLoader = new THREE.MTLLoader();
 	mtlLoader.load('model/Diamond.mtl',function(materials){
 		materials.preload();
-		
 		//Load Obj
 		var objLoader = new THREE.OBJLoader();
 		objLoader.setMaterials(materials);
