@@ -224,12 +224,11 @@
 	}
 		
 	var camera, scene, renderer, controls;
-		
 	//add model
 	var models = { Diamond :{ obj:"model/Diamond.obj" , mtl:"model/Diamond.mtl" , mesh:null }};
 	var meshes = {};
-			
-		
+	var LOADING_MANAGER = null ;
+
 	function init(){	
 	renderer = new THREE.WebGLRenderer({
 		antialias: true,
@@ -255,18 +254,15 @@
 	scene.add(camera);
 	// init renderer
 	
-	/*
+	
 	loadingManager = new THREE.LoadingManager();
 	loadingManager.onprogress = function(item,loaded,total){
 		console.log(item,loaded,total);
 	};
 	loadingManager.onload = function(){
 		console.log("loaded all resources");
-		RESOURCES_LOADED = true;			
 		OnResourcesLoaded();
 	};
-	*/	
-		
 		
 		
 		
@@ -358,10 +354,10 @@
   
 	for(var _key in models)	{
 	    (function(key){
-		var mtlLoader = new THREE.MTLLoader();
+		var mtlLoader = new THREE.MTLLoader(loadingManager);
    		mtlLoader.load(models[key].mtl,function(materials){
 		    materials.preload();
-		    var objLoader = new THREE.OBJLoader();
+		    var objLoader = new THREE.OBJLoader(loadingManager);
 		    objLoader.setMaterials(materials);
         	    objLoader.load(models[key].obj,function(mesh){
 			mesh.traverse(function(node){
@@ -375,9 +371,6 @@
 		});
 	    })(_key);
 	}
-		
-	OnResourcesLoaded();
-		
 		
     // Create a material
 /*
