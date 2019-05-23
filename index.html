@@ -148,6 +148,9 @@
 	var StartGame = false;
 	var CountNumber = 0 ;
 	var Language = "Chinese";
+
+		
+	var LOADING_MANAGER = null ;
 	function LanguageFunction(language){
 		Tutorial.style.display = "block";
 		if(language == 1){
@@ -227,7 +230,7 @@
 	//add model
 	var models = { Diamond :{ obj:"model/Diamond.obj" , mtl:"model/Diamond.mtl" , mesh:null }};
 	var meshes = {};
-	var LOADING_MANAGER = null ;
+	
 
 	function init(){	
 	renderer = new THREE.WebGLRenderer({
@@ -261,7 +264,7 @@
 	};
 	loadingManager.onload = function(){
 		console.log("loaded all resources");
-		OnResourcesLoaded();
+		onResourcesLoaded();
 	};
 		
 		
@@ -421,9 +424,9 @@ var mtlLoader = new THREE.MTLLoader();
 }
 	//////////////////////////////////////////////////////////////////////////////////
 	// Run when all resources loaded
-	function OnResourcesLoaded(){
-		meshes["Daimond1"] = models.Daimond.mesh.clone();
-		meshes["Daimond2"] = models.Daimond.mesh.clone();
+	function onResourcesLoaded(){
+		meshes["Daimond1"] = models.Daimond.clone();
+		meshes["Daimond2"] = models.Daimond.clone();
 		meshes["Daimond3"] = models.Daimond.mesh.clone();
 		console.log("load");
 		meshes["Daimond1"].position.set(-100,0,0);
@@ -433,9 +436,6 @@ var mtlLoader = new THREE.MTLLoader();
 		scene.add(meshes["Daimond2"]);
 		scene.add(meshes["Daimond3"]);
 	}
-		
-		
-		
 		
 	function animate() {
                 window.requestAnimationFrame( animate );
