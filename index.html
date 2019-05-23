@@ -324,6 +324,8 @@
     //        add model
     //////////////////////////////////////////////////////////////////////////////////
     // Create a material
+    
+    var Diamondclone;
     var mtlLoader = new THREE.MTLLoader();
     mtlLoader.load('model/Diamond.mtl',function(materials){
         materials.preload();
@@ -331,7 +333,7 @@
         var objLoader = new THREE.OBJLoader();
         objLoader.setMaterials(materials);
         objLoader.load('model/Diamond.obj',function(ourObj){
-            scene.add(ourObj);
+        scene.add(ourObj);
         ourObj.name = "Diamond";
         Diamond = scene.getObjectByName("Diamond");
         Diamond.scale.set(0.5,0.5,0.5);
@@ -339,17 +341,34 @@
         Diamond.position.y = 0;
         Diamond.position.z = 0;
             
-            this.t4 = new TimelineMax();
-            this.t4.to(Diamond.rotation,1800 , {y:360,x:0,z:0 , ease: Power0.easeNone , repeat:-1})
+        this.t4 = new TimelineMax();
+        this.t4.to(Diamond.rotation,1800 , {y:360,x:0,z:0 , ease: Power0.easeNone , repeat:-1})
         });
     });
         
-    var cubegeometry = new THREE.BoxGeometry( 20 , 15 , 15 );
+        var cubegeometry = new THREE.BoxGeometry( 20 , 15 , 15 );
         var cubematerial = new THREE.MeshBasicMaterial( {  color: 0xFFF000,  transparent : true,  opacity:0.1 });
        cubemesh = new THREE.Mesh( cubegeometry, cubematerial );
         cubemesh.position.set(-100,5,0) ;
         scene.add( cubemesh );
-
+        
+        
+        //Load Obj
+        var material = new THREE.MeshBasicMaterial( {  color: #ff3333,  transparent : true,  opacity:0.8 });
+        var objLoader = new THREE.OBJLoader();
+        objLoader.setMaterials(material);
+        objLoader.load('model/Diamond.obj',function(modelmesh){
+        scene.add(modelmesh);
+        modelmesh.name = "Diamond1";
+        Diamond1 = scene.getObjectByName("Diamond1");
+        Diamond1.scale.set(0.5,0.5,0.5);
+        Diamond1.position.x = -100;
+        Diamond1.position.y = 50;
+        Diamond1.position.z = 0;
+        this.t5 = new TimelineMax();
+        this.t5.to(Diamond.rotation,1800 , {y:360,x:0,z:0 , ease: Power0.easeNone , repeat:-1})
+    });
+        
         
     //////////////////////////////////////////////////////////////////////////////////
             //Add a light
@@ -389,7 +408,7 @@
             
             
             
-            
+    //要出現的資訊        
     function infoanim(){
             this.t3 = new TimelineMax();
             this.t3.to(cubemesh.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut});
