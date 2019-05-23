@@ -257,7 +257,7 @@
 	scene.add(camera);
 	// init renderer
 	
-	
+	/*
 	loadingManager = new THREE.LoadingManager();
 	loadingManager.onprogress = function(item,loaded,total){
 		console.log(item,loaded,total);
@@ -266,7 +266,7 @@
 		console.log("loaded all resources");
 		onResourcesLoaded();
 	};
-		
+	*/	
 		
 		
 	////////////////////////////////////////////////////////////////////////////////
@@ -357,10 +357,10 @@
   
 	for(var _key in models)	{
 	    (function(key){
-		var mtlLoader = new THREE.MTLLoader(loadingManager);
+		var mtlLoader = new THREE.MTLLoader();
    		mtlLoader.load(models[key].mtl,function(materials){
 		    materials.preload();
-		    var objLoader = new THREE.OBJLoader(loadingManager);
+		    var objLoader = new THREE.OBJLoader();
 		    objLoader.setMaterials(materials);
         	    objLoader.load(models[key].obj,function(mesh){
 			mesh.traverse(function(node){
@@ -374,6 +374,7 @@
 		});
 	    })(_key);
 	}
+	Loadmodel();
 		
     // Create a material
 /*
@@ -424,7 +425,7 @@ var mtlLoader = new THREE.MTLLoader();
 }
 	//////////////////////////////////////////////////////////////////////////////////
 	// Run when all resources loaded
-	function onResourcesLoaded(){
+	function Loadmodel(){
 		meshes["Daimond1"] = models.Daimond.mesh.clone();
 		meshes["Daimond2"] = models.Daimond.mesh.clone();
 		meshes["Daimond3"] = models.Daimond.mesh.clone();
