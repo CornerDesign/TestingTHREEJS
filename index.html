@@ -230,7 +230,7 @@
 	camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 1, 1100 );
 	controls = new THREE.DeviceOrientationControls( camera );
 	scene.add(camera);
-		// init renderer
+	// init renderer
 	
 	
 	////////////////////////////////////////////////////////////////////////////////
@@ -355,13 +355,17 @@
         objLoader.load('model/Diamond.obj',function(object){
             scene.add(object);
             ourObj = object;
-            object.position.set( -100, 50, 50 );
-	
-               this.t4 = new TimelineMax();
+            object.position.set( -100, 50, 50 );	
+            this.t4 = new TimelineMax();
             this.t4.to(ourObj.rotation,1800 , {y:360,x:0,z:0 , ease: Power0.easeNone , repeat:-1})
         });
-    
-    });
+    var geometry = new THREE.BoxGeometry( 1, 1, 1 );
+    var material = new THREE.MeshBasicMaterial( {color: rgba(0,0,0,30)} );
+    var cube = new THREE.Mesh( geometry, material );
+    cube.position = object.position;
+    scene.add( cube );
+    });	
+		
 		
 	window.addEventListener( 'resize', onWindowResize, false );	
 }
