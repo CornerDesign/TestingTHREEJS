@@ -425,8 +425,8 @@ var mtlLoader = new THREE.MTLLoader();
 	//////////////////////////////////////////////////////////////////////////////////
 	// Run when all resources loaded
 	function onResourcesLoaded(){
-		meshes["Daimond1"] = models.Daimond.clone();
-		meshes["Daimond2"] = models.Daimond.clone();
+		meshes["Daimond1"] = models.Daimond.mesh.clone();
+		meshes["Daimond2"] = models.Daimond.mesh.clone();
 		meshes["Daimond3"] = models.Daimond.mesh.clone();
 		console.log("load");
 		meshes["Daimond1"].position.set(-100,0,0);
