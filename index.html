@@ -370,18 +370,16 @@
         var loader = new THREE.OBJLoader();
         loader.load( 'model/Diamond.obj', function ( object ) {
                    object.traverse( function ( child ) {
-                       var ColorArrays = ColorArray;
                              if ( child instanceof THREE.Mesh ) {
-                                  child.material.color.setHex(ColorArrays[i]);
-                                 console.log("Color"+ColorArrays[i]);
+                                  child.material.color.setHex(0x00FF00);
+                                 console.log("Color"+i);
                              }
                      } );
         scene.add( object );
-        var NameArrays = NameArray;
-        object.name = NameArrays[i];
+        object.name = "Diamond"+i;
         object.scale.set(0.5,0.5,0.5);
         object.position.set(-100,10+10*i,0);
-        console.log("name" +NameArrays[i]);
+        console.log("name" + object.name);
         });
         }
         
