@@ -206,7 +206,7 @@
 		domEvents.addEventListener(cubemesh, 'touchstart' , event =>{
                    this.t3 = new TimelineMax();
 		   this.t3.to(cubemesh.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut});
-                   this.t3.to(Diamond.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=2.0");
+                   this.t3.to(Diamond.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.5");
 			CountNumber++;
 			document.getElementById("Counting").innerHTML = CountNumber;
 			if(CountNumber >= 2){
@@ -333,19 +333,6 @@
 	//////////////////////////////////////////////////////////////////////////////////
 	//		add model
 	//////////////////////////////////////////////////////////////////////////////////
-	//Add a light
-/*
-	var light = new THREE.DirectionalLight( 0xffffff );
-	light.position.set( 1, 1, 1 );
-	scene.add( light );
-	var light = new THREE.DirectionalLight( 0x002288 );
-	light.position.set( -1, -1, -1 );
-	scene.add( light );
-	// 环境光,无处不在
-	var light = new THREE.AmbientLight( 0x222222 );
-	scene.add( light );
-*/
-
     // Create a material
     var modelobject;
     var mtlLoader = new THREE.MTLLoader();
@@ -369,6 +356,26 @@
    	cubemesh = new THREE.Mesh( cubegeometry, cubematerial );
     	cubemesh.position.set(-100,50,50) ;
     	scene.add( cubemesh );
+		
+		
+	//////////////////////////////////////////////////////////////////////////////////
+			//Add a light
+	//////////////////////////////////////////////////////////////////////////////////
+		
+		
+			//Add a light
+
+	var light = new THREE.DirectionalLight( 0xffffff );
+	light.position.set( 1, 1, 1 );
+	scene.add( light );
+	var light = new THREE.DirectionalLight( 0x002288 );
+	light.position.set( -1, -1, -1 );
+	scene.add( light );
+	// 环境光,无处不在
+	var light = new THREE.AmbientLight( 0x222222 );
+	scene.add( light );
+
+		
 		
 	window.addEventListener( 'resize', onWindowResize, false );	
 }
