@@ -204,18 +204,7 @@
               }    
                 })
         domEvents.addEventListener(cubemesh, 'touchstart' , event =>{
-            this.t3 = new TimelineMax();
-            this.t3.to(cubemesh.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut});
-            this.t3.to(Diamond.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.5");
-            
-            var texture = new THREE.TextureLoader().load( 'textures/fish.png' );
-            var geometry = new THREE.PlaneGeometry( 50,50);
-            var material = new THREE.MeshBasicMaterial( { map: texture } );
-            infored = new THREE.Mesh( geometry, material );
-            infored.position.set( -100, 0, 0 );
-            infored.lookAt( camera.position );
-            scene.add( infored );
-            this.t3.from(infored.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut});
+            infoanim();
             CountNumber++;
             document.getElementById("Counting").innerHTML = CountNumber;
             if(CountNumber >= 2){
@@ -390,11 +379,29 @@
                 controls.update();
                 renderer.render( scene, camera );
             }
-            function onWindowResize() {
+   function onWindowResize() {
                 camera.aspect = window.innerWidth / window.innerHeight;
                 camera.updateProjectionMatrix();
                 renderer.setSize( window.innerWidth, window.innerHeight );
             }
+            
+            
+            
+            
+    function infoanim(){
+            this.t3 = new TimelineMax();
+            this.t3.to(cubemesh.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut});
+            this.t3.to(Diamond.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.5");
+            
+            var texture = new THREE.TextureLoader().load( 'textures/fish.png' );
+            var geometry = new THREE.PlaneGeometry( 50,50);
+            var material = new THREE.MeshBasicMaterial( { map: texture } );
+            infored = new THREE.Mesh( geometry, material );
+            infored.position.set( -100, 0, 0 );
+            infored.lookAt( camera.position );
+            scene.add( infored );
+            this.t3.from(infored.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut});
+    }        
         </script>
     </body>
 </html>
