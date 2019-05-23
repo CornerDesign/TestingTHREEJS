@@ -210,10 +210,11 @@
             
             var texture = new THREE.TextureLoader().load( 'textures/fish.png' );
             var geometry = new THREE.PlaneGeometry( 50,50);
-            var material = new THREE.SpriteMaterial( { map: texture } );
+            var material = new THREE.MeshBasicMaterial( { map: texture } );
             infored = new THREE.Mesh( geometry, material );
+            infored.position.set( -100, 0, 0 );
+            infored.lookAt( camera.position );
             scene.add( infored );
-            infored.position.set(-100,0,0);
             CountNumber++;
             document.getElementById("Counting").innerHTML = CountNumber;
             if(CountNumber >= 2){
