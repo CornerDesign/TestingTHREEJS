@@ -363,7 +363,7 @@
 	var cubegeometry = new THREE.BoxGeometry( 30 , 30 , 30 );
     	var cubematerial = new THREE.MeshBasicMaterial( {  color: 0xFFF000,  transparent : true,  opacity:0.5 });
    	var cube = new THREE.Mesh( cubegeometry, cubematerial );
-    	cube.position.set = ourobjposition;
+    	cube.position.set = ourObj.position.set;
     	scene.add( cube );
     });	    
 
