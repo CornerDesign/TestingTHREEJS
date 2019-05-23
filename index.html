@@ -364,8 +364,10 @@
         NameArray[0] = 'Diamond1';
         NameArray[1] = 'Diamond2';
         NameArray[2] = 'Diamond3';
+        
         for(i=0;i<3;i++){
             //Load Obj
+            /*
             var loader = new THREE.OBJLoader()
             loader.load( 'model/Diamond.obj', function ( object ) {
             object.traverse( function ( child ) {
@@ -375,8 +377,12 @@
             NameArray[i] = scene.getObjectByName(NameArray[i]);
             NameArray[i].scale.set(0.5,0.5,0.5);
             NameArray[i].position.set(-100,10+20*i,0);
+            
             console.log(NameArray[i]);
             });
+            */
+            console.log("Name: "+NameArray[i] +"color"+  ColorArray[i]);
+
         }
         
         //Load Obj
