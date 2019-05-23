@@ -335,7 +335,7 @@
 	//		add model
 	//////////////////////////////////////////////////////////////////////////////////
 	
-	var loader = new THREE.GLTFLoader();
+	loader = new THREE.GLTFLoader();
 	loader.load( 'model/testmodel.glb' , handle_load);
 	function handle_load(gltf){
 		modelmesh = gltf.scene.children[0];
