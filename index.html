@@ -214,8 +214,6 @@
             infored = new THREE.Mesh( geometry, material );
             scene.add( infored );
             infored.position.set(-100,0,0);
-            
-            TweenMax.from(infored.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut});
             CountNumber++;
             document.getElementById("Counting").innerHTML = CountNumber;
             if(CountNumber >= 2){
