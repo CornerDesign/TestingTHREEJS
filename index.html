@@ -365,24 +365,30 @@
         NameArray[1] = 'Diamond2';
         NameArray[2] = 'Diamond3';
         
-            //Load Obj
-           
         
-            for(i=0;i<3;i++){
-                var loader = new THREE.OBJLoader();
-                loader.load( 'model/Diamond.obj', function ( object ) {
-                    object.traverse( function ( child ) {
-                    if ( child instanceof THREE.Mesh ) { child.material.color.setHex(0x00FF00);}});
-                    scene.add( object );
-                   // object.scale.set(0.5,0.5,0.5);
-                   // object.position.set(-100,10+20*i,0); 
-                    object.name = "Diamond"+i;
-                });
-                NameArray[i]= scene.getObjectByName("Diamond"+i);
-                NameArray[i].scale.set(0.5,0.5,0.5);
-                NameArray[i].position.set(-100,10+20*i,0); 
-            }
-        //Load Obj
+        for(int i = 0 ; i<3 ; i++){
+        var loader = new THREE.OBJLoader();
+        loader.load( 'model/Diamond.obj', function ( object ) {
+                   object.traverse( function ( child ) {
+                       var ColorArrays = ColorArray;
+                             if ( child instanceof THREE.Mesh ) {
+                                  child.material.color.setHex(ColorArrays[i]);
+                                 console.log("Color"+ColorArrays[i]);
+                             }
+                     } );
+        scene.add( object );
+        var NameArrays = NameArray;
+        object.name = NameArrays[i];
+        object.scale.set(0.5,0.5,0.5);
+        object.position.set(-100,10+10i,0);
+         console.log("name" +NameArrays[i]);
+        });
+        }
+        
+        
+        
+            //Load Obj
+
         /*var loader = new THREE.OBJLoader()
         loader.load( 'model/Diamond.obj', function ( object ) {
                    object.traverse( function ( child ) {
@@ -434,8 +440,7 @@
                 camera.updateProjectionMatrix();
                 renderer.setSize( window.innerWidth, window.innerHeight );
             }
-            
-            
+ 
             
     //要出現的資訊        
     function infoanim(){
