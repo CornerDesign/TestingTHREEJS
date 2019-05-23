@@ -172,6 +172,24 @@
 		animate();
 		
 		var domEvents = new THREEx.DomEvents(camera, renderer.domElement);
+		domEvents.addEventListener(cubemesh , 'touchstart' , event =>{
+                   this.t3 = new TimelineMax();
+                   this.t3.to(cubemesh.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut});
+		   this.t3.to(ourObj.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut});
+			CountNumber++;
+			document.getElementById("Counting").innerHTML = CountNumber;
+			if(CountNumber >= 2){
+				controls.enable = false;
+				document.getElementById("Background").style.display = "block";
+				TweenMax.to("#Background", 0.5 , { y:0,opacity:1});
+				document.getElementById("EndingGame").style.display = "block";
+				var EndGameAnim = new TimelineLite();
+				EndGameAnim.to("#EndingGame", 0.5 , { y:0,opacity:1 ,onComplete: function() {
+					renderer.domElement.style.top = '600px';
+    				}})
+  			}	
+                })
+		
             	domEvents.addEventListener(planemesh , 'touchstart' , event =>{
                     this.t1 = new TimelineMax();
                     this.t1.to(planemesh.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut});
@@ -204,23 +222,7 @@
     				}})
   			}	
                 })
-	      	domEvents.addEventListener(cubemesh , 'touchstart' , event =>{
-                   this.t3 = new TimelineMax();
-                   this.t3.to(cubemesh.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut});
-		   this.t3.to(ourObj.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut});
-			CountNumber++;
-			document.getElementById("Counting").innerHTML = CountNumber;
-			if(CountNumber >= 2){
-				controls.enable = false;
-				document.getElementById("Background").style.display = "block";
-				TweenMax.to("#Background", 0.5 , { y:0,opacity:1});
-				document.getElementById("EndingGame").style.display = "block";
-				var EndGameAnim = new TimelineLite();
-				EndGameAnim.to("#EndingGame", 0.5 , { y:0,opacity:1 ,onComplete: function() {
-					renderer.domElement.style.top = '600px';
-    				}})
-  			}	
-                })
+
 	}
 		
 	var camera, scene, renderer, controls;	
