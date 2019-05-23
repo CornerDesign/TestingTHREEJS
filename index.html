@@ -255,7 +255,7 @@
 	scene.add(camera);
 	// init renderer
 	
-	
+	/*
 	loadingManager = new THREE.LoadingManager();
 	loadingManager.onprogress = function(item,loaded,total){
 		console.log(item,loaded,total);
@@ -265,10 +265,7 @@
 		RESOURCES_LOADED = true;			
 		OnResourcesLoaded();
 	};
-		
-		
-
-		
+	*/	
 		
 		
 		
@@ -361,10 +358,10 @@
   
 	for(var _key in models)	{
 	    (function(key){
-		var mtlLoader = new THREE.MTLLoader(loadingManager);
+		var mtlLoader = new THREE.MTLLoader();
    		mtlLoader.load(models[key].mtl,function(materials){
 		    materials.preload();
-		    var objLoader = new THREE.OBJLoader(loadingManager);
+		    var objLoader = new THREE.OBJLoader();
 		    objLoader.setMaterials(materials);
         	    objLoader.load(models[key].obj,function(mesh){
 			mesh.traverse(function(node){
