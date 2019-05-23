@@ -215,6 +215,7 @@
             infored.position.set( -100, 0, 0 );
             infored.lookAt( camera.position );
             scene.add( infored );
+            this.t3.from(infored.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut});
             CountNumber++;
             document.getElementById("Counting").innerHTML = CountNumber;
             if(CountNumber >= 2){
@@ -308,13 +309,6 @@
     //        add an object in the scene
     //////////////////////////////////////////////////////////////////////////////////
         
-    //var cameraTarget = new THREE.Mesh( new THREE.CubeGeometry(0,0,0));
-    /*    
-    var helperGeometry = new THREE.BoxBufferGeometry( 100, 100, 100, 4, 4, 4 );
-                var helperMaterial = new THREE.MeshBasicMaterial( { color: 0xff00ff, wireframe: true } );
-                var helper = new THREE.Mesh( helperGeometry, helperMaterial );
-                scene.add( helper );    
-    */
     var texture = new THREE.TextureLoader().load( 'textures/fish.png' );
         var geometry = new THREE.PlaneGeometry( 50,50);
         var material = new THREE.MeshBasicMaterial( { map: texture } );
@@ -324,8 +318,7 @@
         planemesh.position.set( 100, 50, 0 );
     planemesh.lookAt( camera.position );
         scene.add( planemesh );
-    
-                
+        
         var texture = new THREE.TextureLoader().load( 'textures/fish.png' );
         var geometry = new THREE.PlaneGeometry( 50,50);
         var material = new THREE.MeshBasicMaterial( { map: texture } );
