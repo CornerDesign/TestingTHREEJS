@@ -256,6 +256,23 @@
 	// init renderer
 	
 	
+	loadingManager = new Three.LoadingManager();
+	loadingManager.onprogress = function(item,loaded,total){
+		console.log(item,loaded,total);
+	};
+	loadingManager.onload = function(){
+		console.log("loaded all resources");
+		RESOURCES_LOADED = true;			
+		OnResourcesLoaded();
+	};
+		
+		
+
+		
+		
+		
+		
+		
 	////////////////////////////////////////////////////////////////////////////////
 	//          handle arToolkitSource
 	////////////////////////////////////////////////////////////////////////////////
@@ -313,7 +330,7 @@
                 var helper = new THREE.Mesh( helperGeometry, helperMaterial );
                 scene.add( helper );	
 	*/
-	OnResourcesLoaded();
+
 		
 	var texture = new THREE.TextureLoader().load( 'textures/fish.png' );
         var geometry = new THREE.PlaneGeometry( 50,50);
@@ -361,22 +378,6 @@
 		});
 	    })(_key);
 	}
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 		
 		
     // Create a material
