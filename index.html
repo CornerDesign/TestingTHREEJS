@@ -204,10 +204,10 @@
     				}})
   			}	
                 })
-		domEvents.addEventListener(modelmesh, 'touchstart' , event =>{
+		domEvents.addEventListener(cubemesh, 'touchstart' , event =>{
                    this.t3 = new TimelineMax();
-                   this.t3.to(modelmesh.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut});
-		   this.t3.to(object.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut});
+                   this.t3.to(ourObj.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut});
+		   this.t3.to(cubemesh.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut});
 			CountNumber++;
 			document.getElementById("Counting").innerHTML = CountNumber;
 			if(CountNumber >= 2){
@@ -334,20 +334,8 @@
 	//////////////////////////////////////////////////////////////////////////////////
 	//		add model
 	//////////////////////////////////////////////////////////////////////////////////
-	
-	loader = new THREE.GLTFLoader();
-	loader.load( 'model/testmodel.glb' , handle_load);
-	function handle_load(gltf){
-		modelmesh = gltf.scene.children[0];
-		modelmesh.material = new THREE.MeshLambertMaterial();
-		scene.add(modelmesh);
-		modelmesh.position.set( -100, 150, 50 );
-		this.t4 = new TimelineMax();
-        	this.t4.to(modelmesh.rotation,1800 , {y:360,x:0,z:0 , ease: Power0.easeNone , repeat:-1});
-	}
-		
-
 	//Add a light
+/*
 	var light = new THREE.DirectionalLight( 0xffffff );
 	light.position.set( 1, 1, 1 );
 	scene.add( light );
@@ -357,9 +345,8 @@
 	// 环境光,无处不在
 	var light = new THREE.AmbientLight( 0x222222 );
 	scene.add( light );
-		
-	
-    var ourObj;
+*/
+
     // Create a material
     var mtlLoader = new THREE.MTLLoader();
     mtlLoader.load('model/Diamond.mtl',function(materials){
@@ -367,21 +354,19 @@
         //Load Obj
         var objLoader = new THREE.OBJLoader();
         objLoader.setMaterials(materials);
-        objLoader.load('model/Diamond.obj',function(object){
-            scene.add(object);
-            ourObj = object;
+        objLoader.load('model/Diamond.obj',function(ourObj){
+            scene.add(ourObj);
             ourObj.position.set(-100,50,50) ;	
             this.t4 = new TimelineMax();
             this.t4.to(ourObj.rotation,1800 , {y:360,x:0,z:0 , ease: Power0.easeNone , repeat:-1})
         });
-
     });
 	var cubegeometry = new THREE.BoxGeometry( 30 , 30 , 30 );
     	var cubematerial = new THREE.MeshBasicMaterial( {  color: 0xFFF000,  transparent : true,  opacity:0.5 });
    	cubemesh = new THREE.Mesh( cubegeometry, cubematerial );
     	cubemesh.position.set(-100,50,50) ;
     	scene.add( cubemesh );
-		
+
 	window.addEventListener( 'resize', onWindowResize, false );	
 }
 	//////////////////////////////////////////////////////////////////////////////////
