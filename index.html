@@ -184,7 +184,7 @@
 				document.getElementById("EndingGame").style.display = "block";
 				var EndGameAnim = new TimelineLite();
 				EndGameAnim.to("#EndingGame", 0.5 , { y:0,opacity:1 ,onComplete: function() {
-					renderer.domElement.style.top = '350px';
+					renderer.domElement.style.top = '600px';
     				}})
   			}	
                 })
@@ -200,7 +200,7 @@
 				document.getElementById("EndingGame").style.display = "block";
 				var EndGameAnim = new TimelineLite();
 				EndGameAnim.to("#EndingGame", 0.5 , { y:0,opacity:1 ,onComplete: function() {
-					renderer.domElement.style.top = '350px';
+					renderer.domElement.style.top = '600px';
     				}})
   			}	
                 })
@@ -363,7 +363,7 @@
 	var cubegeometry = new THREE.BoxGeometry( 30 , 30 , 30 );
     	var cubematerial = new THREE.MeshBasicMaterial( {  color: 0xFFF000,  transparent : true,  opacity:0.5 });
    	var cube = new THREE.Mesh( cubegeometry, cubematerial );
-    	cube.position.set(-100,50,50);
+    	cube.position.set = ourobjposition;
     	scene.add( cube );
     });	    
 
