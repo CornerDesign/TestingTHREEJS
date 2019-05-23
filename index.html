@@ -359,10 +359,10 @@
             this.t4 = new TimelineMax();
             this.t4.to(ourObj.rotation,1800 , {y:360,x:0,z:0 , ease: Power0.easeNone , repeat:-1})
         });
-	var cubegeometry = new THREE.BoxGeometry( 50 , 50 , 50 );
+	var cubegeometry = new THREE.BoxGeometry( 30 , 30 , 30 );
     	var cubematerial = new THREE.MeshBasicMaterial( {color: "rgba(255, 0, 0 , 0.3)" });
    	var cube = new THREE.Mesh( cubegeometry, cubematerial );
-    	cube.position.set( -100, 0, 0 );
+    	cube.position = object.position;
     	scene.add( cube );
     });	    
 
