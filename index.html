@@ -148,6 +148,7 @@
     var StartGame = false;
     var CountNumber = 0 ;
     var Language = "Chinese";
+    loadInfo();
     function LanguageFunction(language){
         Tutorial.style.display = "block";
         if(language == 1){
@@ -204,9 +205,11 @@
               }    
                 })
         domEvents.addEventListener(cubemesh, 'touchstart' , event =>{
-                   this.t3 = new TimelineMax();
-           this.t3.to(cubemesh.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut});
-                   this.t3.to(Diamond.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.5");
+            this.t3 = new TimelineMax();
+            this.t3.to(cubemesh.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut});
+            this.t3.to(Diamond.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.5");
+            scene.add( infored );
+            TweenMax.from(infored.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut});
             CountNumber++;
             document.getElementById("Counting").innerHTML = CountNumber;
             if(CountNumber >= 2){
@@ -357,12 +360,7 @@
        cubemesh = new THREE.Mesh( cubegeometry, cubematerial );
         cubemesh.position.set(-90,5,0) ;
         scene.add( cubemesh );
-        
-//Clone
-        
-var cubemeshClone = cubemesh.clone();
-cubemeshClone.position.set(-100,0,0);
-        
+
         
     //////////////////////////////////////////////////////////////////////////////////
             //Add a light
@@ -387,6 +385,16 @@ cubemeshClone.position.set(-100,0,0);
 }
     //////////////////////////////////////////////////////////////////////////////////
 
+            
+  function loadInfo(){
+    var texture = new THREE.TextureLoader().load( 'textures/fish.png' );
+    var geometry = new THREE.PlaneGeometry( 50,50);
+    var material = new THREE.SpriteMaterial( { map: texture } );
+    infored = new THREE.Mesh( geometry, material );
+  }          
+            
+            
+            
     function animate() {
                 window.requestAnimationFrame( animate );
                 controls.update();
