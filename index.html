@@ -376,12 +376,13 @@
             this.t4 = new TimelineMax();
             this.t4.to(ourObj.rotation,1800 , {y:360,x:0,z:0 , ease: Power0.easeNone , repeat:-1})
         });
+
+    });	    
 	var cubegeometry = new THREE.BoxGeometry( 30 , 30 , 30 );
     	var cubematerial = new THREE.MeshBasicMaterial( {  color: 0xFFF000,  transparent : true,  opacity:0.5 });
    	var cube = new THREE.Mesh( cubegeometry, cubematerial );
     	cube.position.set(-100,50,50) ;
     	scene.add( cube );
-    });	    
 
 	window.addEventListener( 'resize', onWindowResize, false );	
 }
