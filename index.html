@@ -203,8 +203,9 @@
     				}})
   			}	
                 })
-		domEvents.addEventListener(Diamond, 'touchstart' , event =>{
+		domEvents.addEventListener(cubemesh, 'touchstart' , event =>{
                    this.t3 = new TimelineMax();
+		   this.t3.to(cubemesh.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut});
                    this.t3.to(Diamond.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut});
 			CountNumber++;
 			document.getElementById("Counting").innerHTML = CountNumber;
@@ -357,13 +358,18 @@
 	    modelobject = ourObj;
             scene.add(modelobject);
 	    modelobject.name = "Diamond";
-	    Diamond = scene.getObjectByName("Diamond"); 
+	    Diamond = scene.getObjectByName("Diamond");
             modelobject.position.set(-100,50,50) ;	
             this.t4 = new TimelineMax();
             this.t4.to(modelobject.rotation,1800 , {y:360,x:0,z:0 , ease: Power0.easeNone , repeat:-1})
         });
     });
-	
+	var cubegeometry = new THREE.BoxGeometry( 20 , 20 , 20 );
+    	var cubematerial = new THREE.MeshBasicMaterial( {  color: 0xFFF000,  transparent : true,  opacity:0.5 });
+   	cubemesh = new THREE.Mesh( cubegeometry, cubematerial );
+    	cubemesh.position.set(-100,50,50) ;
+    	scene.add( cubemesh );
+		
 	window.addEventListener( 'resize', onWindowResize, false );	
 }
 	//////////////////////////////////////////////////////////////////////////////////
