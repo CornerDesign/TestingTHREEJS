@@ -256,18 +256,6 @@
 	controls = new THREE.DeviceOrientationControls( camera );
 	scene.add(camera);
 	// init renderer
-	
-	/*
-	loadingManager = new THREE.LoadingManager();
-	loadingManager.onprogress = function(item,loaded,total){
-		console.log(item,loaded,total);
-	};
-	loadingManager.onload = function(){
-		console.log("loaded all resources");
-		onResourcesLoaded();
-	};
-	*/	
-		
 		
 	////////////////////////////////////////////////////////////////////////////////
 	//          handle arToolkitSource
@@ -374,8 +362,15 @@
 		});
 	    })(_key);
 	}
-	Loadmodel();
-		
+	
+	loadingManager = new THREE.LoadingManager();
+	loadingManager.onprogress = function(item,loaded,total){
+		console.log(item,loaded,total);
+	};
+	loadingManager.onload = function(){
+		console.log("loaded all resources");
+		onResourcesLoaded();
+	};
     // Create a material
 /*
 var mtlLoader = new THREE.MTLLoader();
@@ -425,7 +420,7 @@ var mtlLoader = new THREE.MTLLoader();
 }
 	//////////////////////////////////////////////////////////////////////////////////
 	// Run when all resources loaded
-	function Loadmodel(){
+	function onResourcesLoaded(){
 		meshes["Daimond1"] = models.Daimond.mesh.clone();
 		meshes["Daimond2"] = models.Daimond.mesh.clone();
 		meshes["Daimond3"] = models.Daimond.mesh.clone();
