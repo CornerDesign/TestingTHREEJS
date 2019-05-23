@@ -204,6 +204,23 @@
     				}})
   			}	
                 })
+	      	domEvents.addEventListener(cube , 'touchstart' , event =>{
+                   this.t3 = new TimelineMax();
+                   this.t3.to(cube.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut});
+		   this.t3.to(ourObj.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut});
+			CountNumber++;
+			document.getElementById("Counting").innerHTML = CountNumber;
+			if(CountNumber >= 2){
+				controls.enable = false;
+				document.getElementById("Background").style.display = "block";
+				TweenMax.to("#Background", 0.5 , { y:0,opacity:1});
+				document.getElementById("EndingGame").style.display = "block";
+				var EndGameAnim = new TimelineLite();
+				EndGameAnim.to("#EndingGame", 0.5 , { y:0,opacity:1 ,onComplete: function() {
+					renderer.domElement.style.top = '600px';
+    				}})
+  			}	
+                })
 	}
 		
 	var camera, scene, renderer, controls;	
@@ -345,7 +362,6 @@
 		
 	
     var ourObj;
-    var ourobjposition = new THREE.Vector3( -100, 50, 50 );
     // Create a material
     var mtlLoader = new THREE.MTLLoader();
     mtlLoader.load('model/Diamond.mtl',function(materials){
@@ -363,7 +379,7 @@
 	var cubegeometry = new THREE.BoxGeometry( 30 , 30 , 30 );
     	var cubematerial = new THREE.MeshBasicMaterial( {  color: 0xFFF000,  transparent : true,  opacity:0.5 });
    	var cube = new THREE.Mesh( cubegeometry, cubematerial );
-    	cube.position.set = ourObj.position.set;
+    	cube.position.set(-100,50,50) ;
     	scene.add( cube );
     });	    
 
