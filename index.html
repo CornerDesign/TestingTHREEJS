@@ -346,7 +346,9 @@
             scene.add(modelobject);
 	    modelobject.name = "Diamond";
 	    Diamond = scene.getObjectByName("Diamond");
-            modelobject.position.set(-100,50,50) ;	
+            Diamond.position.x = -100;
+	    Diamond.position.y = 50;
+	    Diamond.position.z = 50;
             this.t4 = new TimelineMax();
             this.t4.to(modelobject.rotation,1800 , {y:360,x:0,z:0 , ease: Power0.easeNone , repeat:-1})
         });
