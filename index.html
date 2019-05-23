@@ -354,19 +354,19 @@
         
         
         //Load Obj
-        var material = new THREE.MeshBasicMaterial( {  color: 0xFFF000,  transparent : true,  opacity:0.1 });
-        var objLoader = new THREE.OBJLoader();
-        objLoader.setMaterials(material);
-        objLoader.load('model/Diamond.obj',function(modelmesh){
-        scene.add(modelmesh);
-        modelmesh.name = "Diamond1";
+        var loader = new THREE.OBJLoader()
+        loader.load( 'model/Diamond.obj', function ( object ) {
+                   object.traverse( function ( child ) {
+                             if ( child instanceof THREE.Mesh ) {
+                                  child.material.color.setHex(0x00FF00);
+                             }
+                     } );
+        object.name = "Diamond1";
         Diamond1 = scene.getObjectByName("Diamond1");
         Diamond1.scale.set(0.5,0.5,0.5);
-        Diamond1.position.x = -100;
-        Diamond1.position.y = 50;
-        Diamond1.position.z = 0;
-        this.t5 = new TimelineMax();
-        this.t5.to(Diamond.rotation,1800 , {y:360,x:0,z:0 , ease: Power0.easeNone , repeat:-1})
+        Diamond1.position.set(-100,50,0);
+                    scene.add( Diamond1 );             
+            } );
     });
         
         
