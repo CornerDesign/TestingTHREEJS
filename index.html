@@ -204,9 +204,9 @@
     				}})
   			}	
                 })
-	      	domEvents.addEventListener(cube , 'touchstart' , event =>{
+	      	domEvents.addEventListener(cubemesh , 'touchstart' , event =>{
                    this.t3 = new TimelineMax();
-                   this.t3.to(cube.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut});
+                   this.t3.to(cubemesh.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut});
 		   this.t3.to(ourObj.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut});
 			CountNumber++;
 			document.getElementById("Counting").innerHTML = CountNumber;
@@ -346,9 +346,6 @@
 	}
 		*/
 
-	
-
-		
 	//Add a light
 	var light = new THREE.DirectionalLight( 0xffffff );
 	light.position.set( 1, 1, 1 );
@@ -377,12 +374,13 @@
             this.t4.to(ourObj.rotation,1800 , {y:360,x:0,z:0 , ease: Power0.easeNone , repeat:-1})
         });
 
-    });	    
+    });
+		
 	var cubegeometry = new THREE.BoxGeometry( 30 , 30 , 30 );
     	var cubematerial = new THREE.MeshBasicMaterial( {  color: 0xFFF000,  transparent : true,  opacity:0.5 });
-   	var cube = new THREE.Mesh( cubegeometry, cubematerial );
-    	cube.position.set(-100,50,50) ;
-    	scene.add( cube );
+   	var cubemesh = new THREE.Mesh( cubegeometry, cubematerial );
+    	cubemesh.position.set(-100,50,50) ;
+    	scene.add( cubemesh );
 
 	window.addEventListener( 'resize', onWindowResize, false );	
 }
