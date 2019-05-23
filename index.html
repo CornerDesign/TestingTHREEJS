@@ -170,7 +170,7 @@
 		TweenMax.to("#Tutorial", 0.5 , { opacity:0 ,delay:5} );
 		init();
 		animate();
-		
+		TweenMax.to(ourObj.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut});
 		var domEvents = new THREEx.DomEvents(camera, renderer.domElement);
             	domEvents.addEventListener(planemesh, 'touchstart' , event =>{
                     this.t1 = new TimelineMax();
