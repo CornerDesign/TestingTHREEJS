@@ -340,7 +340,6 @@
 	function handle_load(gltf){
 		modelmesh = gltf.scene.children[0];
 		modelmesh.material = new THREE.MeshLambertMaterial();
-		modelmesh = new THREE.Mesh( geometry, material );
 		scene.add(modelmesh);
 		modelmesh.position.set( -100, 150, 50 );
 		this.t4 = new TimelineMax();
