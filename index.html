@@ -360,7 +360,7 @@
             this.t4.to(ourObj.rotation,1800 , {y:360,x:0,z:0 , ease: Power0.easeNone , repeat:-1})
         });
     var geometry = new THREE.BoxGeometry( 1, 1, 1 );
-    var material = new THREE.MeshBasicMaterial( {color: rgba(0,0,0,30)} );
+    var material = new THREE.MeshBasicMaterial( {color: rgba(255, 0, 0, 0.2)} );
     var cube = new THREE.Mesh( geometry, material );
     cube.position = object.position;
     scene.add( cube );
