@@ -341,8 +341,8 @@
         var objLoader = new THREE.OBJLoader();
         objLoader.setMaterials(materials);
         objLoader.load('model/Diamond.obj',function(ourObj){
-            scene.add(modelobject);
-	    modelobject.name = "Diamond";
+            scene.add(ourObj);
+	    ourObj.name = "Diamond";
 	    Diamond = scene.getObjectByName("Diamond");
             Diamond.position.x = -100;
 	    Diamond.position.y = 50;
@@ -359,7 +359,7 @@
     	scene.add( cubemesh );
 		
 //Clone
-var DiamondClone = modelobject.clone();
+var DiamondClone = Diamond.clone();
 DiamondClone.position.set(-100,0,0);
 		
 var cubemeshClone = cubemesh.clone();
