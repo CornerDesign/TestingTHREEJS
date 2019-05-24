@@ -365,7 +365,7 @@
             //寶石消失
             this.R1.to(DiamondR1.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.5");
             
-            var texture = new THREE.TextureLoader().load( 'textures/fish.png' );
+            var texture = new THREE.TextureLoader().load( 'textures/redpeople.png' );
             var geometry = new THREE.PlaneGeometry( 50,50);
             var material = new THREE.MeshBasicMaterial( { map: texture } );
             DiamondR1info = new THREE.Mesh( geometry, material );
