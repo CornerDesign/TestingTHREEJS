@@ -421,7 +421,7 @@
             DiamondP1cube = scene.getObjectByName("DiamondP1cube"); 
             this.P1.to(DiamondP1cube.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut});
             //定義寶石名稱
-            DiamondP1 = scene.getObjectByName("DiamondP1cube"); 
+            DiamondP1 = scene.getObjectByName("DiamondP1"); 
             //寶石消失
             this.P1.to(DiamondP1.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.5");
             
@@ -462,7 +462,7 @@
     function EndGameCountDown(){  
         CountNumber++;
         document.getElementById("Counting").innerHTML = CountNumber;
-        if(CountNumber >= 2){
+        if(CountNumber >= 5){
             controls.enable = false;
             document.getElementById("Background").style.display = "block";
             TweenMax.to("#Background", 0.5 , { y:0,opacity:1});
