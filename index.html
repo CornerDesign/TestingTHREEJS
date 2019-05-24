@@ -438,23 +438,23 @@
         }
         if(DName == "Y1"){
             this.Y1 = new TimelineMax();
-            Diamond5cube = scene.getObjectByName("Diamond5cube"); 
-            this.Y1.to(Diamond5cube.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut});
+            DiamondY1cube = scene.getObjectByName("DiamondY1cube"); 
+            this.Y1.to(DiamondY1cube.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut});
             //定義寶石名稱
-            Diamond5 = scene.getObjectByName("Diamond5"); 
+            DiamondY1 = scene.getObjectByName("DiamondY1"); 
             //寶石消失
-            this.Y1.to(Diamond5.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.5");
+            this.Y1.to(DiamondY1.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.5");
             
             var texture = new THREE.TextureLoader().load( 'textures/redpeople.png' );
             var geometry = new THREE.PlaneGeometry( 50,50);
             var material = new THREE.MeshBasicMaterial( { map: texture } );
-            infored = new THREE.Mesh( geometry, material );
-            infored.position.x = Diamond5.position.x;
-            infored.position.y = Diamond5.position.y;
-            infored.position.z = Diamond5.position.z;            
-            infored.lookAt( camera.position );
-            scene.add( infored );
-            this.Y1.from(infored.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut});
+            DiamondY1info = new THREE.Mesh( geometry, material );
+            DiamondY1info.position.x = DiamondY1.position.x;
+            DiamondY1info.position.y = DiamondY1.position.y;
+            DiamondY1info.position.z = DiamondY1.position.z;            
+            DiamondY1info.lookAt( camera.position );
+            scene.add( DiamondY1info );
+            this.Y1.from(DiamondY1info.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut});
         }
         EndGameCountDown();
     }
