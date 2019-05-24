@@ -188,8 +188,8 @@
               }    
                 })
                domEvents.addEventListener(planemesh2, 'touchstart' , event =>{
-                   this.t2 = new TimelineMax();
-                   this.t2.to(planemesh2.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut});
+                   infoanim("R2");
+
             CountNumber++;
             document.getElementById("Counting").innerHTML = CountNumber;
             if(CountNumber >= 2){
@@ -204,7 +204,7 @@
               }    
                 })
         domEvents.addEventListener(cubemesh, 'touchstart' , event =>{
-            infoanim();
+            infoanim("R1");
             CountNumber++;
             document.getElementById("Counting").innerHTML = CountNumber;
             if(CountNumber >= 2){
@@ -222,7 +222,8 @@
     }
         
     var camera, scene, renderer, controls;    
-    function init(){    
+    function init(){
+    // init renderer
     renderer = new THREE.WebGLRenderer({
         antialias: true,
         alpha: true
@@ -239,18 +240,14 @@
     scene    = new THREE.Scene();
     
     //////////////////////////////////////////////////////////////////////////////////
-    //        Initialize a basic camera
-    //////////////////////////////////////////////////////////////////////////////////
-    // Create a camera
+    //          Create a camera
     camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 1, 1100 );
     controls = new THREE.DeviceOrientationControls( camera );
     scene.add(camera);
-    // init renderer
-    
     
     ////////////////////////////////////////////////////////////////////////////////
     //          handle arToolkitSource
-    ////////////////////////////////////////////////////////////////////////////////
+        
     var arToolkitSource = new THREEx.ArToolkitSource({
         // to read from the webcam
         sourceType : 'webcam',        
@@ -271,10 +268,10 @@
             arToolkitSource.copySizeTo(arToolkitContext.arController.canvas)    
         }    
     }
+        
     ////////////////////////////////////////////////////////////////////////////////
     //          initialize arToolkitContext
-    ////////////////////////////////////////////////////////////////////////////////
-    
+
     // create atToolkitContext
     var arToolkitContext = new THREEx.ArToolkitContext({
         cameraParametersUrl: THREEx.ArToolkitContext.baseURL + '../data/data/camera_para.dat',
@@ -296,7 +293,6 @@
         
     //////////////////////////////////////////////////////////////////////////////////
     //        add an object in the scene
-    //////////////////////////////////////////////////////////////////////////////////
         
     var texture = new THREE.TextureLoader().load( 'textures/fish.png' );
         var geometry = new THREE.PlaneGeometry( 50,50);
@@ -367,11 +363,11 @@
         
         
 
-            AddNewModel( NameArray[0] , ColorArray[0] ,-100,10,0);
-            console.log("Name"+NameArray[0] +"Color"+ ColorArray[0]);
+    AddNewModel( NameArray[0] , ColorArray[0] ,-100,10,0);
+    console.log("Name"+NameArray[0] +"Color"+ ColorArray[0]);
 
-            AddNewModel( NameArray[1] , ColorArray[1] ,-100,30,0);
-            console.log("Name"+NameArray[1] +"Color"+ ColorArray[1]);
+    AddNewModel( NameArray[1] , ColorArray[1] ,-100,30,0);
+    console.log("Name"+NameArray[1] +"Color"+ ColorArray[1]);
     //////////////////////////////////////////////////////////////////////////////////
             //Add a light
 
@@ -384,15 +380,10 @@
     // 环境光,无处不在
     var light = new THREE.AmbientLight( 0x222222 );
     scene.add( light );
-
-        
         
     window.addEventListener( 'resize', onWindowResize, false );    
 }
-    //////////////////////////////////////////////////////////////////////////////////  
-            
-            
-            
+    //////////////////////////////////////////////////////////////////////////////////     
     function animate() {
                 window.requestAnimationFrame( animate );
                 controls.update();
@@ -422,13 +413,15 @@
             
 
     //要出現的資訊        
-    function infoanim(){
+    function infoanim(DName){
+        if(DName = "R1")
             this.t3 = new TimelineMax();
             this.t3.to(cubemesh.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut});
             this.t3.to(Diamond.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.5");
-
-            Diamond1 = scene.getObjectByName("Diamond1");
+            //定義寶石名稱
+            Diamond1 = scene.getObjectByName("Diamond1"); 
             Diamond2 = scene.getObjectByName("Diamond2");
+            //寶石消失
             this.t3.to(Diamond1.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.5");
             this.t3.to(Diamond2.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.5");
         
@@ -441,6 +434,11 @@
             infored.lookAt( camera.position );
             scene.add( infored );
             this.t3.from(infored.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut});
+        }
+        if(DName = "R2"){
+            this.t2 = new TimelineMax();
+            this.t2.to(planemesh2.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut});
+        }
     }        
         </script>
     </body>
