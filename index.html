@@ -298,10 +298,10 @@
 
         
         AddNewModel( NameArray[0] , ColorArray[0] ,-100,30,-30);
-        AddNewModel( NameArray[1] , ColorArray[1] ,-100,10,-25);
-        AddNewModel( NameArray[2] , ColorArray[2] ,-100,20,0);
-        AddNewModel( NameArray[3] , ColorArray[3] ,-100,30,25);
-        AddNewModel( NameArray[4] , ColorArray[4] ,-100,20,50);
+        AddNewModel( NameArray[1] , ColorArray[1] ,100,10,-25);
+        AddNewModel( NameArray[2] , ColorArray[2] ,20,100,0);
+        AddNewModel( NameArray[3] , ColorArray[3] ,100,30,25);
+        AddNewModel( NameArray[4] , ColorArray[4] ,20,-100,50);
         
     //Add a light
 
@@ -375,7 +375,7 @@
             DiamondR1people.lookAt( camera.position );
             scene.add( DiamondR1people );
             var texture = new THREE.TextureLoader().load( 'textures/redinfo.png' );
-            var geometry = new THREE.PlaneGeometry( 50,50);
+            var geometry = new THREE.PlaneGeometry( 60,60);
             var material = new THREE.MeshBasicMaterial( { map: texture ,transparent: true, opacity: 0.95 } );
             DiamondR1info = new THREE.Mesh( geometry, material );
             DiamondR1info.position.x = DiamondR1.position.x;
@@ -384,7 +384,7 @@
             DiamondR1info.lookAt( camera.position );
             scene.add( DiamondR1info );
             this.R1.from(DiamondR1people.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.5");
-            this.R1.from(DiamondR1info.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.4");
+            this.R1.from(DiamondR1info.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.35");
         }
         if(DName == "G1"){
             this.G1 = new TimelineMax();
@@ -405,7 +405,7 @@
             DiamondG1people.lookAt( camera.position );
             scene.add( DiamondG1people );
             var texture = new THREE.TextureLoader().load( 'textures/redinfo.png' );
-            var geometry = new THREE.PlaneGeometry( 50,50);
+            var geometry = new THREE.PlaneGeometry( 60,60);
             var material = new THREE.MeshBasicMaterial( { map: texture ,transparent: true, opacity: 0.95 } );
             DiamondG1info = new THREE.Mesh( geometry, material );
             DiamondG1info.position.x = DiamondG1.position.x;
@@ -414,7 +414,7 @@
             DiamondG1info.lookAt( camera.position );
             scene.add( DiamondG1info );
             this.G1.from(DiamondG1people.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.5");
-            this.G1.from(DiamondG1info.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.4");
+            this.G1.from(DiamondG1info.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.35");
         }
         if(DName == "B1"){
             this.B1 = new TimelineMax();
@@ -435,7 +435,7 @@
             DiamondB1people.lookAt( camera.position );
             scene.add( DiamondB1people );
             var texture = new THREE.TextureLoader().load( 'textures/redinfo.png' );
-            var geometry = new THREE.PlaneGeometry( 50,50);
+            var geometry = new THREE.PlaneGeometry( 60,60);
             var material = new THREE.MeshBasicMaterial( { map: texture ,transparent: true, opacity: 0.95 } );
             DiamondB1info = new THREE.Mesh( geometry, material );
             DiamondB1info.position.x = DiamondB1.position.x;
@@ -444,7 +444,7 @@
             DiamondB1info.lookAt( camera.position );
             scene.add( DiamondB1info );
             this.B1.from(DiamondB1people.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.5");
-            this.B1.from(DiamondB1info.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.4");
+            this.B1.from(DiamondB1info.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.35");
         }
         if(DName == "P1"){
             this.P1 = new TimelineMax();
@@ -465,7 +465,7 @@
             DiamondP1people.lookAt( camera.position );
             scene.add( DiamondP1people );
             var texture = new THREE.TextureLoader().load( 'textures/redinfo.png' );
-            var geometry = new THREE.PlaneGeometry( 50,50);
+            var geometry = new THREE.PlaneGeometry( 60,60);
             var material = new THREE.MeshBasicMaterial( { map: texture ,transparent: true, opacity: 0.95 } );
             DiamondP1info = new THREE.Mesh( geometry, material );
             DiamondP1info.position.x = DiamondP1.position.x;
@@ -474,7 +474,7 @@
             DiamondP1info.lookAt( camera.position );
             scene.add( DiamondP1info );
             this.P1.from(DiamondP1people.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.5");
-            this.P1.from(DiamondP1info.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.4");
+            this.P1.from(DiamondP1info.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.35");
         }
         if(DName == "Y1"){
             this.Y1 = new TimelineMax();
@@ -495,7 +495,7 @@
             DiamondY1people.lookAt( camera.position );
             scene.add( DiamondY1people );
             var texture = new THREE.TextureLoader().load( 'textures/redinfo.png' );
-            var geometry = new THREE.PlaneGeometry( 50,50);
+            var geometry = new THREE.PlaneGeometry( 60,60);
             var material = new THREE.MeshBasicMaterial( { map: texture ,transparent: true, opacity: 0.95 } );
             DiamondY1info = new THREE.Mesh( geometry, material );
             DiamondY1info.position.x = DiamondY1.position.x;
@@ -504,7 +504,7 @@
             DiamondY1info.lookAt( camera.position );
             scene.add( DiamondY1info );
             this.Y1.from(DiamondY1people.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.5");
-            this.Y1.from(DiamondY1info.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.4");
+            this.Y1.from(DiamondY1info.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.35");
         }
         EndGameCountDown();
     }
