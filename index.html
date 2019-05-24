@@ -486,7 +486,7 @@
             this.Y1.to(DiamondY1.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.5");
             
             var texture = new THREE.TextureLoader().load( 'textures/redpeople1.png' );
-            var geometry = new THREE.PlaneGeometry( 12.6,28.6 );
+            var geometry = new THREE.PlaneGeometry( 12.6,28.6 );//腳色*2
             var material = new THREE.MeshBasicMaterial( { map: texture ,transparent: true, opacity: 0.95 } );
             DiamondY1people = new THREE.Mesh( geometry, material );
             DiamondY1people.position.x = DiamondY1.position.x;
