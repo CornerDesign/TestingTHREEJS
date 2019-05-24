@@ -355,7 +355,10 @@
             var geometry = new THREE.PlaneGeometry( 50,50);
             var material = new THREE.MeshBasicMaterial( { map: texture } );
             infored = new THREE.Mesh( geometry, material );
-            infored.position =Diamond1.position;
+            infored.position.set =Diamond1.position.set;
+            
+            
+            
             infored.lookAt( camera.position );
             scene.add( infored );
             this.t3.from(infored.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut});
@@ -373,7 +376,7 @@
             var geometry = new THREE.PlaneGeometry( 50,50);
             var material = new THREE.MeshBasicMaterial( { map: texture } );
             infored = new THREE.Mesh( geometry, material );
-            infored.position = Diamond2.position;
+            infored.position.set = Diamond2.position.set;
             infored.lookAt( camera.position );
             scene.add( infored );
             this.t3.from(infored.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut});
