@@ -429,18 +429,22 @@
                 camera.updateProjectionMatrix();
                 renderer.setSize( window.innerWidth, window.innerHeight );
             }
- function AddNewModel( MeshName , ModelColor , x , y , z){ 
+ function AddNewModel( MeshName , ModelColor , x , y , z){
+        var snowden;
         var loader = new THREE.OBJLoader()
         loader.load( 'model/Diamond.obj', function ( object ) {
-                   object.traverse( function ( child ) {
+            snowden = new THREE.Mesh(
+            object,new THREE.MeshNormalMaterial()})
+/*                    object.traverse( function ( child ) {
                              if ( child instanceof THREE.Mesh ) {
                                   child.material.color.setHex(ModelColor);
                              }
-                     } );
-        scene.add( object );
-        object.scale.set(0.5,0.5,0.5);
-        object.name = MeshName; 
-        object.position.set(-100,30,0);
+                     } */
+        );
+        scene.add( snowden );
+        snowden.scale.set(0.5,0.5,0.5);
+        snowden.name = MeshName; 
+        snowden.position.set(-100,30,0);
         console.log("Name"+object.name +"Color"+ ModelColor + "object.position"+object.position.y);
          });
  }
