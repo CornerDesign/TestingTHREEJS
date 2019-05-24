@@ -177,10 +177,10 @@
         init();
         animate();
         var domEvents = new THREEx.DomEvents(camera, renderer.domElement);
-        domEvents.addEventListener(scene.getObjectByName("Diamond1cube").mesh, 'touchstart' , event =>{
+        domEvents.addEventListener(scene.getObjectByName("Diamond1cube"), 'touchstart' , event =>{
             infoanim("R1");
         })
-        domEvents.addEventListener(scene.getObjectByName("Diamond2cube").mesh, 'touchstart' , event =>{
+        domEvents.addEventListener(scene.getObjectByName("Diamond2cube"), 'touchstart' , event =>{
             infoanim("R2");
         })
     }
