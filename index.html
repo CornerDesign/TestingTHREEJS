@@ -344,6 +344,7 @@
     function infoanim(DName){
         if(DName == "R1"){
             this.t3 = new TimelineMax();
+            Diamond1cube = scene.getObjectByName("Diamond1cube"); 
             this.t3.to(Diamond1cube.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut});
             //定義寶石名稱
             Diamond1 = scene.getObjectByName("Diamond1"); 
@@ -361,6 +362,7 @@
         }
         if(DName == "R2"){
             this.t3 = new TimelineMax();
+            Diamond2cube = scene.getObjectByName("Diamond2cube"); 
             this.t3.to(Diamond2cube.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut});
             //定義寶石名稱
             Diamond2 = scene.getObjectByName("Diamond2"); 
