@@ -261,47 +261,25 @@
         
     //////////////////////////////////////////////////////////////////////////////////
     //        add an object in the scene
-    /*    
-    var texture = new THREE.TextureLoader().load( 'textures/fish.png' );
-        var geometry = new THREE.PlaneGeometry( 50,50);
-        var material = new THREE.MeshBasicMaterial( { map: texture } );
-        planemesh = new THREE.Mesh( geometry, material );
+    var ColorArray = new Array();
+    ColorArray[0] = '0xff0000';
+    ColorArray[1] = '0x00FF00';
+    ColorArray[2] = '0x0000FF';
+    ColorArray[3] = '0x6600ff';
+    ColorArray[4] = '0xffff00';
         
-        //planemesh.rotation.y = 90 ;
-        planemesh.position.set( 100, 50, 0 );
-        planemesh.lookAt( camera.position );
-        scene.add( planemesh );
+    var NameArray = new Array();
+    NameArray[0] = 'DiamondR1';
+    NameArray[1] = 'DiamondG1';
+    NameArray[2] = 'DiamondB1';
+    NameArray[3] = 'DiamondP1';
+    NameArray[4] = 'DiamondY1';
         
-        var texture = new THREE.TextureLoader().load( 'textures/fish.png' );
-        var geometry = new THREE.PlaneGeometry( 50,50);
-        var material = new THREE.MeshBasicMaterial( { map: texture } );
-        planemesh2 = new THREE.Mesh( geometry, material );
-        //planemesh2.rotation.y = 90 ;
-        planemesh2.position.set( -100,0, 100 );
-        planemesh2.lookAt( camera.position );
-        scene.add( planemesh2 );
-      */  
-
-        var ColorArray = new Array();
-        ColorArray[0] = '0xff0000';
-        ColorArray[1] = '0x00FF00';
-        ColorArray[2] = '0x0000FF';
-        ColorArray[3] = '0x6600ff';
-        ColorArray[4] = '0xffff00';
-        
-        var NameArray = new Array();
-        NameArray[0] = 'DiamondR1';
-        NameArray[1] = 'DiamondG1';
-        NameArray[2] = 'DiamondB1';
-        NameArray[3] = 'DiamondP1';
-        NameArray[4] = 'DiamondY1';
-
-        
-        AddNewModel( NameArray[0] , ColorArray[0] ,-100,30,-30);
-        AddNewModel( NameArray[1] , ColorArray[1] ,100,10,-25);
-        AddNewModel( NameArray[2] , ColorArray[2] ,20,0,100);
-        AddNewModel( NameArray[3] , ColorArray[3] ,100,30,25);
-        AddNewModel( NameArray[4] , ColorArray[4] ,20,-20,-100);
+    AddNewModel( NameArray[0] , ColorArray[0] ,-100,30,-30);
+    AddNewModel( NameArray[1] , ColorArray[1] ,100,10,-25);
+    AddNewModel( NameArray[2] , ColorArray[2] ,20,0,100);
+    AddNewModel( NameArray[3] , ColorArray[3] ,100,30,25);
+    AddNewModel( NameArray[4] , ColorArray[4] ,20,-20,-100);
         
     //Add a light
 
