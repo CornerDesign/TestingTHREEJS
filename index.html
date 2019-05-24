@@ -371,7 +371,8 @@
             console.log("Name"+NameArray[0] +"Color"+ ColorArray[0]);
 //            Diamond1.getObjectByName("Diamond1").position.set(-100,10,0);
             Diamond1 =  scene.getObjectByName("Diamond1");
-
+            this.t4 = new TimelineMax();
+            this.t4.to(Diamond1.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.5");
         
             AddNewModel( NameArray[1] , ColorArray[1] ,-100,30,0);
             console.log("Name"+NameArray[1] +"Color"+ ColorArray[1]);
