@@ -386,8 +386,10 @@
             scene.add( object );
             object.scale.set(0.5,0.5,0.5);
             object.name = MeshName;
+                
             object.position.set(x,y,z);
             console.log("Name"+object.name +"Color"+ ModelColor + "object.position"+object.position.y);
+            MeshName =  scene.getObjectByName(MeshName);
             });
         }
 //            Diamond2 =  scene.getObjectByName("Diamond2");
@@ -452,9 +454,9 @@
             this.t3 = new TimelineMax();
             this.t3.to(cubemesh.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut});
             this.t3.to(Diamond.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.5");
-            Diamond1 =  scene.getObjectByName("Diamond1");
+//            Diamond1 =  scene.getObjectByName("Diamond1");
             this.t3.to(Diamond1.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.5");
-            Diamond2 =  scene.getObjectByName("Diamond2");
+//            Diamond2 =  scene.getObjectByName("Diamond2");
             this.t3.to(Diamond2.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.5");
             var texture = new THREE.TextureLoader().load( 'textures/fish.png' );
             var geometry = new THREE.PlaneGeometry( 50,50);
