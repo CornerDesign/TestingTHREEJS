@@ -164,7 +164,7 @@
             document.getElementById("tutorialtext").innerHTML = "Turn your Phone to find power stone" ;
             console.log("English");
         }
-    StartGamefunction();
+        StartGamefunction();
     }
     
     function StartGamefunction(){
@@ -187,57 +187,53 @@
             infoanim("R1");
         })
     }
-    var camera, scene, renderer, controls;    
+    var camera, scene, renderer, controls;
+    
     function init(){
-    // init renderer
-    renderer = new THREE.WebGLRenderer({
-        antialias: true,
-        alpha: true
-    });
-    renderer.setClearColor(new THREE.Color('lightgrey'), 0)
-    renderer.setSize( 640, 480 );
-    renderer.domElement.style.position = 'absolute'
-    renderer.domElement.style.top = '0px'
-    renderer.domElement.style.left = '0px'
-    document.body.appendChild( renderer.domElement );
-    // array of functions for the rendering loop
-    var onRenderFcts= [];
-    // init scene and camera
-    scene    = new THREE.Scene();
+        // init renderer
+        renderer = new THREE.WebGLRenderer({
+            antialias: true,
+            alpha: true
+        });
+        renderer.setClearColor(new THREE.Color('lightgrey'), 0)
+        renderer.setSize( 640, 480 );
+        renderer.domElement.style.position = 'absolute'
+        renderer.domElement.style.top = '0px'
+        renderer.domElement.style.left = '0px'
+        document.body.appendChild( renderer.domElement );
+        // array of functions for the rendering loop
+        var onRenderFcts= [];
+        // init scene and camera
+        scene = new THREE.Scene();
+   
+        //Create a camera
+        camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 1, 1100 );
+        controls = new THREE.DeviceOrientationControls( camera );
+        scene.add(camera);
     
-    //////////////////////////////////////////////////////////////////////////////////
-    //          Create a camera
-    camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 1, 1100 );
-    controls = new THREE.DeviceOrientationControls( camera );
-    scene.add(camera);
-    
-    ////////////////////////////////////////////////////////////////////////////////
-    //          handle arToolkitSource
+        //handle arToolkitSource
+        var arToolkitSource = new THREEx.ArToolkitSource({
+            sourceType : 'webcam',        
+        })
         
-    var arToolkitSource = new THREEx.ArToolkitSource({
-        // to read from the webcam
-        sourceType : 'webcam',        
-    })
-    arToolkitSource.init(function onReady(){
-        onResize()
-    })
+        arToolkitSource.init(function onReady(){
+            onResize()
+        })
     
-    // handle resize
-    window.addEventListener('resize', function(){
-        onResize()
-    })
+        // handle resize
+        window.addEventListener('resize', function(){
+            onResize()
+        })
         
-    function onResize(){
-        arToolkitSource.onResize()    
-        arToolkitSource.copySizeTo(renderer.domElement)    
-        if( arToolkitContext.arController !== null ){
-            arToolkitSource.copySizeTo(arToolkitContext.arController.canvas)    
+        function onResize(){
+            arToolkitSource.onResize()    
+            arToolkitSource.copySizeTo(renderer.domElement)    
+            if( arToolkitContext.arController !== null ){
+                arToolkitSource.copySizeTo(arToolkitContext.arController.canvas)    
         }    
     }
         
-    ////////////////////////////////////////////////////////////////////////////////
-    //          initialize arToolkitContext
-
+    //initialize arToolkitContext
     // create atToolkitContext
     var arToolkitContext = new THREEx.ArToolkitContext({
         cameraParametersUrl: THREEx.ArToolkitContext.baseURL + '../data/data/camera_para.dat',
@@ -279,13 +275,7 @@
         planemesh2.lookAt( camera.position );
         scene.add( planemesh2 );
         
-    
-
-    
-    //////////////////////////////////////////////////////////////////////////////////
-    //        add model
-    //////////////////////////////////////////////////////////////////////////////////
-    // Create a material
+    // add model
     
     var Diamondclone;
     var mtlLoader = new THREE.MTLLoader();
@@ -307,15 +297,12 @@
         this.t4.to(Diamond.rotation,1800 , {y:360,x:0,z:0 , ease: Power0.easeNone , repeat:-1})
         });
     });
-        
+
         var cubegeometry = new THREE.BoxGeometry( 20 , 15 , 15 );
         var cubematerial = new THREE.MeshBasicMaterial( {  color: 0xFFF000,  transparent : true,  opacity:0.1 });
         cubemesh = new THREE.Mesh( cubegeometry, cubematerial );
         cubemesh.position.set(-100,5,0) ;
         scene.add( cubemesh );
-        
-        
-        
         
         var ColorArray = new Array();
         ColorArray[0] = '0x00FF00';
@@ -327,8 +314,6 @@
         NameArray[1] = 'Diamond2';
         NameArray[2] = 'Diamond3';
         
-        
-
     AddNewModel( NameArray[0] , ColorArray[0] ,-100,10,0);
     console.log("Name"+NameArray[0] +"Color"+ ColorArray[0]);
 
