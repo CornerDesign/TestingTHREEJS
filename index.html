@@ -189,10 +189,9 @@
                 })
                domEvents.addEventListener(planemesh2, 'touchstart' , event =>{
                    infoanim("R2");
-
-            CountNumber++;
-            document.getElementById("Counting").innerHTML = CountNumber;
-            if(CountNumber >= 2){
+                    CountNumber++;
+                    document.getElementById("Counting").innerHTML = CountNumber;
+                if(CountNumber >= 2){
                 controls.enable = false;
                 document.getElementById("Background").style.display = "block";
                 TweenMax.to("#Background", 0.5 , { y:0,opacity:1});
@@ -414,7 +413,7 @@
 
     //要出現的資訊        
     function infoanim(DName){
-        if(DName = "R1")
+        if(DName = "R1"){
             this.t3 = new TimelineMax();
             this.t3.to(cubemesh.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut});
             this.t3.to(Diamond.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.5");
