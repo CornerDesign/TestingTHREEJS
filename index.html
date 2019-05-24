@@ -172,8 +172,8 @@
         animate();
         var domEvents = new THREEx.DomEvents(camera, renderer.domElement);
                 domEvents.addEventListener(planemesh, 'touchstart' , event =>{
-                    this.t1 = new TimelineMax();
-                    this.t1.to(planemesh.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut});
+                    infoanim("R3");
+
             CountNumber++;
             document.getElementById("Counting").innerHTML = CountNumber;
             if(CountNumber >= 2){
@@ -438,6 +438,9 @@
             this.t2 = new TimelineMax();
             this.t2.to(planemesh2.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut});
         }
+        if(DName = "R3"){
+            this.t1 = new TimelineMax();
+            this.t1.to(planemesh.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut});}
     }        
         </script>
     </body>
