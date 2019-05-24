@@ -371,15 +371,12 @@
             console.log("Name"+NameArray[0] +"Color"+ ColorArray[0]);
 //            Diamond1.getObjectByName("Diamond1").position.set(-100,10,0);
             Diamond1 =  scene.getObjectByName("Diamond1");
-            this.t5 = new TimelineMax();
-            this.t5.to(Diamond1.rotation,1800 , {y:360,x:0,z:0 , ease: Power0.easeNone , repeat:-1})
+
         
             AddNewModel( NameArray[1] , ColorArray[1] ,-100,30,0);
             console.log("Name"+NameArray[1] +"Color"+ ColorArray[1]);
 //            Diamond2.getObjectByName("Diamond2").position.set(-100,30,0);
         Diamond2 =  scene.getObjectByName("Diamond2");
-        this.t6 = new TimelineMax();
-        this.t6.to(Diamond2.rotation,1800 , {y:360,x:0,z:0 , ease: Power0.easeNone , repeat:-1})
             //Load Obj
 
         /*var loader = new THREE.OBJLoader()
