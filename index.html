@@ -366,13 +366,18 @@
         NameArray[2] = 'Diamond3';
         
         
-        for(i = 0 ; i < 3 ; i++){
-            AddNewModel( NameArray[i] , ColorArray[i]);
-            console.log("Name"+NameArray[i] +"Color"+ ColorArray[i]);
-        }
-        Diamond1.getObjectByName("Diamond1").position.set(-100,10,0);
-        Diamond2.getObjectByName("Diamond2").position.set(-100,30,0);
-        Diamond3.getObjectByName("Diamond3").position.set(-100,50,0);
+
+            AddNewModel( NameArray[0] , ColorArray[0] ,-100,10,0);
+            console.log("Name"+NameArray[0] +"Color"+ ColorArray[0]);
+//            Diamond1.getObjectByName("Diamond1").position.set(-100,10,0);
+            this.t5 = new TimelineMax();
+            this.t5.to(Diamond1.rotation,1800 , {y:360,x:0,z:0 , ease: Power0.easeNone , repeat:-1})
+        
+            AddNewModel( NameArray[1] , ColorArray[1] ,-100,30,0);
+            console.log("Name"+NameArray[1] +"Color"+ ColorArray[1]);
+//            Diamond2.getObjectByName("Diamond2").position.set(-100,30,0);
+        this.t6 = new TimelineMax();
+        this.t6.to(Diamond2.rotation,1800 , {y:360,x:0,z:0 , ease: Power0.easeNone , repeat:-1})
             //Load Obj
 
         /*var loader = new THREE.OBJLoader()
@@ -426,7 +431,7 @@
                 camera.updateProjectionMatrix();
                 renderer.setSize( window.innerWidth, window.innerHeight );
             }
- function AddNewModel( MeshName , ModelColor){ 
+ function AddNewModel( MeshName , ModelColor , x , y , z){ 
         var loader = new THREE.OBJLoader()
         loader.load( 'model/Diamond.obj', function ( object ) {
                    object.traverse( function ( child ) {
@@ -437,6 +442,7 @@
         scene.add( object );
         object.scale.set(0.5,0.5,0.5);
         object.name = MeshName; 
+        object.position.set(-100,30,0);
         console.log("Name"+object.name +"Color"+ ModelColor + "object.position"+object.position.y);
          });
  }
