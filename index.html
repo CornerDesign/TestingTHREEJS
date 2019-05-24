@@ -374,7 +374,7 @@
 
     //要出現的資訊        
     function infoanim(DName){
-        if(DName = "R1"){
+        if(DName == "R1"){
             this.t3 = new TimelineMax();
             this.t3.to(cubemesh.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut});
             this.t3.to(Diamond.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.5");
@@ -394,11 +394,11 @@
             scene.add( infored );
             this.t3.from(infored.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut});
         }
-        if(DName = "R2"){
+        if(DName == "R2"){
             this.t2 = new TimelineMax();
             this.t2.to(planemesh2.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut});
         }
-        if(DName = "R3"){
+        if(DName == "R3"){
             this.t1 = new TimelineMax();
             this.t1.to(planemesh.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut});
         }
