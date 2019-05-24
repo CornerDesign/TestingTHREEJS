@@ -1,146 +1,150 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-            <title>deviceorientation</title>
-            <meta charset="utf-8">
-            <meta name="viewport" content="user-scalable=no, initial-scale=1">
-        <script src = "https://code.jquery.com/jquery-3.3.1.js"></script>
-        <script src="build/three.js"></script>
-    </head>
-    <style>
+<head>
+    <title>deviceorientation</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1">
+    <script src = "https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="build/three.js"></script>
+</head>
+<style>
     body {
-                margin: 0px;
+        margin: 0px;
         background-color: #000000;
         overflow: hidden;
-            }
+    }
     #container{
         margin: 0px;
-
         overflow:hidden;
     }
-        #Background {
+    #Background {
         background-color: #000000;
         background-image:url("textures/BackgroundStar.jpg");
         height: -webkit-fill-available;
-                position: absolute;
-                top: 0px; width: 100%;
-                color: #ffffff;
-                padding: 5px;
+        position: absolute;
+        top: 0px; width: 100%;
+        color: #ffffff;
+        padding: 5px;
         font-family:Monospace;
-                font-size:13px;
-                font-weight: bold;
-                text-align:center;
-                box-sizing: border-box;
-        }
-        #Main {
-                position: absolute;
-                top: 100px; width: 100%;
-                color: #ffffff;
-                padding: 5px;
-                font-family:Monospace;
-                font-size:13px;
-                font-weight: bold;
-                text-align:center;
-                box-sizing: border-box;
+        font-size:13px;
+        font-weight: bold;
+        text-align:center;
+        box-sizing: border-box;
+    }
+    
+    #Main {
+        position: absolute;
+        top: 100px; width: 100%;
+        color: #ffffff;
+        padding: 5px;
+        font-family:Monospace;
+        font-size:13px;
+        font-weight: bold;
+        text-align:center;
+        box-sizing: border-box;
         z-index = 1;
-        }
+    }
+    
     #Tutorial {
-                position: absolute;
-                top: 100px; width: 100%;
-                color: white;
-                padding: 5px;
-                font-family:Monospace;
-                font-size:13px;
-                font-weight: bold;
-                text-align:center;
-                box-sizing: border-box;
+        position: absolute;
+        top: 100px; width: 100%;
+        color: white;
+        padding: 5px;
+        font-family:Monospace;
+        font-size:13px;
+        font-weight: bold;
+        text-align:center;
+        box-sizing: border-box;
         z-index = 1;
-        }
+    }
+    
     #EndingGame {
-                position: absolute;
-                top: 100px; width: 100%;
-                color: white;
-                padding: 5px;
-                font-family:Monospace;
-                font-size:13px;
-                font-weight: bold;
-                text-align:center;
-                box-sizing: border-box;
+        position: absolute;
+        top: 100px; width: 100%;
+        color: white;
+        padding: 5px;
+        font-family:Monospace;
+        font-size:13px;
+        font-weight: bold;
+        text-align:center;
+        box-sizing: border-box;
         z-index = 1;
-        }
-        a {
-                color: #ff8800;
-        }
+    }
+    
+    a {
+        color: #ff8800;
+    }
         
-.mybtn{
-  background-color: rgba(0, 0, 0, 0);
-  border: 2px solid;
-  color: white;
-  padding: 15px;
-  width: 150 px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  font-weight: bold;
-  letter-spacing:2px;
-  margin: 4px 10px;  
-  -webkit-transition-duration: 0.4s; /* Safari */
-  transition-duration: 0.4s;
-  cursor: pointer;  
-}
+    .mybtn {
+        background-color: rgba(0, 0, 0, 0);
+        border: 2px solid;
+        color: white;
+        padding: 15px;
+        width: 150 px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        font-weight: bold;
+        letter-spacing:2px;
+        margin: 4px 10px;  
+        -webkit-transition-duration: 0.4s; /* Safari */
+        transition-duration: 0.4s;
+        cursor: pointer;  
+    }
 
-.clickmybtn {
-  background-color: rgba(0, 0, 0, 0);
-  color: #e6e6e6;
-  border: 2px solid #e6e6e6;
-}
+    .clickmybtn {
+        background-color: rgba(0, 0, 0, 0);
+        color: #e6e6e6;
+        border: 2px solid #e6e6e6;
+    }
 
-.clickmybtn:hover {
-  background-color: #e6e6e6;
-  border: 2px solid #e6e6e6;
-  color: #1a1a1a;
-}
-    </style>
-    <body>
-        <div id = "container">
-                <div id="Background">
-            
-               </div>
-                <div id="Main">
-            <h1>台 灣 萊 雅</h1>
-            <h1>Find your power stone</h1>
-                    <h2>尋找你的能力寶石</h2>
-            <button class ="mybtn clickmybtn" onclick="LanguageFunction(1)"> 繁體中文 </button>
-            <button class ="mybtn clickmybtn" onclick="LanguageFunction(2)"> English </button>
-                </div>
-        <div id="Tutorial">
-            <img id = "tutorialimg " src="textures/phoneturn.png" alt="tutorial" width="100" >
-                <br/>
-            <h3 id = "tutorialtext">旋轉手機尋找能力寶石</h3>
-                </div>
-        <div id="EndingGame">
-            <h1 id = "Endtext ">恭喜你找到所有能力寶石</h1>
-                    <h2 id = "Endtext2 ">Congraulation</h2>
-            <button class ="mybtn clickmybtn" onclick="location.href='https://www.google.com.tw'"> 填問卷去 </button>
-                </div>
-        <div id="Debug">
-                    <p id="Counting"></p>
-                </div>
-            
+    .clickmybtn:hover {
+        background-color: #e6e6e6;
+        border: 2px solid #e6e6e6;
+        color: #1a1a1a;
+    }
+</style>
+<body>
+    <div id = "container">
+        <div id="Background">
         </div>
         
-        <script src="build/three.js"></script>
+        <div id="Main">
+            <h1>台 灣 萊 雅</h1>
+            <h1>Find your power stone</h1>
+            <h2>尋找你的能力寶石</h2>
+            <button class ="mybtn clickmybtn" onclick="LanguageFunction(1)"> 繁體中文 </button>
+            <button class ="mybtn clickmybtn" onclick="LanguageFunction(2)"> English </button>
+        </div>
+        
+        <div id="Tutorial">
+            <img id = "tutorialimg " src="textures/phoneturn.png" alt="tutorial" width="100" > <br/>
+            <h3 id = "tutorialtext">旋轉手機尋找能力寶石</h3>
+        </div>
+        
+        <div id="EndingGame">
+            <h1 id = "Endtext ">恭喜你找到所有能力寶石</h1>
+            <h2 id = "Endtext2 ">Congraulation</h2>
+            <button class ="mybtn clickmybtn" onclick="location.href='https://www.google.com.tw'"> 填問卷去 </button>
+        </div>
+        
+        <div id="Debug">
+            <p id="Counting"></p>
+        </div>    
+    </div>
+        
+    <script src="build/three.js"></script>
     <script src="js/ar.js"></script>
-        <script src="js/controls/DeviceOrientationControls.js"></script>
-        <script src="js/WebGL.js"></script>
-        <script src="js/threex.domevents.js"></script>
-       <script src="js/TweenMax.min.js"></script>
-       <script src="js/GLTFLoader.js"></script>
+    <script src="js/controls/DeviceOrientationControls.js"></script>
+    <script src="js/WebGL.js"></script>
+    <script src="js/threex.domevents.js"></script>
+    <script src="js/TweenMax.min.js"></script>
+    <script src="js/GLTFLoader.js"></script>
     <script src="js/OBJLoader.js"></script>
     <script src="js/MTLLoader.js"></script>
 
-        <script>
+<script>
     Tutorial.style.display = "none";
     EndingGame.style.display = "none";
     TweenMax.from("#Background", 0.5 , { y:-5,opacity:0 ,delay:1});
@@ -148,6 +152,7 @@
     var StartGame = false;
     var CountNumber = 0 ;
     var Language = "Chinese";
+    
     function LanguageFunction(language){
         Tutorial.style.display = "block";
         if(language == 1){
@@ -159,8 +164,9 @@
             document.getElementById("tutorialtext").innerHTML = "Turn your Phone to find power stone" ;
             console.log("English");
         }
-        StartGamefunction();
+    StartGamefunction();
     }
+    
     function StartGamefunction(){
         StartGame = true;
         TweenMax.to("#Background", 0.5 , { y:-5,opacity:0});
