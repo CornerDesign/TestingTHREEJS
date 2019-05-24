@@ -369,54 +369,13 @@
 
             AddNewModel( NameArray[0] , ColorArray[0] ,-100,10,0);
             console.log("Name"+NameArray[0] +"Color"+ ColorArray[0]);
-//            
-//            Diamond1 =  scene.getObjectByName("Diamond1");
-//            Diamond1.position.set(-100,10,20);
+
             AddNewModel( NameArray[1] , ColorArray[1] ,-100,30,0);
             console.log("Name"+NameArray[1] +"Color"+ ColorArray[1]);
         
-        function AddNewModel( MeshName , ModelColor , x , y , z){
-            var loader = new THREE.OBJLoader()
-            loader.load( 'model/Diamond.obj', function ( object ) {
-                   object.traverse( function ( child ) {
-                             if ( child instanceof THREE.Mesh ) {
-                                  child.material.color.setHex(ModelColor);
-                             }
-                     } );
-            scene.add( object );
-            object.scale.set(0.5,0.5,0.5);
-            object.name = MeshName;
-                
-            object.position.set(x,y,z);
-            console.log("Name"+object.name +"Color"+ ModelColor + "object.position"+object.position.y);
-            MeshName =  scene.getObjectByName(MeshName);
-            });
-        }
-//            Diamond2 =  scene.getObjectByName("Diamond2");
-//            Diamond2.position.set(-100,30,20);
-            //Load Obj
+        
 
-        /*var loader = new THREE.OBJLoader()
-        loader.load( 'model/Diamond.obj', function ( object ) {
-                   object.traverse( function ( child ) {
-                             if ( child instanceof THREE.Mesh ) {
-                                  child.material.color.setHex(#00FF00);
-                             }
-                     } );
-        scene.add( object );  
-        object.name = "Diamond1";
-        Diamond1 = scene.getObjectByName("Diamond1");
-        Diamond1.scale.set(0.5,0.5,0.5);
-        Diamond1.position.set(-100,50,0);
-        
-        } );
-        */
-        
     //////////////////////////////////////////////////////////////////////////////////
-            //Add a light
-    //////////////////////////////////////////////////////////////////////////////////
-        
-        
             //Add a light
 
     var light = new THREE.DirectionalLight( 0xffffff );
@@ -448,16 +407,33 @@
                 renderer.setSize( window.innerWidth, window.innerHeight );
             }
 
+   //生成model
+   function AddNewModel( MeshName , ModelColor , x , y , z){
+            var loader = new THREE.OBJLoader()
+            loader.load( 'model/Diamond.obj', function ( object ) {
+                   object.traverse( function ( child ) {
+                             if ( child instanceof THREE.Mesh ) {
+                                  child.material.color.setHex(ModelColor);
+                             }
+                     } );
+            scene.add( object );
+            object.scale.set(0.5,0.5,0.5);
+            object.name = MeshName;     
+            object.position.set(x,y,z);
+            console.log("Name"+object.name +"Color"+ ModelColor + "object.position"+object.position.y);
+            MeshName =  scene.getObjectByName(MeshName);
+            });
+        }
             
     //要出現的資訊        
     function infoanim(){
             this.t3 = new TimelineMax();
             this.t3.to(cubemesh.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut});
             this.t3.to(Diamond.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.5");
-//            Diamond1 =  scene.getObjectByName("Diamond1");
+
             this.t3.to(Diamond1.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.5");
-//            Diamond2 =  scene.getObjectByName("Diamond2");
             this.t3.to(Diamond2.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.5");
+        
             var texture = new THREE.TextureLoader().load( 'textures/fish.png' );
             var geometry = new THREE.PlaneGeometry( 50,50);
             var material = new THREE.MeshBasicMaterial( { map: texture } );
