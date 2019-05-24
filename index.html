@@ -171,54 +171,15 @@
         init();
         animate();
         var domEvents = new THREEx.DomEvents(camera, renderer.domElement);
-                domEvents.addEventListener(planemesh, 'touchstart' , event =>{
-                    infoanim("R3");
-
-            CountNumber++;
-            document.getElementById("Counting").innerHTML = CountNumber;
-            if(CountNumber >= 2){
-                controls.enable = false;
-                document.getElementById("Background").style.display = "block";
-                TweenMax.to("#Background", 0.5 , { y:0,opacity:1});
-                document.getElementById("EndingGame").style.display = "block";
-                var EndGameAnim = new TimelineLite();
-                EndGameAnim.to("#EndingGame", 0.5 , { y:0,opacity:1 ,onComplete: function() {
-                    renderer.domElement.style.top = '600px';
-                    }})
-              }    
-                })
-               domEvents.addEventListener(planemesh2, 'touchstart' , event =>{
-                   infoanim("R2");
-                    CountNumber++;
-                    document.getElementById("Counting").innerHTML = CountNumber;
-                if(CountNumber >= 2){
-                controls.enable = false;
-                document.getElementById("Background").style.display = "block";
-                TweenMax.to("#Background", 0.5 , { y:0,opacity:1});
-                document.getElementById("EndingGame").style.display = "block";
-                var EndGameAnim = new TimelineLite();
-                EndGameAnim.to("#EndingGame", 0.5 , { y:0,opacity:1 ,onComplete: function() {
-                    renderer.domElement.style.top = '600px';
-                    }})
-              }    
-                })
+        domEvents.addEventListener(planemesh, 'touchstart' , event =>{
+            infoanim("R3");
+        })
+        domEvents.addEventListener(planemesh2, 'touchstart' , event =>{
+            infoanim("R2");
+        })
         domEvents.addEventListener(cubemesh, 'touchstart' , event =>{
             infoanim("R1");
-            CountNumber++;
-            document.getElementById("Counting").innerHTML = CountNumber;
-            if(CountNumber >= 2){
-                controls.enable = false;
-                document.getElementById("Background").style.display = "block";
-                TweenMax.to("#Background", 0.5 , { y:0,opacity:1});
-                document.getElementById("EndingGame").style.display = "block";
-                var EndGameAnim = new TimelineLite();
-                EndGameAnim.to("#EndingGame", 0.5 , { y:0,opacity:1 ,onComplete: function() {
-                    renderer.domElement.style.top = '600px';
-                    }})
-              }    
-                })
-
-    }
+        })
         
     var camera, scene, renderer, controls;    
     function init(){
@@ -424,7 +385,6 @@
             this.t3.to(Diamond1.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.5");
             this.t3.to(Diamond2.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.5");
         
-        
             var texture = new THREE.TextureLoader().load( 'textures/fish.png' );
             var geometry = new THREE.PlaneGeometry( 50,50);
             var material = new THREE.MeshBasicMaterial( { map: texture } );
@@ -440,8 +400,24 @@
         }
         if(DName = "R3"){
             this.t1 = new TimelineMax();
-            this.t1.to(planemesh.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut});}
-    }        
+            this.t1.to(planemesh.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut});
+        }
+        EndGameCountDown();
+    }       
+    function EndGameCountDown(){  
+        CountNumber++;
+        document.getElementById("Counting").innerHTML = CountNumber;
+        if(CountNumber >= 2){
+            controls.enable = false;
+            document.getElementById("Background").style.display = "block";
+            TweenMax.to("#Background", 0.5 , { y:0,opacity:1});
+            document.getElementById("EndingGame").style.display = "block";
+            var EndGameAnim = new TimelineLite();
+            EndGameAnim.to("#EndingGame", 0.5 , { y:0,opacity:1 ,onComplete: function() {
+               renderer.domElement.style.top = '600px';
+                    }})
+         }    
+     }
         </script>
     </body>
 </html>
