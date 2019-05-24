@@ -369,6 +369,7 @@
         for(i = 0 ; i < 3 ; i++){
             AddNewModel( NameArray[i] , ColorArray[i]);
             console.log("Name"+NameArray[i] +"Color"+ ColorArray[i]);
+            scene.getObjectByName(NameArray[i]).position.set(-100,10+10*i,0);
         }
         
         
@@ -436,7 +437,6 @@
                      } );
         scene.add( object );
         object.scale.set(0.5,0.5,0.5);
-        object.position.set(-100,10+10*i,0);
         object.name = MeshName; 
         console.log("Name"+object.name +"Color"+ ModelColor + "object.position"+object.position.y);
          });
