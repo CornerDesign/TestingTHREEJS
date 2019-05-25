@@ -153,6 +153,19 @@
     var CountNumber = 0 ;
     var Language = "Chinese";
     
+    var loadingScreen ={
+        scene: new THREE.Scene(),
+        camera:new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 1, 1100 ),
+        box: new THREE.Mesh{
+            new THREE.BoxGeometry(0.5,0.5,0.5);
+            new THREE.MeshBasicMaterial({ color:0x4444ff })
+        )
+    };
+    
+    var RESOURCE_LOADED = false;
+    
+    
+    
     function LanguageFunction(language){
         Tutorial.style.display = "block";
         if(language == 1){
@@ -218,6 +231,11 @@
    
         //Create a camera
         camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 1, 1100 );
+        
+        loadingScreen.box.position.set(0,0,5);
+        loadingScreen.camera.lookAt(loadingScreen.box.position);
+        loadingScreen.scene.add(loadingScreen.box);
+        
         controls = new THREE.DeviceOrientationControls( camera );
         scene.add(camera);
     
@@ -303,9 +321,15 @@
 }
     //////////////////////////////////////////////////////////////////////////////////     
     function animate() {
-                window.requestAnimationFrame( animate );
-                controls.update();
-                renderer.render( scene, camera );
+        if( var RESOURCE_LOADED == false){
+            window.requestAnimationFrame( animate );
+            renderer.render(loadingScreen.scene , loadingScreen.camera);
+            return;
+        }
+        
+        window.requestAnimationFrame( animate );
+        controls.update();
+        renderer.render( scene, camera );
             }
     
    function onWindowResize() {
