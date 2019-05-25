@@ -425,6 +425,7 @@
             this.R1.from(DiamondR1info.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.35");
             this.R1.to(DiamondR1people.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},10);
             this.R1.to(DiamondR1info.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},10.15);
+            EndGameCountDown();
         }
         if(DName == "G1"){
             this.G1 = new TimelineMax();
@@ -453,6 +454,7 @@
             this.G1.from(DiamondG1info.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.35");
             this.G1.to(DiamondG1people.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},10);
             this.G1.to(DiamondG1info.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},10.15);
+            EndGameCountDown();
         }
         if(DName == "B1"){
             this.B1 = new TimelineMax();
@@ -481,6 +483,7 @@
             this.B1.from(DiamondB1info.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.35");
             this.B1.to(DiamondB1people.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},10);
             this.B1.to(DiamondB1info.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},10.15);
+            EndGameCountDown();
         }
         if(DName == "P1"){
             this.P1 = new TimelineMax();
@@ -509,6 +512,7 @@
             this.P1.from(DiamondP1info.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.35");
             this.P1.to(DiamondP1people.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},10);
             this.P1.to(DiamondP1info.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},10.15);
+            EndGameCountDown();
         }
         if(DName == "Y1"){
             this.Y1 = new TimelineMax();
@@ -537,6 +541,7 @@
             this.Y1.from(DiamondY1info.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.35");
             this.Y1.to(DiamondY1people.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},10);
             this.Y1.to(DiamondY1info.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},10.15);
+            EndGameCountDown();
         }
          if(DName == "O1"){
             this.O1 = new TimelineMax();
@@ -566,18 +571,19 @@
             this.O1.to(DiamondO1people.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},10);
             this.O1.to(DiamondO1info.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},10.15);
         }
-        EndGameCountDown();
+        
     }
     
     function EndGameCountDown(){
         CountNumber++;
         document.getElementById("Counting").innerHTML = CountNumber;
         if(CountNumber >= 5){
+            controls.enable = false;
             var EndGameAnim = new TimelineLite();
             EndGameAnim.to("#EndingGame", 0.5 , { y:0,opacity:1 ,onComplete: function() {
             document.getElementById("Background").style.display = "block";
             TweenMax.to("#Background", 0.5 , { y:0,opacity:1});
-            controls.enable = false;
+            
             document.getElementById("EndingGame").style.display = "block";
             renderer.domElement.style.top = '600px';
             }},11);
