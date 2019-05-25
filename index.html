@@ -602,14 +602,15 @@
         CountNumber++;
         document.getElementById("Counting").innerHTML = CountNumber;
         if(CountNumber >= 5){
-            controls.enable = false;
-            document.getElementById("Background").style.display = "block";
-            TweenMax.to("#Background", 0.5 , { y:0,opacity:1});
-            document.getElementById("EndingGame").style.display = "block";
+
             var EndGameAnim = new TimelineLite();
             EndGameAnim.to("#EndingGame", 0.5 , { y:0,opacity:1 ,onComplete: function() {
-               renderer.domElement.style.top = '600px';
-                    }})
+            document.getElementById("Background").style.display = "block";
+            TweenMax.to("#Background", 0.5 , { y:0,opacity:1});
+            controls.enable = false;
+            document.getElementById("EndingGame").style.display = "block";
+            renderer.domElement.style.top = '600px';
+            }},12);
          }    
      }
         </script>
