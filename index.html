@@ -164,8 +164,6 @@
     var LOADING_MANAGER = null;
     var RESOURCES_LOADED = false;
     
-    
-    
     function LanguageFunction(language){
         Tutorial.style.display = "block";
         if(language == 1){
@@ -341,13 +339,13 @@
 }
     //////////////////////////////////////////////////////////////////////////////////     
     function animate() {
-    /*
+    
         if( RESOURCES_LOADED == false){
             window.requestAnimationFrame( animate );
             renderer.render(loadingScreen.scene , loadingScreen.camera);
             return;
         }
-    */
+    
         
         window.requestAnimationFrame( animate );
         controls.update();
