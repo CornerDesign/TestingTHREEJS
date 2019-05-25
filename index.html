@@ -297,8 +297,14 @@
     //        add an object in the scene
     var textureLoader = new THREE.TextureLoader(loadingManager);
     R1texture = textureLoader.load( 'textures/redpeople.png' );
-    R1infotexture = textureLoader.load( 'textures/redinfo.png' );
-    R1info2texture = textureLoader.load( 'textures/redinfo2.png' );
+    var geometry = new THREE.PlaneGeometry( 13.09 , 30.3 );
+    var material = new THREE.MeshBasicMaterial( { map: R1texture ,transparent: true, opacity: 0.95 } );
+    DiamondR1people = new THREE.Mesh( geometry, material );
+    DiamondR1people.position.set(-100,0,0);
+    scene.add( DiamondR1people );
+        
+//    R1infotexture = textureLoader.load( 'textures/redinfo.png' );
+//    R1info2texture = textureLoader.load( 'textures/redinfo2.png' );
                 
     var ColorArray = new Array();
     ColorArray[0] = '0xff0000';
@@ -335,7 +341,6 @@
     scene.add( light );
         
     window.addEventListener( 'resize', onWindowResize, false );    
-    animate();
 }
     //////////////////////////////////////////////////////////////////////////////////     
     function animate() {
