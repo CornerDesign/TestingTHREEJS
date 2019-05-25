@@ -152,7 +152,7 @@
     var StartGame = false;
     var CountNumber = 0 ;
     var Language = "Chinese";
-    
+    /*
     var loadingScreen ={
         scene: new THREE.Scene(),
         camera:new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 1, 1100 ),
@@ -161,8 +161,9 @@
             new THREE.MeshBasicMaterial({ color:0x4444ff })
         )
     };
-    var LOADING_MANAGER = null;
-    var RESOURCES_LOADED = false;
+    */
+    //var LOADING_MANAGER = null;
+    //var RESOURCES_LOADED = false;
     
     function LanguageFunction(language){
         Tutorial.style.display = "block";
@@ -278,7 +279,7 @@
         
                 
     //loadingScreen
-    
+    /*
     loadingScreen.box.position.set(0,0,5);
     loadingScreen.camera.lookAt(loadingScreen.box.position);
     loadingScreen.scene.add(loadingScreen.box);
@@ -291,20 +292,18 @@
         console.log("loaded all resources");
         RESOURCES_LOADED = true;
     };
-    
+   */ 
         
     //////////////////////////////////////////////////////////////////////////////////
     //        add an object in the scene
-    var textureLoader = new THREE.TextureLoader(loadingManager);
-    R1texture = textureLoader.load( 'textures/redpeople.png' );
-    var geometry = new THREE.PlaneGeometry( 13.09 , 30.3 );
-    var material = new THREE.MeshBasicMaterial( { map: R1texture ,transparent: true, opacity: 0.95 } );
-    DiamondR1people = new THREE.Mesh( geometry, material );
-    DiamondR1people.position.set(-100,0,0);
-    scene.add( DiamondR1people );
+    var textureLoader = new THREE.TextureLoader();
+    R1texture = textureLoader.load( 'textures/redpeople.png' );       
+    R1infotexture = textureLoader.load( 'textures/redinfo.png' );
+    R1info2texture = textureLoader.load( 'textures/redinfo2.png' );
         
-//    R1infotexture = textureLoader.load( 'textures/redinfo.png' );
-//    R1info2texture = textureLoader.load( 'textures/redinfo2.png' );
+        
+        
+        
                 
     var ColorArray = new Array();
     ColorArray[0] = '0xff0000';
@@ -344,24 +343,22 @@
 }
     //////////////////////////////////////////////////////////////////////////////////     
     function animate() {
-    
+    /*
         if( RESOURCES_LOADED == false){
             window.requestAnimationFrame( animate );
             renderer.render(loadingScreen.scene , loadingScreen.camera);
             return;
-        }
-    
-        
+        }*/
         window.requestAnimationFrame( animate );
         controls.update();
         renderer.render( scene, camera );
-            }
+    }
     
-   function onWindowResize() {
-                camera.aspect = window.innerWidth / window.innerHeight;
-                camera.updateProjectionMatrix();
-                renderer.setSize( window.innerWidth, window.innerHeight );
-            }
+    function onWindowResize() {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize( window.innerWidth, window.innerHeight );
+    }
    //生成model
     function AddNewModel( MeshName , ModelColor , x , y , z){
         var loader = new THREE.OBJLoader()
@@ -398,14 +395,10 @@
             DiamondR1 = scene.getObjectByName("DiamondR1"); 
             //寶石消失
             this.R1.to(DiamondR1.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.5");
-            
-//            var texture = new THREE.TextureLoader().load( 'textures/redpeople.png' );
             var geometry = new THREE.PlaneGeometry( 13.09 , 30.3 );
             var material = new THREE.MeshBasicMaterial( { map: R1texture ,transparent: true, opacity: 0.95 } );
             DiamondR1people = new THREE.Mesh( geometry, material );
-            DiamondR1people.position.x = DiamondR1.position.x;
-            DiamondR1people.position.y = DiamondR1.position.y;
-            DiamondR1people.position.z = DiamondR1.position.z;            
+            DiamondR1people.position.copy(DiamondR1.position);   
             DiamondR1people.lookAt( camera.position );
             scene.add( DiamondR1people );
             var geometry = new THREE.PlaneGeometry( 70,70 );
@@ -415,9 +408,7 @@
                 var material = new THREE.MeshBasicMaterial( { map: R1info2texture ,transparent: true, opacity: 0.95 } );
             }
             DiamondR1info = new THREE.Mesh( geometry, material );
-            DiamondR1info.position.x = DiamondR1.position.x;
-            DiamondR1info.position.y = DiamondR1.position.y;
-            DiamondR1info.position.z = DiamondR1.position.z;            
+            DiamondR1info.position.copy(DiamondR1.position);         
             DiamondR1info.lookAt( camera.position );
             scene.add( DiamondR1info );
             this.R1.from(DiamondR1people.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.5");
