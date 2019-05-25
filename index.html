@@ -161,7 +161,7 @@
             new THREE.MeshBasicMaterial({ color:0x4444ff })
         )
     };
-    
+    var LOADING_MANAGER = null;
     var RESOURCE_LOADED = false;
     
     
@@ -232,9 +232,21 @@
         //Create a camera
         camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 1, 1100 );
         
+        //loadingScreen
         loadingScreen.box.position.set(0,0,5);
         loadingScreen.camera.lookAt(loadingScreen.box.position);
         loadingScreen.scene.add(loadingScreen.box);
+        loadingManager = new THREE.LoadingManager();
+        loadingManager.onprogress = function(item,loaded,total){
+            console.log(item,loaded,total);
+        };
+        loadingManager.onload = function(){
+            console.log("loaded all resources");
+            RESOURCES_LOADED = true;
+        };
+        
+        
+        
         
         controls = new THREE.DeviceOrientationControls( camera );
         scene.add(camera);
@@ -339,7 +351,7 @@
             }
    //生成model
     function AddNewModel( MeshName , ModelColor , x , y , z){
-        var loader = new THREE.OBJLoader()
+        var loader = new THREE.OBJLoader(loadingManager)
         loader.load( 'model/Diamond.obj', function ( object ) {
             object.traverse( function ( child ) {
                 if ( child instanceof THREE.Mesh ) {
@@ -374,7 +386,7 @@
             //寶石消失
             this.R1.to(DiamondR1.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.5");
             
-            var texture = new THREE.TextureLoader().load( 'textures/redpeople.png' );
+            var texture = new THREE.TextureLoader(loadingManager).load( 'textures/redpeople.png' );
             var geometry = new THREE.PlaneGeometry( 13.09 , 30.3 );
             var material = new THREE.MeshBasicMaterial( { map: texture ,transparent: true, opacity: 0.95 } );
             DiamondR1people = new THREE.Mesh( geometry, material );
@@ -384,9 +396,9 @@
             DiamondR1people.lookAt( camera.position );
             scene.add( DiamondR1people );
             if( Language == "Chinese"){
-                var texture = new THREE.TextureLoader().load( 'textures/redinfo.png' );
+                var texture = new THREE.TextureLoader(loadingManager).load( 'textures/redinfo.png' );
             }else if(Language == "English"){
-                var texture = new THREE.TextureLoader().load( 'textures/redinfo2.png' );
+                var texture = new THREE.TextureLoader(loadingManager).load( 'textures/redinfo2.png' );
             }
             var geometry = new THREE.PlaneGeometry( 70,70 );
             var material = new THREE.MeshBasicMaterial( { map: texture ,transparent: true, opacity: 0.95 } );
@@ -407,7 +419,7 @@
             DiamondG1 = scene.getObjectByName("DiamondG1"); 
             //寶石消失
             this.G1.to(DiamondG1.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.5");
-            var texture = new THREE.TextureLoader().load( 'textures/greenpeople.png' );
+            var texture = new THREE.TextureLoader(loadingManager).load( 'textures/greenpeople.png' );
             var geometry = new THREE.PlaneGeometry( 13.09 , 30.3 );
             var material = new THREE.MeshBasicMaterial( { map: texture ,transparent: true, opacity: 0.95 } );
             DiamondG1people = new THREE.Mesh( geometry, material );
@@ -417,9 +429,9 @@
             DiamondG1people.lookAt( camera.position );
             scene.add( DiamondG1people );
             if( Language == "Chinese"){
-                var texture = new THREE.TextureLoader().load( 'textures/redinfo.png' );
+                var texture = new THREE.TextureLoader(loadingManager).load( 'textures/redinfo.png' );
             }else if(Language == "English"){
-                var texture = new THREE.TextureLoader().load( 'textures/redinfo2.png' );
+                var texture = new THREE.TextureLoader(loadingManager).load( 'textures/redinfo2.png' );
             }
             var geometry = new THREE.PlaneGeometry( 70,70 );
             var material = new THREE.MeshBasicMaterial( { map: texture ,transparent: true, opacity: 0.95 } );
@@ -441,7 +453,7 @@
             //寶石消失
             this.B1.to(DiamondB1.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.5");
             
-            var texture = new THREE.TextureLoader().load( 'textures/bluepeople.png' );
+            var texture = new THREE.TextureLoader(loadingManager).load( 'textures/bluepeople.png' );
             var geometry = new THREE.PlaneGeometry( 13.09 , 30.3 );
             var material = new THREE.MeshBasicMaterial( { map: texture ,transparent: true, opacity: 0.95 } );
             DiamondB1people = new THREE.Mesh( geometry, material );
@@ -451,9 +463,9 @@
             DiamondB1people.lookAt( camera.position );
             scene.add( DiamondB1people );
             if( Language == "Chinese"){
-                var texture = new THREE.TextureLoader().load( 'textures/redinfo.png' );
+                var texture = new THREE.TextureLoader(loadingManager).load( 'textures/redinfo.png' );
             }else if(Language == "English"){
-                var texture = new THREE.TextureLoader().load( 'textures/redinfo2.png' );
+                var texture = new THREE.TextureLoader(loadingManager).load( 'textures/redinfo2.png' );
             }
             var geometry = new THREE.PlaneGeometry( 70,70 );
             var material = new THREE.MeshBasicMaterial( { map: texture ,transparent: true, opacity: 0.95 } );
@@ -475,7 +487,7 @@
             //寶石消失
             this.P1.to(DiamondP1.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.5");
             
-            var texture = new THREE.TextureLoader().load( 'textures/purplepeople.png' );
+            var texture = new THREE.TextureLoader(loadingManager).load( 'textures/purplepeople.png' );
             var geometry = new THREE.PlaneGeometry( 13.09 , 30.3 );
             var material = new THREE.MeshBasicMaterial( { map: texture ,transparent: true, opacity: 0.95 } );
             DiamondP1people = new THREE.Mesh( geometry, material );
@@ -485,9 +497,9 @@
             DiamondP1people.lookAt( camera.position );
             scene.add( DiamondP1people );
             if( Language == "Chinese"){
-                var texture = new THREE.TextureLoader().load( 'textures/redinfo.png' );
+                var texture = new THREE.TextureLoader(loadingManager).load( 'textures/redinfo.png' );
             }else if(Language == "English"){
-                var texture = new THREE.TextureLoader().load( 'textures/redinfo2.png' );
+                var texture = new THREE.TextureLoader(loadingManager).load( 'textures/redinfo2.png' );
             }
             var geometry = new THREE.PlaneGeometry( 70,70 );
             var material = new THREE.MeshBasicMaterial( { map: texture ,transparent: true, opacity: 0.95 } );
@@ -509,7 +521,7 @@
             //寶石消失
             this.Y1.to(DiamondY1.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.5");
             
-            var texture = new THREE.TextureLoader().load( 'textures/yellowpeople.png' );
+            var texture = new THREE.TextureLoader(loadingManager).load( 'textures/yellowpeople.png' );
             var geometry = new THREE.PlaneGeometry( 13.09 , 30.3 );//腳色*2
             var material = new THREE.MeshBasicMaterial( { map: texture ,transparent: true, opacity: 0.95 } );
             DiamondY1people = new THREE.Mesh( geometry, material );
@@ -519,9 +531,9 @@
             DiamondY1people.lookAt( camera.position );
             scene.add( DiamondY1people );
             if( Language == "Chinese"){
-                var texture = new THREE.TextureLoader().load( 'textures/redinfo.png' );
+                var texture = new THREE.TextureLoader(loadingManager).load( 'textures/redinfo.png' );
             }else if(Language == "English"){
-                var texture = new THREE.TextureLoader().load( 'textures/redinfo2.png' );
+                var texture = new THREE.TextureLoader(loadingManager).load( 'textures/redinfo2.png' );
             }
             var geometry = new THREE.PlaneGeometry( 70,70 );
             var material = new THREE.MeshBasicMaterial( { map: texture ,transparent: true, opacity: 0.95 } );
@@ -543,7 +555,7 @@
             //寶石消失
             this.O1.to(DiamondO1.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.5");
             
-            var texture = new THREE.TextureLoader().load( 'textures/orangepeople.png' );
+            var texture = new THREE.TextureLoader(loadingManager).load( 'textures/orangepeople.png' );
             var geometry = new THREE.PlaneGeometry( 13.09 , 30.3 );//腳色*2
             var material = new THREE.MeshBasicMaterial( { map: texture ,transparent: true, opacity: 0.95 } );
             DiamondO1people = new THREE.Mesh( geometry, material );
@@ -553,9 +565,9 @@
             DiamondO1people.lookAt( camera.position );
             scene.add( DiamondO1people );
             if( Language == "Chinese"){
-                var texture = new THREE.TextureLoader().load( 'textures/redinfo.png' );
+                var texture = new THREE.TextureLoader(loadingManager).load( 'textures/redinfo.png' );
             }else if(Language == "English"){
-                var texture = new THREE.TextureLoader().load( 'textures/redinfo2.png' );
+                var texture = new THREE.TextureLoader(loadingManager).load( 'textures/redinfo2.png' );
             }
             var geometry = new THREE.PlaneGeometry( 70,70 );
             var material = new THREE.MeshBasicMaterial( { map: texture ,transparent: true, opacity: 0.95 } );
