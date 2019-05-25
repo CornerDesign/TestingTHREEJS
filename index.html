@@ -295,6 +295,10 @@
         
     //////////////////////////////////////////////////////////////////////////////////
     //        add an object in the scene
+    var R1texture = new THREE.TextureLoader(loadingMangaer).load( 'textures/redpeople.png' );
+    var R1infotexture = new THREE.TextureLoader().load( 'textures/redinfo.png' );
+    var R1info2texture = new THREE.TextureLoader().load( 'textures/redinfo2.png' );
+                
     var ColorArray = new Array();
     ColorArray[0] = '0xff0000';
     ColorArray[1] = '0x00FF00';
@@ -351,7 +355,7 @@
             }
    //生成model
     function AddNewModel( MeshName , ModelColor , x , y , z){
-        var loader = new THREE.OBJLoader(loadingManager)
+        var loader = new THREE.OBJLoader()
         loader.load( 'model/Diamond.obj', function ( object ) {
             object.traverse( function ( child ) {
                 if ( child instanceof THREE.Mesh ) {
@@ -386,22 +390,21 @@
             //寶石消失
             this.R1.to(DiamondR1.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.5");
             
-            var texture = new THREE.TextureLoader().load( 'textures/redpeople.png' );
+//            var texture = new THREE.TextureLoader().load( 'textures/redpeople.png' );
             var geometry = new THREE.PlaneGeometry( 13.09 , 30.3 );
-            var material = new THREE.MeshBasicMaterial( { map: texture ,transparent: true, opacity: 0.95 } );
+            var material = new THREE.MeshBasicMaterial( { map: R1texture ,transparent: true, opacity: 0.95 } );
             DiamondR1people = new THREE.Mesh( geometry, material );
             DiamondR1people.position.x = DiamondR1.position.x;
             DiamondR1people.position.y = DiamondR1.position.y;
             DiamondR1people.position.z = DiamondR1.position.z;            
             DiamondR1people.lookAt( camera.position );
             scene.add( DiamondR1people );
-            if( Language == "Chinese"){
-                var texture = new THREE.TextureLoader().load( 'textures/redinfo.png' );
-            }else if(Language == "English"){
-                var texture = new THREE.TextureLoader().load( 'textures/redinfo2.png' );
-            }
             var geometry = new THREE.PlaneGeometry( 70,70 );
-            var material = new THREE.MeshBasicMaterial( { map: texture ,transparent: true, opacity: 0.95 } );
+            if( Language == "Chinese"){
+                var material = new THREE.MeshBasicMaterial( { map: R1infotexture ,transparent: true, opacity: 0.95 } );
+            }else if(Language == "English"){
+                var material = new THREE.MeshBasicMaterial( { map: R1info2texture ,transparent: true, opacity: 0.95 } );
+            }
             DiamondR1info = new THREE.Mesh( geometry, material );
             DiamondR1info.position.x = DiamondR1.position.x;
             DiamondR1info.position.y = DiamondR1.position.y;
