@@ -298,11 +298,23 @@
     //        add an object in the scene
     var textureLoader = new THREE.TextureLoader();
     R1texture = textureLoader.load( 'textures/redpeople.png' );       
-    R1infotexture = textureLoader.load( 'textures/redinfo.png' );
-    R1info2texture = textureLoader.load( 'textures/redinfo2.png' );
-        
-        
-        
+    R1infotexture = textureLoader.load( 'textures/info/redinfo.png' );
+    R1info2texture = textureLoader.load( 'textures/info/redinfo2.png' );
+    G1texture = textureLoader.load( 'textures/greenpeople.png' );       
+    G1infotexture = textureLoader.load( 'textures/info/greeninfo.png' );
+    G1info2texture = textureLoader.load( 'textures/info/greeninfo2.png' );
+    B1texture = textureLoader.load( 'textures/bluepeople.png' );       
+    B1infotexture = textureLoader.load( 'textures/info/blueinfo.png' );
+    B1info2texture = textureLoader.load( 'textures/info/blueinfo2.png' );
+    P1texture = textureLoader.load( 'textures/purplepeople.png' );       
+    P1infotexture = textureLoader.load( 'textures/info/purpleinfo.png' );
+    P1info2texture = textureLoader.load( 'textures/info/purpleinfo2.png' );
+    Y1texture = textureLoader.load( 'textures/yellowpeople.png' );       
+    Y1infotexture = textureLoader.load( 'textures/info/yellowinfo.png' );
+    Y1info2texture = textureLoader.load( 'textures/info/yellowinfo2.png' );
+    O1texture = textureLoader.load( 'textures/orangepeople.png' );       
+    O1infotexture = textureLoader.load( 'textures/info/orangeinfo.png' );
+    O1info2texture = textureLoader.load( 'textures/info/orangeinfo2.png' );    
         
                 
     var ColorArray = new Array();
@@ -393,7 +405,6 @@
             this.R1.to(DiamondR1cube.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut});
             //定義寶石名稱
             DiamondR1 = scene.getObjectByName("DiamondR1"); 
-            //寶石消失
             this.R1.to(DiamondR1.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.5");
             var geometry = new THREE.PlaneGeometry( 13.09 , 30.3 );
             var material = new THREE.MeshBasicMaterial( { map: R1texture ,transparent: true, opacity: 0.95 } );
@@ -422,28 +433,21 @@
             this.G1.to(DiamondG1cube.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut});
             //定義寶石名稱
             DiamondG1 = scene.getObjectByName("DiamondG1"); 
-            //寶石消失
             this.G1.to(DiamondG1.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.5");
-            var texture = new THREE.TextureLoader().load( 'textures/greenpeople.png' );
             var geometry = new THREE.PlaneGeometry( 13.09 , 30.3 );
-            var material = new THREE.MeshBasicMaterial( { map: texture ,transparent: true, opacity: 0.95 } );
+            var material = new THREE.MeshBasicMaterial( { map: G1texture ,transparent: true, opacity: 0.95 } );
             DiamondG1people = new THREE.Mesh( geometry, material );
-            DiamondG1people.position.x = DiamondG1.position.x;
-            DiamondG1people.position.y = DiamondG1.position.y;
-            DiamondG1people.position.z = DiamondG1.position.z;            
+            DiamondG1people.position.copy(DiamondG1.position);       
             DiamondG1people.lookAt( camera.position );
             scene.add( DiamondG1people );
-            if( Language == "Chinese"){
-                var texture = new THREE.TextureLoader().load( 'textures/redinfo.png' );
-            }else if(Language == "English"){
-                var texture = new THREE.TextureLoader().load( 'textures/redinfo2.png' );
-            }
             var geometry = new THREE.PlaneGeometry( 70,70 );
-            var material = new THREE.MeshBasicMaterial( { map: texture ,transparent: true, opacity: 0.95 } );
+            if( Language == "Chinese"){
+                var material = new THREE.MeshBasicMaterial( { map: G1infotexture ,transparent: true, opacity: 0.95 } );
+            }else if(Language == "English"){
+                var material = new THREE.MeshBasicMaterial( { map: G1info2texture ,transparent: true, opacity: 0.95 } );
+            }
             DiamondG1info = new THREE.Mesh( geometry, material );
-            DiamondG1info.position.x = DiamondG1.position.x;
-            DiamondG1info.position.y = DiamondG1.position.y;
-            DiamondG1info.position.z = DiamondG1.position.z;            
+            DiamondG1info.position.copy(DiamondG1.position);    
             DiamondG1info.lookAt( camera.position );
             scene.add( DiamondG1info );
             this.G1.from(DiamondG1people.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.5");
@@ -457,29 +461,21 @@
             this.B1.to(DiamondB1cube.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut});
             //定義寶石名稱
             DiamondB1 = scene.getObjectByName("DiamondB1"); 
-            //寶石消失
             this.B1.to(DiamondB1.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.5");
-            
-            var texture = new THREE.TextureLoader().load( 'textures/bluepeople.png' );
             var geometry = new THREE.PlaneGeometry( 13.09 , 30.3 );
-            var material = new THREE.MeshBasicMaterial( { map: texture ,transparent: true, opacity: 0.95 } );
+            var material = new THREE.MeshBasicMaterial( { map: B1texture ,transparent: true, opacity: 0.95 } );
             DiamondB1people = new THREE.Mesh( geometry, material );
-            DiamondB1people.position.x = DiamondB1.position.x;
-            DiamondB1people.position.y = DiamondB1.position.y;
-            DiamondB1people.position.z = DiamondB1.position.z;            
+            DiamondB1people.position.copy(DiamondB1.position);      
             DiamondB1people.lookAt( camera.position );
             scene.add( DiamondB1people );
-            if( Language == "Chinese"){
-                var texture = new THREE.TextureLoader().load( 'textures/redinfo.png' );
-            }else if(Language == "English"){
-                var texture = new THREE.TextureLoader().load( 'textures/redinfo2.png' );
-            }
             var geometry = new THREE.PlaneGeometry( 70,70 );
-            var material = new THREE.MeshBasicMaterial( { map: texture ,transparent: true, opacity: 0.95 } );
+            if( Language == "Chinese"){
+                var material = new THREE.MeshBasicMaterial( { map: B1infotexture ,transparent: true, opacity: 0.95 } );
+            }else if(Language == "English"){
+                var material = new THREE.MeshBasicMaterial( { map: B1info2texture ,transparent: true, opacity: 0.95 } );
+            }
             DiamondB1info = new THREE.Mesh( geometry, material );
-            DiamondB1info.position.x = DiamondB1.position.x;
-            DiamondB1info.position.y = DiamondB1.position.y;
-            DiamondB1info.position.z = DiamondB1.position.z;            
+            DiamondB1info.position.copy(DiamondB1.position);         
             DiamondB1info.lookAt( camera.position );
             scene.add( DiamondB1info );
             this.B1.from(DiamondB1people.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.5");
@@ -493,29 +489,21 @@
             this.P1.to(DiamondP1cube.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut});
             //定義寶石名稱
             DiamondP1 = scene.getObjectByName("DiamondP1"); 
-            //寶石消失
             this.P1.to(DiamondP1.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.5");
-            
-            var texture = new THREE.TextureLoader().load( 'textures/purplepeople.png' );
             var geometry = new THREE.PlaneGeometry( 13.09 , 30.3 );
-            var material = new THREE.MeshBasicMaterial( { map: texture ,transparent: true, opacity: 0.95 } );
+            var material = new THREE.MeshBasicMaterial( { map: P1texture ,transparent: true, opacity: 0.95 } );
             DiamondP1people = new THREE.Mesh( geometry, material );
-            DiamondP1people.position.x = DiamondP1.position.x;
-            DiamondP1people.position.y = DiamondP1.position.y;
-            DiamondP1people.position.z = DiamondP1.position.z;            
+            DiamondP1people.position.copy(DiamondP1.position);   
             DiamondP1people.lookAt( camera.position );
             scene.add( DiamondP1people );
-            if( Language == "Chinese"){
-                var texture = new THREE.TextureLoader().load( 'textures/redinfo.png' );
-            }else if(Language == "English"){
-                var texture = new THREE.TextureLoader().load( 'textures/redinfo2.png' );
-            }
             var geometry = new THREE.PlaneGeometry( 70,70 );
-            var material = new THREE.MeshBasicMaterial( { map: texture ,transparent: true, opacity: 0.95 } );
+            if( Language == "Chinese"){
+                var material = new THREE.MeshBasicMaterial( { map: P1infotexture ,transparent: true, opacity: 0.95 } );
+            }else if(Language == "English"){
+                var material = new THREE.MeshBasicMaterial( { map: P1info2texture ,transparent: true, opacity: 0.95 } );
+            }
             DiamondP1info = new THREE.Mesh( geometry, material );
-            DiamondP1info.position.x = DiamondP1.position.x;
-            DiamondP1info.position.y = DiamondP1.position.y;
-            DiamondP1info.position.z = DiamondP1.position.z;            
+            DiamondP1info.position.copy(DiamondP1.position);       
             DiamondP1info.lookAt( camera.position );
             scene.add( DiamondP1info );
             this.P1.from(DiamondP1people.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.5");
@@ -529,29 +517,21 @@
             this.Y1.to(DiamondY1cube.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut});
             //定義寶石名稱
             DiamondY1 = scene.getObjectByName("DiamondY1"); 
-            //寶石消失
             this.Y1.to(DiamondY1.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.5");
-            
-            var texture = new THREE.TextureLoader().load( 'textures/yellowpeople.png' );
             var geometry = new THREE.PlaneGeometry( 13.09 , 30.3 );//腳色*2
-            var material = new THREE.MeshBasicMaterial( { map: texture ,transparent: true, opacity: 0.95 } );
+            var material = new THREE.MeshBasicMaterial( { map: Y1texture ,transparent: true, opacity: 0.95 } );
             DiamondY1people = new THREE.Mesh( geometry, material );
-            DiamondY1people.position.x = DiamondY1.position.x;
-            DiamondY1people.position.y = DiamondY1.position.y;
-            DiamondY1people.position.z = DiamondY1.position.z;            
+            DiamondY1people.position.copy(DiamondY1.position);        
             DiamondY1people.lookAt( camera.position );
             scene.add( DiamondY1people );
-            if( Language == "Chinese"){
-                var texture = new THREE.TextureLoader().load( 'textures/redinfo.png' );
-            }else if(Language == "English"){
-                var texture = new THREE.TextureLoader().load( 'textures/redinfo2.png' );
-            }
             var geometry = new THREE.PlaneGeometry( 70,70 );
-            var material = new THREE.MeshBasicMaterial( { map: texture ,transparent: true, opacity: 0.95 } );
+            if( Language == "Chinese"){
+                var material = new THREE.MeshBasicMaterial( { map: Y1infotexture ,transparent: true, opacity: 0.95 } );
+            }else if(Language == "English"){
+                var material = new THREE.MeshBasicMaterial( { map: Y1info2texture ,transparent: true, opacity: 0.95 } );
+            }
             DiamondY1info = new THREE.Mesh( geometry, material );
-            DiamondY1info.position.x = DiamondY1.position.x;
-            DiamondY1info.position.y = DiamondY1.position.y;
-            DiamondY1info.position.z = DiamondY1.position.z;            
+            DiamondY1info.position.copy(DiamondY1.position);    
             DiamondY1info.lookAt( camera.position );
             scene.add( DiamondY1info );
             this.Y1.from(DiamondY1people.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.5");
@@ -565,29 +545,21 @@
             this.O1.to(DiamondO1cube.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut});
             //定義寶石名稱
             DiamondO1 = scene.getObjectByName("DiamondO1"); 
-            //寶石消失
             this.O1.to(DiamondO1.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.5");
-            
-            var texture = new THREE.TextureLoader().load( 'textures/orangepeople.png' );
             var geometry = new THREE.PlaneGeometry( 13.09 , 30.3 );//腳色*2
-            var material = new THREE.MeshBasicMaterial( { map: texture ,transparent: true, opacity: 0.95 } );
+            var material = new THREE.MeshBasicMaterial( { map: O1texture ,transparent: true, opacity: 0.95 } );
             DiamondO1people = new THREE.Mesh( geometry, material );
-            DiamondO1people.position.x = DiamondO1.position.x;
-            DiamondO1people.position.y = DiamondO1.position.y;
-            DiamondO1people.position.z = DiamondO1.position.z;            
+            DiamondO1people.position.copy(DiamondO1.position);       
             DiamondO1people.lookAt( camera.position );
             scene.add( DiamondO1people );
-            if( Language == "Chinese"){
-                var texture = new THREE.TextureLoader().load( 'textures/redinfo.png' );
-            }else if(Language == "English"){
-                var texture = new THREE.TextureLoader().load( 'textures/redinfo2.png' );
-            }
             var geometry = new THREE.PlaneGeometry( 70,70 );
-            var material = new THREE.MeshBasicMaterial( { map: texture ,transparent: true, opacity: 0.95 } );
+            if( Language == "Chinese"){
+                var material = new THREE.MeshBasicMaterial( { map: O1infotexture ,transparent: true, opacity: 0.95 } );
+            }else if(Language == "English"){
+                var material = new THREE.MeshBasicMaterial( { map: O1info2texture ,transparent: true, opacity: 0.95 } );
+            }
             DiamondO1info = new THREE.Mesh( geometry, material );
-            DiamondO1info.position.x = DiamondO1.position.x;
-            DiamondO1info.position.y = DiamondO1.position.y;
-            DiamondO1info.position.z = DiamondO1.position.z;            
+            DiamondO1info.position.copy (DiamondO1.position);
             DiamondO1info.lookAt( camera.position );
             scene.add( DiamondO1info );
             this.O1.from(DiamondO1people.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.5");
@@ -598,11 +570,10 @@
         EndGameCountDown();
     }
     
-    function EndGameCountDown(){  
+    function EndGameCountDown(){
         CountNumber++;
         document.getElementById("Counting").innerHTML = CountNumber;
         if(CountNumber >= 5){
-
             var EndGameAnim = new TimelineLite();
             EndGameAnim.to("#EndingGame", 0.5 , { y:0,opacity:1 ,onComplete: function() {
             document.getElementById("Background").style.display = "block";
@@ -610,7 +581,7 @@
             controls.enable = false;
             document.getElementById("EndingGame").style.display = "block";
             renderer.domElement.style.top = '600px';
-            }},12);
+            }},11);
          }    
      }
         </script>
