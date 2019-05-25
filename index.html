@@ -355,7 +355,11 @@
             DiamondR1people.position.z = DiamondR1.position.z;            
             DiamondR1people.lookAt( camera.position );
             scene.add( DiamondR1people );
-            var texture = new THREE.TextureLoader().load( 'textures/redinfo.png' );
+            if( Language == "Chinese"){
+                var texture = new THREE.TextureLoader().load( 'textures/redinfo.png' );
+            }else if(Language == "English"){
+                var texture = new THREE.TextureLoader().load( 'textures/redinfo2.png' );
+            }
             var geometry = new THREE.PlaneGeometry( 70,70 );
             var material = new THREE.MeshBasicMaterial( { map: texture ,transparent: true, opacity: 0.95 } );
             DiamondR1info = new THREE.Mesh( geometry, material );
@@ -375,7 +379,6 @@
             DiamondG1 = scene.getObjectByName("DiamondG1"); 
             //寶石消失
             this.G1.to(DiamondG1.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.5");
-            
             var texture = new THREE.TextureLoader().load( 'textures/redpeople.png' );
             var geometry = new THREE.PlaneGeometry( 13.09 , 30.3 );
             var material = new THREE.MeshBasicMaterial( { map: texture ,transparent: true, opacity: 0.95 } );
@@ -385,7 +388,11 @@
             DiamondG1people.position.z = DiamondG1.position.z;            
             DiamondG1people.lookAt( camera.position );
             scene.add( DiamondG1people );
-            var texture = new THREE.TextureLoader().load( 'textures/redinfo.png' );
+            if( Language == "Chinese"){
+                var texture = new THREE.TextureLoader().load( 'textures/redinfo.png' );
+            }else if(Language == "English"){
+                var texture = new THREE.TextureLoader().load( 'textures/redinfo2.png' );
+            }
             var geometry = new THREE.PlaneGeometry( 70,70 );
             var material = new THREE.MeshBasicMaterial( { map: texture ,transparent: true, opacity: 0.95 } );
             DiamondG1info = new THREE.Mesh( geometry, material );
@@ -415,7 +422,11 @@
             DiamondB1people.position.z = DiamondB1.position.z;            
             DiamondB1people.lookAt( camera.position );
             scene.add( DiamondB1people );
-            var texture = new THREE.TextureLoader().load( 'textures/redinfo.png' );
+            if( Language == "Chinese"){
+                var texture = new THREE.TextureLoader().load( 'textures/redinfo.png' );
+            }else if(Language == "English"){
+                var texture = new THREE.TextureLoader().load( 'textures/redinfo2.png' );
+            }
             var geometry = new THREE.PlaneGeometry( 70,70 );
             var material = new THREE.MeshBasicMaterial( { map: texture ,transparent: true, opacity: 0.95 } );
             DiamondB1info = new THREE.Mesh( geometry, material );
@@ -445,7 +456,11 @@
             DiamondP1people.position.z = DiamondP1.position.z;            
             DiamondP1people.lookAt( camera.position );
             scene.add( DiamondP1people );
-            var texture = new THREE.TextureLoader().load( 'textures/redinfo.png' );
+            if( Language == "Chinese"){
+                var texture = new THREE.TextureLoader().load( 'textures/redinfo.png' );
+            }else if(Language == "English"){
+                var texture = new THREE.TextureLoader().load( 'textures/redinfo2.png' );
+            }
             var geometry = new THREE.PlaneGeometry( 70,70 );
             var material = new THREE.MeshBasicMaterial( { map: texture ,transparent: true, opacity: 0.95 } );
             DiamondP1info = new THREE.Mesh( geometry, material );
@@ -475,7 +490,11 @@
             DiamondY1people.position.z = DiamondY1.position.z;            
             DiamondY1people.lookAt( camera.position );
             scene.add( DiamondY1people );
-            var texture = new THREE.TextureLoader().load( 'textures/redinfo.png' );
+            if( Language == "Chinese"){
+                var texture = new THREE.TextureLoader().load( 'textures/redinfo.png' );
+            }else if(Language == "English"){
+                var texture = new THREE.TextureLoader().load( 'textures/redinfo2.png' );
+            }
             var geometry = new THREE.PlaneGeometry( 70,70 );
             var material = new THREE.MeshBasicMaterial( { map: texture ,transparent: true, opacity: 0.95 } );
             DiamondY1info = new THREE.Mesh( geometry, material );
@@ -505,7 +524,11 @@
             DiamondO1people.position.z = DiamondO1.position.z;            
             DiamondO1people.lookAt( camera.position );
             scene.add( DiamondO1people );
-            var texture = new THREE.TextureLoader().load( 'textures/redinfo.png' );
+            if( Language == "Chinese"){
+                var texture = new THREE.TextureLoader().load( 'textures/redinfo.png' );
+            }else if(Language == "English"){
+                var texture = new THREE.TextureLoader().load( 'textures/redinfo2.png' );
+            }
             var geometry = new THREE.PlaneGeometry( 70,70 );
             var material = new THREE.MeshBasicMaterial( { map: texture ,transparent: true, opacity: 0.95 } );
             DiamondO1info = new THREE.Mesh( geometry, material );
