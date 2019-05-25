@@ -152,7 +152,7 @@
     var StartGame = false;
     var CountNumber = 0 ;
     var Language = "Chinese";
-    
+    /*
     var loadingScreen ={
         scene: new THREE.Scene(),
         camera:new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 1, 1100 ),
@@ -163,7 +163,7 @@
     };
     var LOADING_MANAGER = null;
     var RESOURCES_LOADED = false;
-    
+    */
     
     
     function LanguageFunction(language){
@@ -280,6 +280,7 @@
         
                 
     //loadingScreen
+    /*
     loadingScreen.box.position.set(0,0,5);
     loadingScreen.camera.lookAt(loadingScreen.box.position);
     loadingScreen.scene.add(loadingScreen.box);
@@ -292,7 +293,7 @@
         console.log("loaded all resources");
         RESOURCES_LOADED = true;
     };
-
+    */
         
     //////////////////////////////////////////////////////////////////////////////////
     //        add an object in the scene
@@ -339,12 +340,14 @@
 }
     //////////////////////////////////////////////////////////////////////////////////     
     function animate() {
+    /*
         if( RESOURCES_LOADED == false){
             window.requestAnimationFrame( animate );
             renderer.render(loadingScreen.scene , loadingScreen.camera);
             return;
         }
-
+    */
+        
         window.requestAnimationFrame( animate );
         controls.update();
         renderer.render( scene, camera );
