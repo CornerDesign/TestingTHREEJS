@@ -333,10 +333,10 @@
     NameArray[5] = 'DiamondO1';
         
     AddNewModel( NameArray[0] , ColorArray[0] ,-100,30,-30);    //紅
-    AddNewModel( NameArray[1] , ColorArray[1] ,100,10,-35);     //綠
+    AddNewModel( NameArray[1] , ColorArray[1] ,100,10,-30);     //綠
     AddNewModel( NameArray[2] , ColorArray[2] ,20,0,100);       //藍
-    AddNewModel( NameArray[3] , ColorArray[3] ,100,30,25);      //紫
-    AddNewModel( NameArray[4] , ColorArray[4] ,20,-25,-100);    //黃
+    AddNewModel( NameArray[3] , ColorArray[3] ,100,30,40);      //紫
+    AddNewModel( NameArray[4] , ColorArray[4] ,35,-25,-100);    //黃
     AddNewModel( NameArray[5] , ColorArray[5] ,-30,10,-100);    //橘
         
     //Add a light
@@ -583,10 +583,9 @@
             EndGameAnim.to("#EndingGame", 0.5 , { y:0,opacity:1 ,onComplete: function() {
             document.getElementById("Background").style.display = "block";
             TweenMax.to("#Background", 0.5 , { y:0,opacity:1});
-            
             document.getElementById("EndingGame").style.display = "block";
             renderer.domElement.style.top = '600px';
-            }},11);
+            }},8);
          }    
      }
         </script>
