@@ -232,23 +232,6 @@
         //Create a camera
         camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 1, 1100 );
         
-        //loadingScreen
-        loadingScreen.box.position.set(0,0,5);
-        loadingScreen.camera.lookAt(loadingScreen.box.position);
-        loadingScreen.scene.add(loadingScreen.box);
-        
-        loadingManager = new THREE.LoadingManager();
-        loadingManager.onprogress = function(item,loaded,total){
-            console.log(item,loaded,total);
-        };
-        loadingManager.onload = function(){
-            console.log("loaded all resources");
-            RESOURCES_LOADED = true;
-        };
-        
-        
-        
-        
         controls = new THREE.DeviceOrientationControls( camera );
         scene.add(camera);
     
@@ -294,11 +277,29 @@
         scene.visible = camera.visible
     })
         
+        
+                
+    //loadingScreen
+    loadingScreen.box.position.set(0,0,5);
+    loadingScreen.camera.lookAt(loadingScreen.box.position);
+    loadingScreen.scene.add(loadingScreen.box);
+        
+    loadingManager = new THREE.LoadingManager();
+    loadingManager.onprogress = function(item,loaded,total){
+        console.log(item,loaded,total);
+    };
+    loadingManager.onload = function(){
+        console.log("loaded all resources");
+        RESOURCES_LOADED = true;
+    };
+
+        
     //////////////////////////////////////////////////////////////////////////////////
     //        add an object in the scene
-    var R1texture = new THREE.TextureLoader(loadingManager).load( 'textures/redpeople.png' );
-    var R1infotexture = new THREE.TextureLoader(loadingManager).load( 'textures/redinfo.png' );
-    var R1info2texture = new THREE.TextureLoader(loadingManager).load( 'textures/redinfo2.png' );
+    var textureLoader = new THREE.TextureLoader(loadingManager);
+    var R1texture = textureLoader.load( 'textures/redpeople.png' );
+    var R1infotexture = textureLoader.load( 'textures/redinfo.png' );
+    var R1info2texture = textureLoader.load( 'textures/redinfo2.png' );
                 
     var ColorArray = new Array();
     ColorArray[0] = '0xff0000';
