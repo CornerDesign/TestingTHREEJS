@@ -267,6 +267,7 @@
     ColorArray[2] = '0x0000FF';
     ColorArray[3] = '0x6600ff';
     ColorArray[4] = '0xffff00';
+    ColorArray[5] = '0xff6600';
         
     var NameArray = new Array();
     NameArray[0] = 'DiamondR1';
@@ -274,12 +275,14 @@
     NameArray[2] = 'DiamondB1';
     NameArray[3] = 'DiamondP1';
     NameArray[4] = 'DiamondY1';
+    NameArray[5] = 'DiamondO1';
         
     AddNewModel( NameArray[0] , ColorArray[0] ,-100,30,-30);
     AddNewModel( NameArray[1] , ColorArray[1] ,100,10,-25);
     AddNewModel( NameArray[2] , ColorArray[2] ,20,0,100);
     AddNewModel( NameArray[3] , ColorArray[3] ,100,30,25);
     AddNewModel( NameArray[4] , ColorArray[4] ,20,-20,-100);
+    AddNewModel( NameArray[5] , ColorArray[5] ,-30,10,-100);
         
     //Add a light
 
@@ -483,6 +486,36 @@
             scene.add( DiamondY1info );
             this.Y1.from(DiamondY1people.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.5");
             this.Y1.from(DiamondY1info.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.35");
+        }
+         if(DName == "O1"){
+            this.O1 = new TimelineMax();
+            DiamondO1cube = scene.getObjectByName("DiamondO1cube"); 
+            this.O1.to(DiamondO1cube.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut});
+            //定義寶石名稱
+            DiamondO1 = scene.getObjectByName("DiamondO1"); 
+            //寶石消失
+            this.O1.to(DiamondO1.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.5");
+            
+            var texture = new THREE.TextureLoader().load( 'textures/redpeople.png' );
+            var geometry = new THREE.PlaneGeometry( 13.09 , 30.3 );//腳色*2
+            var material = new THREE.MeshBasicMaterial( { map: texture ,transparent: true, opacity: 0.95 } );
+            DiamondO1people = new THREE.Mesh( geometry, material );
+            DiamondO1people.position.x = DiamondO1.position.x;
+            DiamondO1people.position.y = DiamondO1.position.y;
+            DiamondO1people.position.z = DiamondO1.position.z;            
+            DiamondO1people.lookAt( camera.position );
+            scene.add( DiamondO1people );
+            var texture = new THREE.TextureLoader().load( 'textures/redinfo.png' );
+            var geometry = new THREE.PlaneGeometry( 70,70 );
+            var material = new THREE.MeshBasicMaterial( { map: texture ,transparent: true, opacity: 0.95 } );
+            DiamondO1info = new THREE.Mesh( geometry, material );
+            DiamondO1info.position.x = DiamondO1.position.x;
+            DiamondO1info.position.y = DiamondO1.position.y;
+            DiamondO1info.position.z = DiamondO1.position.z;            
+            DiamondO1info.lookAt( camera.position );
+            scene.add( DiamondO1info );
+            this.O1.from(DiamondO1people.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.5");
+            this.O1.from(DiamondO1info.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.35");
         }
         EndGameCountDown();
     }
