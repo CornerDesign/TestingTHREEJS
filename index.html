@@ -321,12 +321,12 @@
 }
     //////////////////////////////////////////////////////////////////////////////////     
     function animate() {
-        if( var RESOURCE_LOADED == false){
+        if( RESOURCE_LOADED == false){
             window.requestAnimationFrame( animate );
             renderer.render(loadingScreen.scene , loadingScreen.camera);
             return;
         }
-        
+
         window.requestAnimationFrame( animate );
         controls.update();
         renderer.render( scene, camera );
