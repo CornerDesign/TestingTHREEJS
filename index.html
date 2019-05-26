@@ -143,6 +143,8 @@
     <script src="js/GLTFLoader.js"></script>
     <script src="js/OBJLoader.js"></script>
     <script src="js/MTLLoader.js"></script>
+    <script src="js/stats.min.js"></script>
+    <script src="js/dat.gui.min.js"></script>
 
 <script>
     Tutorial.style.display = "none";
@@ -378,6 +380,35 @@
     var light = new THREE.AmbientLight( 0x222222 );
     scene.add( light );
         
+        
+    //Add particles
+        
+    var geometry = new THREE.BufferGeometry();
+	    var vertices = [];
+		var sprite = new THREE.TextureLoader().load( 'textures/sprites/disc.png' );
+		for ( var i = 0; i < 500; i ++ ) {
+		    var x = 500 * Math.random() + 10;
+			var y = 500 * Math.random() + 10;
+			var z = 500 * Math.random() + 10;
+			vertices.push( x, y, z );
+		}
+	geometry.addAttribute( 'position', new THREE.Float32BufferAttribute( vertices, 3 ) );
+	material = new THREE.PointsMaterial( { size: 35, sizeAttenuation: false, map: sprite, alphaTest: 0.5, transparent: true } );
+	material.color.setHSL( 1.0, 0.3, 0.7 );
+	var particles = new THREE.Points( geometry, material );
+	scene.add( particles );
+
+    //偵測fps
+    stats = new Stats();
+	document.body.appendChild( stats.dom );
+	//
+	var gui = new dat.GUI();
+	gui.add( material, 'sizeAttenuation' ).onChange( function () {
+        material.needsUpdate = true;
+	} );
+	gui.open();       
+        
+
     window.addEventListener( 'resize', onWindowResize, false );    
 }
     //////////////////////////////////////////////////////////////////////////////////     
@@ -391,6 +422,7 @@
         window.requestAnimationFrame( animate );
         controls.update();
         renderer.render( scene, camera );
+        stats.update();
     }
     
     function onWindowResize() {
