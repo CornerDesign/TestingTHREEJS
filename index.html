@@ -166,10 +166,10 @@
     Main.style.display = "none";
     TweenMax.from("#Background", 0.5 , { y:-5,opacity:0 ,delay:1});
     LoadImageFirst();
-    TweenMax.to("#Spinner", 1 , { rotation:"+=360", delay:1 , repeat:5,onComplete:function(){
+    TweenMax.to("#Spinner", 1 , { y:-5 , opacity:1, delay:1 , repeat:5,onComplete:function(){
 	Main.style.display = "block";
-    	TweenMax.from("#Main", 0.5 , { y:-5,opacity:0 ,delay:1.25});
-    	TweenMax.to("#Spinner", 0.5 , { y:-5,opacity:0 ,delay:1.25});
+    	TweenMax.from("#Main", 0.5 , { y:-5,opacity:0});
+    	TweenMax.to("#Spinner", 0.5 , { y:-5,opacity:0});
     }});
 	
     var StartGame = false;
