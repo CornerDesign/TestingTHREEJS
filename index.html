@@ -164,7 +164,7 @@
         )
     };
     */
-    //var LOADING_MANAGER = null;
+    var LOADING_MANAGER = null;
     //var RESOURCES_LOADED = false;
     
     function LanguageFunction(language){
@@ -377,7 +377,15 @@
     }
 	
     function LoadImageFirst(){
-    	var textureLoader = new THREE.TextureLoader();
+	loadingManager = new THREE.LoadingManager();
+	loadingManager.onprogress = function(item,loaded,total){
+        	console.log(item,loaded,total);
+    	};
+    	loadingManager.onload = function(){
+        	console.log("loaded all resources");
+        	RESOURCES_LOADED = true;
+    	};    
+    	var textureLoader = new THREE.TextureLoader(loadingManager);
     	//對的
     	R1texture = textureLoader.load( 'textures/redpeople.png' );       
     	R1infotexture = textureLoader.load( 'textures/info/redinfo.png' );
