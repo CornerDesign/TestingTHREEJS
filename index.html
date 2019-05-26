@@ -166,7 +166,15 @@
     */
     //var LOADING_MANAGER = null;
     //var RESOURCES_LOADED = false;
-    
+    loadingManager = new THREE.LoadingManager();
+	loadingManager.onprogress = function(item,loaded,total){
+        	console.log(item,loaded,total);
+    };
+    	loadingManager.onload = function(){
+        	console.log("loaded all resources");
+        	RESOURCES_LOADED = true;
+    }; 
+	
     function LanguageFunction(language){
         Tutorial.style.display = "block";
         if(language == 1){
@@ -377,14 +385,7 @@
     }
 	
     function LoadImageFirst(){
-	loadingManager = new THREE.LoadingManager();
-	loadingManager.onprogress = function(item,loaded,total){
-        	console.log(item,loaded,total);
-    	};
-    	loadingManager.onload = function(){
-        	console.log("loaded all resources");
-        	RESOURCES_LOADED = true;
-    	};    
+	   
     	var textureLoader = new THREE.TextureLoader(loadingManager);
     	//對的
     	R1texture = textureLoader.load( 'textures/redpeople.png' );       
