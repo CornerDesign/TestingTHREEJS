@@ -380,24 +380,6 @@
     scene.add( light );
         
         
-    //Add particles
-        
-    var geometry = new THREE.BufferGeometry();
-	    var vertices = [];
-		var sprite = new THREE.TextureLoader().load( 'textures/disc.png' );
-		for ( var i = 0; i < 500; i ++ ) {
-		    var x = 100 * Math.random() + 100;
-			var y = 100 * Math.random() + 100;
-			var z = 100 * Math.random() + 100;
-			vertices.push( x, y, z );
-		}
-	geometry.addAttribute( 'position', new THREE.Float32BufferAttribute( vertices, 3 ) );
-	material = new THREE.PointsMaterial( { size: 35, sizeAttenuation: false, map: sprite, alphaTest: 0.5, transparent: true } );
-	material.color.setHSL( 1.0, 0.3, 0.7 );
-	material.needsUpdate = true;
-	var particles = new THREE.Points( geometry, material );
-	scene.add( particles );
-
     //偵測fps
     stats = new Stats();
 
