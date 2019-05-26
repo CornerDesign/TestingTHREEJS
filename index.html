@@ -424,10 +424,10 @@
         console.log("Name"+object.name +"Color"+ ModelColor + "object.position"+object.position.y);
         });
 
-        var cubegeometry = new THREE.BoxGeometry( 17 , 17 , 17 );
+        var cubegeometry = new THREE.BoxGeometry( 15 , 15 , 15 );
         var cubematerial = new THREE.MeshBasicMaterial( {  color: 0xFFF000,  transparent : true,  opacity:0.1 });
         var cubemesh = new THREE.Mesh( cubegeometry, cubematerial );
-        cubemesh.position.set(x,y,z) ;
+        cubemesh.position.set(x,y-5,z) ;
 	cubemesh.lookAt( camera.position );
         scene.add( cubemesh );
         cubemesh.name = MeshName+"cube";
@@ -617,7 +617,7 @@
             DiamondR1W = scene.getObjectByName("DiamondR1W"); 
             this.R1W.to(DiamondR1W.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.5");
             
-            var geometry = new THREE.PlaneGeometry( 40,40 );
+            var geometry = new THREE.PlaneGeometry( 60,60 );
             if( Language == "Chinese"){
                 var material = new THREE.MeshBasicMaterial( { map: R1Wtexture ,transparent: true, opacity: 0.95 } );
             }else if(Language == "English"){
@@ -637,7 +637,7 @@
             //定義寶石名稱
             DiamondG1W = scene.getObjectByName("DiamondG1W"); 
             this.G1W.to(DiamondG1W.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.5");
-            var geometry = new THREE.PlaneGeometry( 40,40 );
+            var geometry = new THREE.PlaneGeometry( 60,60 );
             if( Language == "Chinese"){
                 var material = new THREE.MeshBasicMaterial( { map: G1Wtexture ,transparent: true, opacity: 0.95 } );
             }else if(Language == "English"){
@@ -657,7 +657,7 @@
             //定義寶石名稱
             DiamondB1W = scene.getObjectByName("DiamondB1W"); 
             this.B1W.to(DiamondB1W.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.5");
-            var geometry = new THREE.PlaneGeometry( 40,40 );
+            var geometry = new THREE.PlaneGeometry( 60,60 );
             if( Language == "Chinese"){
                 var material = new THREE.MeshBasicMaterial( { map: B1Wtexture ,transparent: true, opacity: 0.95 } );
             }else if(Language == "English"){
@@ -677,7 +677,7 @@
             //定義寶石名稱
             DiamondP1W = scene.getObjectByName("DiamondP1W"); 
             this.P1W.to(DiamondP1W.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.5");
-            var geometry = new THREE.PlaneGeometry( 40,40 );
+            var geometry = new THREE.PlaneGeometry( 60,60 );
             if( Language == "Chinese"){
                 var material = new THREE.MeshBasicMaterial( { map: P1Wtexture ,transparent: true, opacity: 0.95 } );
             }else if(Language == "English"){
@@ -697,7 +697,7 @@
             //定義寶石名稱
             DiamondY1W = scene.getObjectByName("DiamondY1W"); 
             this.Y1W.to(DiamondY1W.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.5");
-            var geometry = new THREE.PlaneGeometry( 40,40 );
+            var geometry = new THREE.PlaneGeometry( 60,60 );
             if( Language == "Chinese"){
                 var material = new THREE.MeshBasicMaterial( { map: Y1Wtexture ,transparent: true, opacity: 0.95 } );
             }else if(Language == "English"){
