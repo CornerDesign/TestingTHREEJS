@@ -215,6 +215,10 @@
         domEvents.addEventListener(scene.getObjectByName("DiamondB1Wcube"), 'touchstart' , event =>{ infoanim("B1W"); })
         domEvents.addEventListener(scene.getObjectByName("DiamondP1Wcube"), 'touchstart' , event =>{ infoanim("P1W"); })
         domEvents.addEventListener(scene.getObjectByName("DiamondY1Wcube"), 'touchstart' , event =>{ infoanim("Y1W"); })
+	    
+        domEvents.addEventListener(scene.getObjectByName("DiamondM1Wcube"), 'touchstart' , event =>{ infoanim("M1"); })
+        domEvents.addEventListener(scene.getObjectByName("DiamondM2Wcube"), 'touchstart' , event =>{ infoanim("M2"); })
+        domEvents.addEventListener(scene.getObjectByName("DiamondM3Wcube"), 'touchstart' , event =>{ infoanim("M3"); })
         
     }
     var camera, scene, renderer, controls;
@@ -299,6 +303,10 @@
     ColorArray[8] = '0x0099ff';
     ColorArray[9] = '0x9933ff';
     ColorArray[10] = '0xffff00';
+    //random
+    ColorArray[11] = '0x0099ff';
+    ColorArray[12] = '0x9933ff';
+    ColorArray[13] = '0xffff00';
         
     var NameArray = new Array();
     //對的
@@ -314,6 +322,12 @@
     NameArray[8] = 'DiamondB1W';
     NameArray[9] = 'DiamondP1W';
     NameArray[10] = 'DiamondY1W';
+
+    //random
+    NameArray[11] = 'DiamondM1';
+    NameArray[12] = 'DiamondM2';
+    NameArray[13] = 'DiamondM3';
+	    
         
     //對的
     AddNewModel( NameArray[0] , ColorArray[0] ,-90,60,-20);    //紅
@@ -328,6 +342,11 @@
     AddNewModel( NameArray[8] , ColorArray[8] ,0,20,-110);     //藍
     AddNewModel( NameArray[9] , ColorArray[9] ,-110,-20,40);   //紫
     AddNewModel( NameArray[10] , ColorArray[10] ,0,-25,110);   //黃
+    //random
+    var randomNum = Math.random() * 100 ;
+    AddNewModel( NameArray[11] , ColorArray[11] ,randomNum,randomNum,-110);     //藍
+    AddNewModel( NameArray[12] , ColorArray[12] ,-110,-randomNum,40);   //紫
+    AddNewModel( NameArray[13] , ColorArray[13] ,randomNum,-randomNum,110);   //黃
         
 	    
 	    
@@ -404,6 +423,9 @@
     	Y1W2texture = textureLoader.load( 'textures/wronganswer/yellowwrong2.png' );
     	Wrongtexture = textureLoader.load( 'textures/wronganswer/wrong.png' );
     	Wrong2texture = textureLoader.load( 'textures/wronganswer/wrong2.png' );
+	    
+	//星球
+	
     }
 	
 	
@@ -710,6 +732,26 @@
             scene.add( DiamondY1Winfo );
             this.Y1W.from(DiamondY1Winfo.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.35");
             this.Y1W.to(DiamondY1Winfo.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},5);
+        }
+	if(DName == "M1"){
+            this.M1 = new TimelineMax();
+            DiamondY1Wcube = scene.getObjectByName("DiamondM1cube"); 
+            this.M1.to(DiamondM1cube.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut});
+            //定義寶石名稱
+            DiamondM1 = scene.getObjectByName("DiamondM1"); 
+            this.M1.to(DiamondM1.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.5");
+            var geometry = new THREE.PlaneGeometry( 60,60 );
+            if( Language == "Chinese"){
+                var material = new THREE.MeshBasicMaterial( { map: Wrongtexture ,transparent: true, opacity: 0.95 } );
+            }else if(Language == "English"){
+                var material = new THREE.MeshBasicMaterial( { map: Wrong2texture ,transparent: true, opacity: 0.95 } );
+            }
+            DiamondM1info = new THREE.Mesh( geometry, material );
+            DiamondM1info.position.copy(DiamondM1.position);         
+            DiamondM1info.lookAt( camera.position );
+            scene.add( DiamondM1info );
+            this.M1.from(DiamondM1info.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.35");
+            this.M1.to(DiamondM1info.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},5);
         }
     }
     
