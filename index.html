@@ -47,7 +47,7 @@
     }
     #Loading {
 	position: absolute;
-        top: 30%; width: 100%;
+        top: 40%; width: 100%;
         color: white;
         padding: 5px;
         font-family:Monospace;
@@ -329,6 +329,17 @@
     AddNewModel( NameArray[9] , ColorArray[9] ,-110,-20,40);   //紫
     AddNewModel( NameArray[10] , ColorArray[10] ,0,-25,110);   //黃
         
+	    
+	    
+	    
+    var texture = new THREE.TextureLoader().load( 'textures/planet/planet0.png' );
+    var geometry = new THREE.PlaneGeometry( 20,20);
+    var material = new THREE.MeshBasicMaterial( { map: texture } );
+    planemesh = new THREE.Mesh( geometry, material );
+    planemesh.position.set( -130, 0, 0 );
+    planemesh.lookAt(camera.position);
+    scene.add( planemesh );
+	    
     //Add a light
 
     var light = new THREE.DirectionalLight( 0xffffff );
