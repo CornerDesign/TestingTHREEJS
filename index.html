@@ -168,7 +168,7 @@
     TweenMax.from("#Background", 0.5 , { y:-5,opacity:0});
     TweenMax.from("#Rolling", 0.5 , { y:-5,opacity:0 ,delay:1});	
     LoadImageFirst();
-    TweenMax.to("#Rolling", 1 , { rotation:359 , delay:1 ,ease: Power0.easeNone, repeat:2.5 ,onComplete:function(){
+    TweenMax.to("#Rolling", 1 , { rotation:359 , delay:1 ,ease: Power0.easeNone, repeat:3 ,onComplete:function(){
 	Main.style.display = "block";
     	TweenMax.from("#Main", 0.5 , { y:-5,opacity:0});
     	TweenMax.to("#Rolling", 0.5 , { y:-5,opacity:0 ,onComplete:function(){
