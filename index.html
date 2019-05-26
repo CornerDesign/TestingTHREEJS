@@ -325,12 +325,12 @@
     NameArray[10] = 'DiamondY1W';
         
     //對的
-    AddNewModel( NameArray[0] , ColorArray[0] ,-100,40,-10);    //紅
-    AddNewModel( NameArray[1] , ColorArray[1] ,100,10,-30);     //綠
-    AddNewModel( NameArray[2] , ColorArray[2] ,20,0,100);       //藍
-    AddNewModel( NameArray[3] , ColorArray[3] ,100,30,40);      //紫
-    AddNewModel( NameArray[4] , ColorArray[4] ,35,-25,-100);    //黃
-    AddNewModel( NameArray[5] , ColorArray[5] ,-30,10,-100);    //橘
+    AddNewModel( NameArray[0] , ColorArray[0] ,-90,40,-10);    //紅
+    AddNewModel( NameArray[1] , ColorArray[1] ,90,10,-30);     //綠
+    AddNewModel( NameArray[2] , ColorArray[2] ,20,0,90);       //藍
+    AddNewModel( NameArray[3] , ColorArray[3] ,90,30,40);      //紫
+    AddNewModel( NameArray[4] , ColorArray[4] ,35,-25,-90);    //黃
+    AddNewModel( NameArray[5] , ColorArray[5] ,-30,10,-90);    //橘
     //錯的    
     AddNewModel( NameArray[6] , ColorArray[6] ,-40,15,110);      //紅
     AddNewModel( NameArray[7] , ColorArray[7] ,-110,0,-10);     //綠
@@ -424,7 +424,7 @@
             }
         );
         scene.add( object );
-        object.scale.set(0.55,0.55,0.55);
+        object.scale.set(0.45,0.45,0.45);
         object.name = MeshName;     
         object.position.set(x,y,z);
 	TweenMax.to(object.rotation,900 , {y:360,x:0,z:0 , ease: Power0.easeNone , repeat:-1} );
@@ -432,7 +432,7 @@
         });
 
         var cubegeometry = new THREE.BoxGeometry( 15 , 15 , 15 );
-        var cubematerial = new THREE.MeshBasicMaterial( {  color: 0xFFF000,  transparent : true,  opacity:0.1 });
+        var cubematerial = new THREE.MeshBasicMaterial( {  color: 0xFFF000,  transparent : true,  opacity:0 });
         var cubemesh = new THREE.Mesh( cubegeometry, cubematerial );
         cubemesh.position.set(x,y+5,z) ;
 	cubemesh.lookAt( camera.position );
