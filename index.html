@@ -216,8 +216,8 @@
         domEvents.addEventListener(scene.getObjectByName("DiamondP1Wcube"), 'touchstart' , event =>{ infoanim("P1W"); })
         domEvents.addEventListener(scene.getObjectByName("DiamondY1Wcube"), 'touchstart' , event =>{ infoanim("Y1W"); })
 	
-//        domEvents.addEventListener(scene.getObjectByName("DiamondM2Cube"), 'touchstart' , event =>{ infoanim("M2"); })    
         domEvents.addEventListener(scene.getObjectByName("DiamondM1cube"), 'touchstart' , event =>{ infoanim("M1"); })
+        domEvents.addEventListener(scene.getObjectByName("DiamondM2cube"), 'touchstart' , event =>{ infoanim("M2"); })
         domEvents.addEventListener(scene.getObjectByName("DiamondM3cube"), 'touchstart' , event =>{ infoanim("M3"); })
         
     }
@@ -344,8 +344,8 @@
     AddNewModel( NameArray[10] , ColorArray[10] ,0,-25,110);   //黃
     //random
     var randomNum = Math.random() * 100 - 30 ;
-    AddNewModel( NameArray[11] , ColorArray[11] ,randomNum,randomNum,-110);     //藍
-    AddNewModel( NameArray[12] , ColorArray[12] ,-110,-randomNum,randomNum);   //紫
+    AddNewModel( NameArray[11] , ColorArray[11] ,-110,randomNum,-randomNum);  //藍
+    AddNewModel( NameArray[12] , ColorArray[12] ,randomNum,-randomNum,110);   //紫
     AddNewModel( NameArray[13] , ColorArray[13] ,randomNum,-randomNum,110);   //黃
         
 	    
