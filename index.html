@@ -425,7 +425,7 @@
         var cubegeometry = new THREE.BoxGeometry( 17 , 15 , 23 );
         var cubematerial = new THREE.MeshBasicMaterial( {  color: 0xFFF000,  transparent : true,  opacity:0.1 });
         var cubemesh = new THREE.Mesh( cubegeometry, cubematerial );
-        cubemesh.position.set(x,y+8,z) ;
+        cubemesh.position.set(x,y,z) ;
 	cubemesh.lookAt( camera.position );
         scene.add( cubemesh );
         cubemesh.name = MeshName+"cube";
