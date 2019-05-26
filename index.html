@@ -381,13 +381,13 @@
             }
         );
         scene.add( object );
-        object.scale.set(0.5,0.5,0.5);
+        object.scale.set(0.4,0.4,0.4);
         object.name = MeshName;     
         object.position.set(x,y,z);
         console.log("Name"+object.name +"Color"+ ModelColor + "object.position"+object.position.y);
         });
 
-        var cubegeometry = new THREE.BoxGeometry( 20 , 15 , 15 );
+        var cubegeometry = new THREE.BoxGeometry( 18 , 18 , 18 );
         var cubematerial = new THREE.MeshBasicMaterial( {  color: 0xFFF000,  transparent : true,  opacity:0.1 });
         var cubemesh = new THREE.Mesh( cubegeometry, cubematerial );
         cubemesh.position.set(x,y+5,z) ;
