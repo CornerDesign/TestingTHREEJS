@@ -304,7 +304,7 @@
     ColorArray[9] = '0x9933ff';
     ColorArray[10] = '0xffff00';
     //random
-    ColorArray[11] = '0x0099ff';
+    ColorArray[11] = '0x00FF00';
     ColorArray[12] = '0x9933ff';
     ColorArray[13] = '0xffff00';
         
@@ -344,13 +344,12 @@
     AddNewModel( NameArray[10] , ColorArray[10] ,0,-25,110);   //黃
     //random
     var randomNum = Math.random() * 100 + 30 ;
-    AddNewModel( NameArray[11] , ColorArray[11] ,-110,randomNum,-randomNum);  //藍
+    AddNewModel( NameArray[11] , ColorArray[11] ,-110,randomNum,-randomNum);  //綠
     AddNewModel( NameArray[12] , ColorArray[12] ,randomNum,-randomNum,110);   //紫
     AddNewModel( NameArray[13] , ColorArray[13] ,randomNum,-110,randomNum);   //黃
         
 	    
-	    
-	    
+
     var texture = new THREE.TextureLoader().load( 'textures/planet/planet0.png' );
     var geometry = new THREE.PlaneGeometry( 20,20);
     var material = new THREE.MeshBasicMaterial( { map: texture } );
