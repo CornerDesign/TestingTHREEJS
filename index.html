@@ -44,6 +44,18 @@
         box-sizing: border-box;
         z-index = 1;
     }
+    #Loading {
+        position: absolute;
+        top: 100px; width: 100%;
+        color: #ffffff;
+        padding: 5px;
+        font-family:Monospace;
+        font-size:13px;
+        font-weight: bold;
+        text-align:center;
+        box-sizing: border-box;
+        z-index = 1;
+    }
     
     #Tutorial {
         position: absolute;
@@ -117,7 +129,11 @@
             <button class ="mybtn clickmybtn" onclick="LanguageFunction(1)"> 繁體中文 </button>
             <button class ="mybtn clickmybtn" onclick="LanguageFunction(2)"> English </button>
         </div>
-        
+        <div id="Loading">
+	<img id = "Spinner" src="textures/Spinner.png" alt="loading" width="100" > <br/>
+	    
+	</div>
+	    
         <div id="Tutorial">
             <img id = "tutorialimg " src="textures/phoneturn.png" alt="tutorial" width="100" > <br/>
             <h3 id = "tutorialtext">旋轉手機尋找能力寶石</h3>
@@ -147,24 +163,19 @@
 <script>
     Tutorial.style.display = "none";
     EndingGame.style.display = "none";
+    Main.style.display = "none";
     TweenMax.from("#Background", 0.5 , { y:-5,opacity:0 ,delay:1});
+    LoadImageFirst();
+    TweenMax.to("#Spinner", 1 , { y:360 , delay:1 , repeat:5,onComplete:function(){
+	Main.style.display = "block";
+    	TweenMax.from("#Main", 0.5 , { y:-5,opacity:0 ,delay:1.25});
+    	TweenMax.to("#Spinner", 0.5 , { y:-5,opacity:0 ,delay:1.25});
+    }});
+	
     var StartGame = false;
     var CountNumber = 0 ;
     var Language = "Chinese";
  
-    loadingManager = new THREE.LoadingManager();
-
-    loadingManager.onprogress = function(item,loaded,total){
-        console.log(item,loaded,total);
-    };
-    loadingManager.onload = function(){
-	LoadImageFirst();
-        console.log("loaded all resources");
-	TweenMax.from("#Main", 0.5 , { y:-5,opacity:0 ,delay:1.25});
-        RESOURCES_LOADED = true;
-		
-    }; 
-	
     function LanguageFunction(language){
         Tutorial.style.display = "block";
         if(language == 1){
@@ -269,7 +280,7 @@
         scene.visible = camera.visible
     })
 	    
-    //        add an object in the scene
+    // add an object in the scene
     var ColorArray = new Array();
     //對的
     ColorArray[0] = '0xff0000';
@@ -308,11 +319,11 @@
     AddNewModel( NameArray[4] , ColorArray[4] ,35,-25,-90);    //黃
     AddNewModel( NameArray[5] , ColorArray[5] ,-30,10,-90);    //橘
     //錯的    
-    AddNewModel( NameArray[6] , ColorArray[6] ,-40,15,110);      //紅
-    AddNewModel( NameArray[7] , ColorArray[7] ,-110,0,-10);     //綠
-    AddNewModel( NameArray[8] , ColorArray[8] ,0,20,-110);      //藍
-    AddNewModel( NameArray[9] , ColorArray[9] ,-110,-20,40);    //紫
-    AddNewModel( NameArray[10] , ColorArray[10] ,0,-25,110);     //黃
+    AddNewModel( NameArray[6] , ColorArray[6] ,-40,15,110);    //紅
+    AddNewModel( NameArray[7] , ColorArray[7] ,-110,0,-10);    //綠
+    AddNewModel( NameArray[8] , ColorArray[8] ,0,20,-110);     //藍
+    AddNewModel( NameArray[9] , ColorArray[9] ,-110,-20,40);   //紫
+    AddNewModel( NameArray[10] , ColorArray[10] ,0,-25,110);   //黃
         
     //Add a light
 
@@ -343,7 +354,7 @@
 	
     function LoadImageFirst(){
 	   
-    	var textureLoader = new THREE.TextureLoader(loadingManager);
+    	var textureLoader = new THREE.TextureLoader();
     	//對的
     	R1texture = textureLoader.load( 'textures/redpeople.png' );       
     	R1infotexture = textureLoader.load( 'textures/info/redinfo.png' );
