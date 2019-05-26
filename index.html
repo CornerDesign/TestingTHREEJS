@@ -153,6 +153,7 @@
     var StartGame = false;
     var CountNumber = 0 ;
     var Language = "Chinese";
+    LoadImageFirst();
     /*
     var loadingScreen ={
         scene: new THREE.Scene(),
@@ -291,39 +292,7 @@
         
     //////////////////////////////////////////////////////////////////////////////////
     //        add an object in the scene
-    var textureLoader = new THREE.TextureLoader();
-    //對的
-    R1texture = textureLoader.load( 'textures/redpeople.png' );       
-    R1infotexture = textureLoader.load( 'textures/info/redinfo.png' );
-    R1info2texture = textureLoader.load( 'textures/info/redinfo2.png' );
-    G1texture = textureLoader.load( 'textures/greenpeople.png' );       
-    G1infotexture = textureLoader.load( 'textures/info/greeninfo.png' );
-    G1info2texture = textureLoader.load( 'textures/info/greeninfo2.png' );
-    B1texture = textureLoader.load( 'textures/bluepeople.png' );       
-    B1infotexture = textureLoader.load( 'textures/info/blueinfo.png' );
-    B1info2texture = textureLoader.load( 'textures/info/blueinfo2.png' );
-    P1texture = textureLoader.load( 'textures/purplepeople.png' );       
-    P1infotexture = textureLoader.load( 'textures/info/purpleinfo.png' );
-    P1info2texture = textureLoader.load( 'textures/info/purpleinfo2.png' );
-    Y1texture = textureLoader.load( 'textures/yellowpeople.png' );       
-    Y1infotexture = textureLoader.load( 'textures/info/yellowinfo.png' );
-    Y1info2texture = textureLoader.load( 'textures/info/yellowinfo2.png' );
-    O1texture = textureLoader.load( 'textures/orangepeople.png' );       
-    O1infotexture = textureLoader.load( 'textures/info/orangeinfo.png' );
-    O1info2texture = textureLoader.load( 'textures/info/orangeinfo2.png' );
-    //錯的
-    R1Wtexture = textureLoader.load( 'textures/wronganswer/redwrong.png' );
-    R1W2texture = textureLoader.load( 'textures/wronganswer/redwrong2.png' );
-    G1Wtexture = textureLoader.load( 'textures/wronganswer/greenwrong.png' );
-    G1W2texture = textureLoader.load( 'textures/wronganswer/greenwrong2.png' );
-    B1Wtexture = textureLoader.load( 'textures/wronganswer/bluewrong.png' );
-    B1W2texture = textureLoader.load( 'textures/wronganswer/bluewrong2.png' );
-    P1Wtexture = textureLoader.load( 'textures/wronganswer/purplewrong.png' );
-    P1W2texture = textureLoader.load( 'textures/wronganswer/purplewrong2.png' );
-    Y1Wtexture = textureLoader.load( 'textures/wronganswer/yellowwrong.png' );
-    Y1W2texture = textureLoader.load( 'textures/wronganswer/yellowwrong2.png' );
-    Wrongtexture = textureLoader.load( 'textures/wronganswer/wrong.png' );
-    Wrong2texture = textureLoader.load( 'textures/wronganswer/wrong2.png' );
+    
         
     var ColorArray = new Array();
     //對的
@@ -406,6 +375,44 @@
         camera.updateProjectionMatrix();
         renderer.setSize( window.innerWidth, window.innerHeight );
     }
+	
+    function LoadImageFirst(){
+    	var textureLoader = new THREE.TextureLoader();
+    	//對的
+    	R1texture = textureLoader.load( 'textures/redpeople.png' );       
+    	R1infotexture = textureLoader.load( 'textures/info/redinfo.png' );
+    	R1info2texture = textureLoader.load( 'textures/info/redinfo2.png' );
+    	G1texture = textureLoader.load( 'textures/greenpeople.png' );       
+    	G1infotexture = textureLoader.load( 'textures/info/greeninfo.png' );
+    	G1info2texture = textureLoader.load( 'textures/info/greeninfo2.png' );
+    	B1texture = textureLoader.load( 'textures/bluepeople.png' );       
+    	B1infotexture = textureLoader.load( 'textures/info/blueinfo.png' );
+    	B1info2texture = textureLoader.load( 'textures/info/blueinfo2.png' );
+    	P1texture = textureLoader.load( 'textures/purplepeople.png' );       
+    	P1infotexture = textureLoader.load( 'textures/info/purpleinfo.png' );
+    	P1info2texture = textureLoader.load( 'textures/info/purpleinfo2.png' );
+    	Y1texture = textureLoader.load( 'textures/yellowpeople.png' );       
+    	Y1infotexture = textureLoader.load( 'textures/info/yellowinfo.png' );
+   	Y1info2texture = textureLoader.load( 'textures/info/yellowinfo2.png' );
+    	O1texture = textureLoader.load( 'textures/orangepeople.png' );       
+    	O1infotexture = textureLoader.load( 'textures/info/orangeinfo.png' );
+    	O1info2texture = textureLoader.load( 'textures/info/orangeinfo2.png' );
+    	//錯的
+    	R1Wtexture = textureLoader.load( 'textures/wronganswer/redwrong.png' );
+    	R1W2texture = textureLoader.load( 'textures/wronganswer/redwrong2.png' );
+    	G1Wtexture = textureLoader.load( 'textures/wronganswer/greenwrong.png' );
+    	G1W2texture = textureLoader.load( 'textures/wronganswer/greenwrong2.png' );
+    	B1Wtexture = textureLoader.load( 'textures/wronganswer/bluewrong.png' );
+    	B1W2texture = textureLoader.load( 'textures/wronganswer/bluewrong2.png' );
+    	P1Wtexture = textureLoader.load( 'textures/wronganswer/purplewrong.png' );
+    	P1W2texture = textureLoader.load( 'textures/wronganswer/purplewrong2.png' );
+    	Y1Wtexture = textureLoader.load( 'textures/wronganswer/yellowwrong.png' );
+    	Y1W2texture = textureLoader.load( 'textures/wronganswer/yellowwrong2.png' );
+    	Wrongtexture = textureLoader.load( 'textures/wronganswer/wrong.png' );
+    	Wrong2texture = textureLoader.load( 'textures/wronganswer/wrong2.png' );
+    }
+	
+	
    //生成model
     function AddNewModel( MeshName , ModelColor , x , y , z ){
         var loader = new THREE.OBJLoader()
