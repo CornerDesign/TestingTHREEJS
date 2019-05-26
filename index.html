@@ -345,10 +345,12 @@
     var light = new THREE.DirectionalLight( 0xffffff );
     light.position.set( 1, 1, 1 );
     scene.add( light );
-    var light = new THREE.DirectionalLight( 0x002288 );
+    //var light = new THREE.DirectionalLight( 0x002288 );
+    var light = new THREE.DirectionalLight( 0xffffff );
     light.position.set( -1, -1, -1 );
     scene.add( light );
-    var light = new THREE.AmbientLight( 0x222222 );
+    //var light = new THREE.AmbientLight( 0x222222 );
+    var light = new THREE.AmbientLight( 0xF3F3F3 );
     scene.add( light );
 
     window.addEventListener( 'resize', onWindowResize, false );    
@@ -419,7 +421,7 @@
         object.scale.set(0.45,0.45,0.45);
         object.name = MeshName;     
         object.position.set(x,y,z);
-	TweenMax.to(object.rotation,900 , {y:360,x:0,z:0 , ease: Power0.easeNone , repeat:-1} );
+	TweenMax.to(object.rotation,600 , {y:360,x:0,z:0 , ease: Power0.easeNone , repeat:-1} );
         console.log("Name"+object.name +"Color"+ ModelColor + "object.position"+object.position.y);
         });
 
