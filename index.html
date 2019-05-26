@@ -131,7 +131,7 @@
             <button class ="mybtn clickmybtn" onclick="LanguageFunction(2)"> English </button>
         </div>
         <div id="Loading">
-	<img id = "Rolling" src="textures/Rolling.png" alt="Rolling" width="100" > <br/>
+	<img id = "Rolling" src="textures/Rolling.png" alt="Rolling" width="50" > <br/>
 	    
 	</div>
 	    
@@ -168,7 +168,7 @@
     TweenMax.from("#Background", 0.5 , { y:-5,opacity:0});
     TweenMax.from("#Rolling", 0.5 , { y:-5,opacity:0 ,delay:1});	
     LoadImageFirst();
-    TweenMax.to("#Rolling", 1 , { rotation:359 , delay:1 ,ease: Power0.easeNone, repeat:5 ,onComplete:function(){
+    TweenMax.to("#Rolling", 1 , { rotation:359 , delay:1 ,ease: Power0.easeNone, repeat:2.5 ,onComplete:function(){
 	Main.style.display = "block";
     	TweenMax.from("#Main", 0.5 , { y:-5,opacity:0});
     	TweenMax.to("#Rolling", 0.5 , { y:-5,opacity:0 ,onComplete:function(){
