@@ -416,9 +416,10 @@
             }
         );
         scene.add( object );
-        object.scale.set(0.2,0.2,0.2);
+        object.scale.set(0.4,0.4,0.4);
         object.name = MeshName;     
         object.position.set(x,y,z);
+	TweenMax.to(object.rotation,1800 , {y:360,x:0,z:0 , ease: Power0.easeNone , repeat:-1} );
         console.log("Name"+object.name +"Color"+ ModelColor + "object.position"+object.position.y);
         });
 
