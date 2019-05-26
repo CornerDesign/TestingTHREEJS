@@ -386,9 +386,9 @@
 	    var vertices = [];
 		var sprite = new THREE.TextureLoader().load( 'textures/disc.png' );
 		for ( var i = 0; i < 500; i ++ ) {
-		    var x = 200 * Math.random() + 300;
-			var y = 200 * Math.random() + 300;
-			var z = 200 * Math.random() + 300;
+		    var x = 100 * Math.random() + 100;
+			var y = 100 * Math.random() + 100;
+			var z = 100 * Math.random() + 100;
 			vertices.push( x, y, z );
 		}
 	geometry.addAttribute( 'position', new THREE.Float32BufferAttribute( vertices, 3 ) );
@@ -440,7 +440,7 @@
         console.log("Name"+object.name +"Color"+ ModelColor + "object.position"+object.position.y);
         });
 
-        var cubegeometry = new THREE.BoxGeometry( 15 , 23 , 15 );
+        var cubegeometry = new THREE.BoxGeometry( 15 , 15 , 23 );
         var cubematerial = new THREE.MeshBasicMaterial( {  color: 0xFFF000,  transparent : true,  opacity:0.1 });
         var cubemesh = new THREE.Mesh( cubegeometry, cubematerial );
         cubemesh.position.set(x,y+5,z) ;
