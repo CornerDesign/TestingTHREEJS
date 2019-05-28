@@ -666,6 +666,7 @@
             }else if(Language == "English"){
                 var material = new THREE.MeshBasicMaterial( { map: R1W2texture ,transparent: true, opacity: 0.95 } );
             }
+	    material.map.minFilter = THREE.LinearFilter;
             DiamondR1Winfo = new THREE.Mesh( geometry, material );
             DiamondR1Winfo.position.copy(DiamondR1W.position);         
             DiamondR1Winfo.lookAt( camera.position );
@@ -686,6 +687,7 @@
             }else if(Language == "English"){
                 var material = new THREE.MeshBasicMaterial( { map: G1W2texture ,transparent: true, opacity: 0.95 } );
             }
+		material.map.minFilter = THREE.LinearFilter;
             DiamondG1Winfo = new THREE.Mesh( geometry, material );
             DiamondG1Winfo.position.copy(DiamondG1W.position);         
             DiamondG1Winfo.lookAt( camera.position );
@@ -706,6 +708,7 @@
             }else if(Language == "English"){
                 var material = new THREE.MeshBasicMaterial( { map: B1W2texture ,transparent: true, opacity: 0.95 } );
             }
+		material.map.minFilter = THREE.LinearFilter;
             DiamondB1Winfo = new THREE.Mesh( geometry, material );
             DiamondB1Winfo.position.copy(DiamondB1W.position);         
             DiamondB1Winfo.lookAt( camera.position );
@@ -726,6 +729,7 @@
             }else if(Language == "English"){
                 var material = new THREE.MeshBasicMaterial( { map: P1W2texture ,transparent: true, opacity: 0.95 } );
             }
+		material.map.minFilter = THREE.LinearFilter;
             DiamondP1Winfo = new THREE.Mesh( geometry, material );
             DiamondP1Winfo.position.copy(DiamondP1W.position);         
             DiamondP1Winfo.lookAt( camera.position );
@@ -746,6 +750,7 @@
             }else if(Language == "English"){
                 var material = new THREE.MeshBasicMaterial( { map: Y1W2texture ,transparent: true, opacity: 0.95 } );
             }
+		material.map.minFilter = THREE.LinearFilter;
             DiamondY1Winfo = new THREE.Mesh( geometry, material );
             DiamondY1Winfo.position.copy(DiamondY1W.position);         
             DiamondY1Winfo.lookAt( camera.position );
@@ -766,6 +771,7 @@
             }else if(Language == "English"){
                 var material = new THREE.MeshBasicMaterial( { map: Wrong2texture ,transparent: true, opacity: 0.95 } );
             }
+		material.map.minFilter = THREE.LinearFilter;
             DiamondM1info = new THREE.Mesh( geometry, material );
             DiamondM1info.position.copy(DiamondM1.position);         
             DiamondM1info.lookAt( camera.position );
@@ -786,6 +792,7 @@
             }else if(Language == "English"){
                 var material = new THREE.MeshBasicMaterial( { map: Wrong2texture ,transparent: true, opacity: 0.95 } );
             }
+		material.map.minFilter = THREE.LinearFilter;
             DiamondM2info = new THREE.Mesh( geometry, material );
             DiamondM2info.position.copy(DiamondM2.position);         
             DiamondM2info.lookAt( camera.position );
@@ -806,6 +813,7 @@
             }else if(Language == "English"){
                 var material = new THREE.MeshBasicMaterial( { map: Wrong2texture ,transparent: true, opacity: 0.95 } );
             }
+		material.map.minFilter = THREE.LinearFilter;
             DiamondM3info = new THREE.Mesh( geometry, material );
             DiamondM3info.position.copy(DiamondM3.position);         
             DiamondM3info.lookAt( camera.position );
