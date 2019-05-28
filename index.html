@@ -579,7 +579,7 @@
             //定義寶石名稱
             DiamondP1 = scene.getObjectByName("DiamondP1"); 
             this.P1.to(DiamondP1.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.5");
-            var geometry = new THREE.PlaneGeometry( 16.62 , 27.46 );
+            var geometry = new THREE.PlaneGeometry( 15 , 24.71 );//16.62 , 27.46
             var material = new THREE.MeshBasicMaterial( { map: P1texture ,transparent: true, opacity: 0.95 } );
             DiamondP1people = new THREE.Mesh( geometry, material );
             DiamondP1people.position.copy(DiamondP1.position);   
@@ -641,7 +641,7 @@
             //定義寶石名稱
             DiamondO1 = scene.getObjectByName("DiamondO1"); 
             this.O1.to(DiamondO1.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.5");
-            var geometry = new THREE.PlaneGeometry( 19.07 , 30.53 );//腳色*2
+            var geometry = new THREE.PlaneGeometry( 17.16 , 27.48 );//19.07 , 30.53
             var material = new THREE.MeshBasicMaterial( { map: O1texture ,transparent: true, opacity: 0.95 } );
             DiamondO1people = new THREE.Mesh( geometry, material );
             DiamondO1people.position.copy(DiamondO1.position);       
