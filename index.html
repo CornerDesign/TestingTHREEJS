@@ -75,7 +75,7 @@
     
     #EndingGame {
         position: absolute;
-        top: 100px; width: 100%;
+        top: 50px; width: 100%;
         color: white;
         padding: 5px;
         font-family:Monospace;
@@ -140,8 +140,6 @@
         </div>
         
         <div id="EndingGame">
-            <h1 id = "Endtext ">恭喜你找到所有能力寶石</h1>
-            <h2 id = "Endtext2 ">Congraulation</h2>
             <button class ="mybtn clickmybtn" onclick="location.href='https://www.google.com.tw'"> 填問卷去 </button>
         </div>
         
@@ -348,13 +346,13 @@
     //random
     //var randomNum = Math.random() * 100 + 30 ;
 	
-    AddNewModel( NameArray[11] , ColorArray[Math.floor(Math.random()*RandomColorArray.length)] ,-110,Math.floor(Math.random()*200)-100,Math.floor(Math.random()*200)-100);  //綠
-    AddNewModel( NameArray[12] , ColorArray[Math.floor(Math.random()*RandomColorArray.length)] ,Math.floor(Math.random()*200)-100,Math.floor(Math.random()*200)-100,110);   //紫
-    AddNewModel( NameArray[13] , ColorArray[Math.floor(Math.random()*RandomColorArray.length)] ,Math.floor(Math.random()*200)-100,-110,Math.floor(Math.random()*200)-100);   //黃
+    AddNewModel( NameArray[11] , RandomColorArray[Math.floor(Math.random()*RandomColorArray.length)] ,-110,Math.floor(Math.random()*200)-100,Math.floor(Math.random()*200)-100);  //綠
+    AddNewModel( NameArray[12] , RandomColorArray[Math.floor(Math.random()*RandomColorArray.length)] ,Math.floor(Math.random()*200)-100,Math.floor(Math.random()*200)-100,110);   //紫
+    AddNewModel( NameArray[13] , RandomColorArray[Math.floor(Math.random()*RandomColorArray.length)] ,Math.floor(Math.random()*200)-100,-110,Math.floor(Math.random()*200)-100);   //黃
         
-    AddPlanet(Pl0texture);
-    AddPlanet(Pl1texture);
-    AddPlanet(Pl2texture);
+    AddPlanet(Pl0texture,-130,Math.floor(Math.random()*260)-130,Math.floor(Math.random()*260)-130);
+    AddPlanet(Pl1texture,Math.floor(Math.random()*260)-130,-130,Math.floor(Math.random()*260)-130);
+    AddPlanet(Pl2texture,Math.floor(Math.random()*260)-130,Math.floor(Math.random()*260)-130,-130);
     AddPlanet(Pl3texture);
     AddPlanet(Pl4texture);
     AddPlanet(Pl5texture);
@@ -470,11 +468,11 @@
 
 
     //生成planet
-    function AddPlanet( TextureName ){
+    function AddPlanetx( TextureName ,x,y,z){
  	var geometry = new THREE.PlaneGeometry( 20,20);
    	var material = new THREE.MeshBasicMaterial( { map: TextureName } );
     	planemesh = new THREE.Mesh( geometry, material );
-    	planemesh.position.set( -130, Math.floor(Math.random()*260)-130 , Math.floor(Math.random()*260)-130 );
+    	planemesh.position.set( x , y , z);
     	planemesh.lookAt(camera.position);
     	scene.add( planemesh );    
     }
