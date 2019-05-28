@@ -195,7 +195,7 @@
         StartGame = true;
         TweenMax.to("#Background", 0.5 , { y:-5,opacity:0});
         TweenMax.to("#Main", 0.5 , { y:-5,opacity:0,delay:0.25});
-        
+        document.getElementById("Background").style.backgroundImage = "url(textures/BackgroundEnd.jpg)";
         TweenMax.from("#Tutorial", 0.5 , { y:-5,opacity:0 ,delay:1} );
         TweenMax.to("#Tutorial", 0.5 , { opacity:0 ,delay:5} );
         init();
@@ -353,12 +353,12 @@
     AddPlanet(Pl0texture,-130,Math.floor(Math.random()*260)-130,Math.floor(Math.random()*260)-130);
     AddPlanet(Pl1texture,Math.floor(Math.random()*260)-130,-130,Math.floor(Math.random()*260)-130);
     AddPlanet(Pl2texture,Math.floor(Math.random()*260)-130,Math.floor(Math.random()*260)-130,-130);
-    AddPlanet(Pl3texture);
-    AddPlanet(Pl4texture);
-    AddPlanet(Pl5texture);
-    AddPlanet(Pl6texture);
-    AddPlanet(Pl7texture);
-    AddPlanet(Pl8texture);
+    AddPlanet(Pl3texture,130,Math.floor(Math.random()*260)-130,Math.floor(Math.random()*260)-130);
+    AddPlanet(Pl4texture,Math.floor(Math.random()*260)-130,130,Math.floor(Math.random()*260)-130);
+    AddPlanet(Pl5texture,Math.floor(Math.random()*260)-130,Math.floor(Math.random()*260)-130,130);
+    AddPlanet(Pl6texture,-130,Math.floor(Math.random()*260)-130,Math.floor(Math.random()*260)-130);
+    AddPlanet(Pl7texture,Math.floor(Math.random()*260)-130,-130,Math.floor(Math.random()*260)-130);
+    AddPlanet(Pl8texture,Math.floor(Math.random()*260)-130,Math.floor(Math.random()*260)-130,-130);
 	  
     //Add a light
 
