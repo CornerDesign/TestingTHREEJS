@@ -491,7 +491,7 @@
             DiamondR1people = new THREE.Mesh( geometry, material );
             DiamondR1people.position.copy(DiamondR1.position);   
             DiamondR1people.lookAt( camera.position );
-	    DiamondR1people.renderOrder = 2;
+	    DiamondR1people.renderOrder = 1;
             scene.add( DiamondR1people );
             var geometry = new THREE.PlaneGeometry( 70,70 );
             if( Language == "Chinese"){
@@ -502,7 +502,7 @@
             DiamondR1info = new THREE.Mesh( geometry, material );
             DiamondR1info.position.copy(DiamondR1.position);         
             DiamondR1info.lookAt( camera.position );
-	    DiamondR1info.renderOrder = 1;
+	    DiamondR1info.renderOrder = 2;
             scene.add( DiamondR1info );
             this.R1.from(DiamondR1people.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.5");
             this.R1.from(DiamondR1info.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.35");
@@ -522,7 +522,7 @@
             DiamondG1people = new THREE.Mesh( geometry, material );
             DiamondG1people.position.copy(DiamondG1.position);       
             DiamondG1people.lookAt( camera.position );
-	    DiamondG1people.renderOrder = 2;
+	    DiamondG1people.renderOrder = 1;
             scene.add( DiamondG1people );
             var geometry = new THREE.PlaneGeometry( 70,70 );
             if( Language == "Chinese"){
@@ -533,7 +533,7 @@
             DiamondG1info = new THREE.Mesh( geometry, material );
             DiamondG1info.position.copy(DiamondG1.position);    
             DiamondG1info.lookAt( camera.position );
-	    DiamondG1info.renderOrder = 1;
+	    DiamondG1info.renderOrder = 2;
             scene.add( DiamondG1info );
             this.G1.from(DiamondG1people.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.5");
             this.G1.from(DiamondG1info.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.35");
@@ -553,7 +553,7 @@
             DiamondB1people = new THREE.Mesh( geometry, material );
             DiamondB1people.position.copy(DiamondB1.position);      
             DiamondB1people.lookAt( camera.position );
-	    DiamondB1people.renderOrder = 2;
+	    DiamondB1people.renderOrder = 1;
             scene.add( DiamondB1people );
             var geometry = new THREE.PlaneGeometry( 70,70 );
             if( Language == "Chinese"){
@@ -564,7 +564,7 @@
             DiamondB1info = new THREE.Mesh( geometry, material );
             DiamondB1info.position.copy(DiamondB1.position);         
             DiamondB1info.lookAt( camera.position );
-	    DiamondB1info.renderOrder = 1;
+	    DiamondB1info.renderOrder = 2;
             scene.add( DiamondB1info );
             this.B1.from(DiamondB1people.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.5");
             this.B1.from(DiamondB1info.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.35");
@@ -584,7 +584,7 @@
             DiamondP1people = new THREE.Mesh( geometry, material );
             DiamondP1people.position.copy(DiamondP1.position);   
             DiamondP1people.lookAt( camera.position );
-		DiamondP1people.renderOrder = 2;
+		DiamondP1people.renderOrder = 1;
             scene.add( DiamondP1people );
             var geometry = new THREE.PlaneGeometry( 70,70 );
             if( Language == "Chinese"){
@@ -595,7 +595,7 @@
             DiamondP1info = new THREE.Mesh( geometry, material );
             DiamondP1info.position.copy(DiamondP1.position);       
             DiamondP1info.lookAt( camera.position );
-		DiamondP1info.renderOrder = 1;
+		DiamondP1info.renderOrder = 2;
             scene.add( DiamondP1info );
             this.P1.from(DiamondP1people.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.5");
             this.P1.from(DiamondP1info.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.35");
@@ -615,7 +615,7 @@
             DiamondY1people = new THREE.Mesh( geometry, material );
             DiamondY1people.position.copy(DiamondY1.position);        
             DiamondY1people.lookAt( camera.position );
-		DiamondY1people.renderOrder = 2;
+		DiamondY1people.renderOrder = 1;
             scene.add( DiamondY1people );
             var geometry = new THREE.PlaneGeometry( 70,70 );
             if( Language == "Chinese"){
@@ -626,7 +626,7 @@
             DiamondY1info = new THREE.Mesh( geometry, material );
             DiamondY1info.position.copy(DiamondY1.position);    
             DiamondY1info.lookAt( camera.position );
-		DiamondY1info.renderOrder = 1;
+		DiamondY1info.renderOrder = 2;
             scene.add( DiamondY1info );
             this.Y1.from(DiamondY1people.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.5");
             this.Y1.from(DiamondY1info.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.35");
@@ -646,7 +646,7 @@
             DiamondO1people = new THREE.Mesh( geometry, material );
             DiamondO1people.position.copy(DiamondO1.position);       
             DiamondO1people.lookAt( camera.position );
-		 DiamondO1people.renderOrder = 2;
+		 DiamondO1people.renderOrder = 1;
             scene.add( DiamondO1people );
             var geometry = new THREE.PlaneGeometry( 70,70 );
             if( Language == "Chinese"){
@@ -657,7 +657,7 @@
             DiamondO1info = new THREE.Mesh( geometry, material );
             DiamondO1info.position.copy (DiamondO1.position);
             DiamondO1info.lookAt( camera.position );
-		 DiamondO1info.renderOrder = 1;
+		 DiamondO1info.renderOrder = 2;
             scene.add( DiamondO1info );
             this.O1.from(DiamondO1people.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.5");
             this.O1.from(DiamondO1info.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.35");
