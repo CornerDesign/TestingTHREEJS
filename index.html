@@ -302,10 +302,14 @@
     ColorArray[8] = '0x0099ff';
     ColorArray[9] = '0x9933ff';
     ColorArray[10] = '0xffff00';
-    //random
-    ColorArray[11] = '0x00FF00';
-    ColorArray[12] = '0x9933ff';
-    ColorArray[13] = '0xffff00';
+    //random color array
+    var RandomColorArray = new Array();	    
+    RandomColorArray[0] = '0x4efdda';
+    RandomColorArray[1] = '0x00ffbf';
+    RandomColorArray[2] = '0xff00ff';
+    RandomColorArray[3] = '0x828585';
+    RandomColorArray[4] = '0xf4c0a8';
+    RandomColorArray[5] = '0x00c0a8';
         
     var NameArray = new Array();
     //對的
@@ -342,10 +346,11 @@
     AddNewModel( NameArray[9] , ColorArray[9] ,-110,-20,40);   //紫
     AddNewModel( NameArray[10] , ColorArray[10] ,0,-25,110);   //黃
     //random
-    var randomNum = Math.random() * 100 + 30 ;
-    AddNewModel( NameArray[11] , ColorArray[11] ,-110,randomNum,-randomNum);  //綠
-    AddNewModel( NameArray[12] , ColorArray[12] ,randomNum,-randomNum,110);   //紫
-    AddNewModel( NameArray[13] , ColorArray[13] ,randomNum,-110,randomNum);   //黃
+    //var randomNum = Math.random() * 100 + 30 ;
+	
+    AddNewModel( NameArray[11] , ColorArray[Math.floor(Math.random()*RandomColorArray.length)] ,-110,Math.floor(Math.random()*200)-100,Math.floor(Math.random()*200)-100);  //綠
+    AddNewModel( NameArray[12] , ColorArray[Math.floor(Math.random()*RandomColorArray.length)] ,Math.floor(Math.random()*200)-100,Math.floor(Math.random()*200)-100,110);   //紫
+    AddNewModel( NameArray[13] , ColorArray[Math.floor(Math.random()*RandomColorArray.length)] ,Math.floor(Math.random()*200)-100,-110,Math.floor(Math.random()*200)-100);   //黃
         
     AddPlanet(P0texture);
     AddPlanet(P1texture);
@@ -469,7 +474,7 @@
  	var geometry = new THREE.PlaneGeometry( 20,20);
    	var material = new THREE.MeshBasicMaterial( { map: TextureName } );
     	planemesh = new THREE.Mesh( geometry, material );
-    	planemesh.position.set( -130, Math.random() * 100 + 30 , Math.random() * 100 + 30 );
+    	planemesh.position.set( -130, Math.floor(Math.random()*260)-130 , Math.floor(Math.random()*260)-130 );
     	planemesh.lookAt(camera.position);
     	scene.add( planemesh );    
     }
