@@ -409,18 +409,18 @@
     	O1infotexture = textureLoader.load( 'textures/info/new1/orangeinfo.png' );
     	O1info2texture = textureLoader.load( 'textures/info/new1/orangeinfo2.png' );
     	//錯的
-    	R1Wtexture = textureLoader.load( 'textures/wronganswer/new1/redwrong.png' );
-    	R1W2texture = textureLoader.load( 'textures/wronganswer/new1/redwrong2.png' );
-    	G1Wtexture = textureLoader.load( 'textures/wronganswer/new1/greenwrong.png' );
-    	G1W2texture = textureLoader.load( 'textures/wronganswer/new1/greenwrong2.png' );
-    	B1Wtexture = textureLoader.load( 'textures/wronganswer/new1/bluewrong.png' );
-    	B1W2texture = textureLoader.load( 'textures/wronganswer/new1/bluewrong2.png' );
-    	P1Wtexture = textureLoader.load( 'textures/wronganswer/new1/purplewrong.png' );
-    	P1W2texture = textureLoader.load( 'textures/wronganswer/new1/purplewrong2.png' );
-    	Y1Wtexture = textureLoader.load( 'textures/wronganswer/new1/yellowwrong.png' );
-    	Y1W2texture = textureLoader.load( 'textures/wronganswer/new1/yellowwrong2.png' );
-    	Wrongtexture = textureLoader.load( 'textures/wronganswer/new1/wrong.png' );
-    	Wrong2texture = textureLoader.load( 'textures/wronganswer/new1/wrong2.png' );
+    	R1Wtexture = textureLoader.load( 'textures/wronganswer/white/redwrong.png' );
+    	R1W2texture = textureLoader.load( 'textures/wronganswer/white/redwrong2.png' );
+    	G1Wtexture = textureLoader.load( 'textures/wronganswer/white/greenwrong.png' );
+    	G1W2texture = textureLoader.load( 'textures/wronganswer/white/greenwrong2.png' );
+    	B1Wtexture = textureLoader.load( 'textures/wronganswer/white/bluewrong.png' );
+    	B1W2texture = textureLoader.load( 'textures/wronganswer/white/bluewrong2.png' );
+    	P1Wtexture = textureLoader.load( 'textures/wronganswer/white/purplewrong.png' );
+    	P1W2texture = textureLoader.load( 'textures/wronganswer/white/purplewrong2.png' );
+    	Y1Wtexture = textureLoader.load( 'textures/wronganswer/white/yellowwrong.png' );
+    	Y1W2texture = textureLoader.load( 'textures/wronganswer/white/yellowwrong2.png' );
+    	Wrongtexture = textureLoader.load( 'textures/wronganswer/white/wrong.png' );
+    	Wrong2texture = textureLoader.load( 'textures/wronganswer/white/wrong2.png' );
 	    
 	//星球
 	Pl0texture = textureLoader.load( 'textures/planet/planet0.png' );
@@ -669,7 +669,7 @@
             DiamondR1W = scene.getObjectByName("DiamondR1W"); 
             this.R1W.to(DiamondR1W.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.5");
             
-            var geometry = new THREE.PlaneGeometry( 60,60,10,10 );
+            var geometry = new THREE.PlaneGeometry( 75,75 );
             if( Language == "Chinese"){
                 var material = new THREE.MeshBasicMaterial( { map: R1Wtexture ,transparent: true, opacity: 0.95 } );
             }else if(Language == "English"){
@@ -689,7 +689,7 @@
             //定義寶石名稱
             DiamondG1W = scene.getObjectByName("DiamondG1W"); 
             this.G1W.to(DiamondG1W.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.5");
-            var geometry = new THREE.PlaneGeometry( 60,60 );
+            var geometry = new THREE.PlaneGeometry( 75,75 );
             if( Language == "Chinese"){
                 var material = new THREE.MeshBasicMaterial( { map: G1Wtexture ,transparent: true, opacity: 0.95 } );
             }else if(Language == "English"){
@@ -710,7 +710,7 @@
             //定義寶石名稱
             DiamondB1W = scene.getObjectByName("DiamondB1W"); 
             this.B1W.to(DiamondB1W.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.5");
-            var geometry = new THREE.PlaneGeometry( 60,60);
+            var geometry = new THREE.PlaneGeometry( 75,75 );
             if( Language == "Chinese"){
                 var material = new THREE.MeshBasicMaterial( { map: B1Wtexture ,transparent: true, opacity: 0.95 } );
             }else if(Language == "English"){
@@ -731,7 +731,7 @@
             //定義寶石名稱
             DiamondP1W = scene.getObjectByName("DiamondP1W"); 
             this.P1W.to(DiamondP1W.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.5");
-            var geometry = new THREE.PlaneGeometry( 60,60);
+            var geometry = new THREE.PlaneGeometry( 75,75 );
             if( Language == "Chinese"){
                 var material = new THREE.MeshBasicMaterial( { map: P1Wtexture ,transparent: true, opacity: 0.95 } );
             }else if(Language == "English"){
@@ -752,7 +752,7 @@
             //定義寶石名稱
             DiamondY1W = scene.getObjectByName("DiamondY1W"); 
             this.Y1W.to(DiamondY1W.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.5");
-            var geometry = new THREE.PlaneGeometry( 60,60);
+            var geometry = new THREE.PlaneGeometry( 75,75 );
             if( Language == "Chinese"){
                 var material = new THREE.MeshBasicMaterial( { map: Y1Wtexture ,transparent: true, opacity: 0.95 } );
             }else if(Language == "English"){
@@ -773,7 +773,7 @@
             //定義寶石名稱
             DiamondM1 = scene.getObjectByName("DiamondM1"); 
             this.M1.to(DiamondM1.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.5");
-            var geometry = new THREE.PlaneGeometry( 40,40);
+            var geometry = new THREE.PlaneGeometry( 75,75 );
             if( Language == "Chinese"){
                 var material = new THREE.MeshBasicMaterial( { map: Wrongtexture ,transparent: true, opacity: 0.95 } );
             }else if(Language == "English"){
@@ -794,7 +794,7 @@
             //定義寶石名稱
             DiamondM2 = scene.getObjectByName("DiamondM2"); 
             this.M2.to(DiamondM2.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.5");
-            var geometry = new THREE.PlaneGeometry( 40,40);
+            var geometry = new THREE.PlaneGeometry( 75,75 );
             if( Language == "Chinese"){
                 var material = new THREE.MeshBasicMaterial( { map: Wrongtexture ,transparent: true, opacity: 0.95 } );
             }else if(Language == "English"){
@@ -815,7 +815,7 @@
             //定義寶石名稱
             DiamondM3 = scene.getObjectByName("DiamondM3"); 
             this.M3.to(DiamondM3.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.5");
-            var geometry = new THREE.PlaneGeometry( 40,40);
+            var geometry = new THREE.PlaneGeometry( 75,75 );
             if( Language == "Chinese"){
                 var material = new THREE.MeshBasicMaterial( { map: Wrongtexture ,transparent: true, opacity: 0.95 } );
             }else if(Language == "English"){
