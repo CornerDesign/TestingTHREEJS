@@ -481,19 +481,16 @@
             this.R1.to(DiamondR1cube.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut});
             //定義寶石名稱
             DiamondR1 = scene.getObjectByName("DiamondR1"); 
-            this.R1.to(DiamondR1.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.5");
-      	    // Pivot point
-  	    var R1P = new THREE.Object3D();
-  	    DiamondR1.add(R1P);
-		
+            this.R1.to(DiamondR1.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.5");		
             var geometry = new THREE.PlaneGeometry( 13.35 , 30.54 );
             var material = new THREE.MeshBasicMaterial( { map: R1texture ,transparent: true, opacity: 0.95 } );
             DiamondR1people = new THREE.Mesh( geometry, material );
-//            DiamondR1people.position.copy(DiamondR1.position);   
-//            DiamondR1people.lookAt( camera.position );
+            DiamondR1people.position.copy(DiamondR1.position);   
+            DiamondR1people.lookAt( camera.position );
 	    DiamondR1people.renderOrder = 1;
             scene.add( DiamondR1people );
 	    R1P.add(DiamondR1people);
+		
             var geometry = new THREE.PlaneGeometry( 70,70 );
             if( Language == "Chinese"){
                 var material = new THREE.MeshBasicMaterial( { map: R1infotexture ,transparent: true, opacity: 0.95 } );
@@ -501,9 +498,11 @@
                 var material = new THREE.MeshBasicMaterial( { map: R1info2texture ,transparent: true, opacity: 0.95 } );
             }
             DiamondR1info = new THREE.Mesh( geometry, material );
-            DiamondR1info.position.copy(DiamondR1.position);         
-            DiamondR1info.lookAt( camera.position );
+//            DiamondR1info.position.copy(DiamondR1.position);         
+//            DiamondR1info.lookAt( camera.position );
 	    DiamondR1info.renderOrder = 2;
+	    DiamondR1people.add(DiamondR1info);
+		
             scene.add( DiamondR1info );
             this.R1.from(DiamondR1people.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.5");
             this.R1.from(DiamondR1info.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.35");
