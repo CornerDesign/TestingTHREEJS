@@ -501,8 +501,8 @@
             DiamondR1info.lookAt( camera.position );
 	    DiamondR1info.renderOrder = 2;	
             scene.add( DiamondR1info );
-            this.R1.from(DiamondR1people.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.5");
-            this.R1.from(DiamondR1info.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.35");
+            this.R1.from(DiamondR1people.scale, 0.5 , { x:0 , y:0 , z:0 ,ease: Back.easeOut.config(1.4)},"-=0.5");
+            this.R1.from(DiamondR1info.scale, 0.5 , { x:0 , y:0 , z:0 , ease: Back.easeOut.config(1.4)},"-=0.35");
             this.R1.to(DiamondR1people.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},6);
             this.R1.to(DiamondR1info.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},6.15);
             EndGameCountDown();
