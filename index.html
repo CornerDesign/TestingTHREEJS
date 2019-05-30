@@ -37,7 +37,7 @@
     
     #Main {
         position: absolute;
-        top: 85%; width: 100%;
+        top: 83%; width: 100%;
         color: #ffffff;
         padding: 5px;
         font-family:Monospace;
@@ -45,7 +45,6 @@
         font-weight: bold;
         text-align:center;
         box-sizing: border-box;
-
     }
     #Loading {
 	position: absolute;
@@ -102,18 +101,16 @@
         font-size: 16px;
         font-weight: bold;
         letter-spacing:2px;
-        margin: 4px 10px;  
+        margin: 4px 30px;  
         -webkit-transition-duration: 0.4s; /* Safari */
         transition-duration: 0.4s;
         cursor: pointer;  
     }
-
     .clickmybtn {
         background-color: rgba(0, 0, 0, 0);
         color: #e6e6e6;
         border: 2px solid #e6e6e6;
     }
-
     .clickmybtn:hover {
         background-color: #e6e6e6;
         border: 2px solid #e6e6e6;
@@ -139,8 +136,8 @@
             <h3 id = "tutorialtext">旋轉手機尋找能力寶石</h3>
         </div>
         
-        <div id="EndingGame">
-            <button class ="mybtn clickmybtn" onclick="location.href='https://www.google.com.tw'"> 填問卷去 </button>
+	<div id="EndingGame">
+            <button class ="mybtn clickmybtn" onclick="location.href='https://docs.google.com/forms/d/e/1FAIpQLSdDrTTr6yz4Ap72q2m4cH3GHSu1n42DRT4Smn1DGNLDj_WsCg/viewform'"> 點我來去抽獎！ </button>
         </div>
         
         <div id="Debug">
@@ -506,8 +503,8 @@
             scene.add( DiamondR1info );
             this.R1.from(DiamondR1people.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.5");
             this.R1.from(DiamondR1info.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.35");
-            this.R1.to(DiamondR1people.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},7);
-            this.R1.to(DiamondR1info.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},7.15);
+            this.R1.to(DiamondR1people.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},6);
+            this.R1.to(DiamondR1info.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},6.15);
             EndGameCountDown();
         }
         if(DName == "G1"){
@@ -537,8 +534,8 @@
             scene.add( DiamondG1info );
             this.G1.from(DiamondG1people.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.5");
             this.G1.from(DiamondG1info.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.35");
-            this.G1.to(DiamondG1people.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},7);
-            this.G1.to(DiamondG1info.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},7.15);
+            this.G1.to(DiamondG1people.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},6);
+            this.G1.to(DiamondG1info.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},6.15);
             EndGameCountDown();
         }
         if(DName == "B1"){
@@ -568,8 +565,8 @@
             scene.add( DiamondB1info );
             this.B1.from(DiamondB1people.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.5");
             this.B1.from(DiamondB1info.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.35");
-            this.B1.to(DiamondB1people.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},7);
-            this.B1.to(DiamondB1info.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},7.15);
+            this.B1.to(DiamondB1people.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},6);
+            this.B1.to(DiamondB1info.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},6.15);
             EndGameCountDown();
         }
         if(DName == "P1"){
@@ -599,8 +596,8 @@
             scene.add( DiamondP1info );
             this.P1.from(DiamondP1people.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.5");
             this.P1.from(DiamondP1info.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.35");
-            this.P1.to(DiamondP1people.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},7);
-            this.P1.to(DiamondP1info.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},7.15);
+            this.P1.to(DiamondP1people.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},6);
+            this.P1.to(DiamondP1info.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},6.15);
             EndGameCountDown();
         }
         if(DName == "Y1"){
@@ -630,8 +627,8 @@
             scene.add( DiamondY1info );
             this.Y1.from(DiamondY1people.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.5");
             this.Y1.from(DiamondY1info.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.35");
-            this.Y1.to(DiamondY1people.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},7);
-            this.Y1.to(DiamondY1info.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},7.15);
+            this.Y1.to(DiamondY1people.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},6);
+            this.Y1.to(DiamondY1info.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},6.15);
             EndGameCountDown();
         }
          if(DName == "O1"){
@@ -661,8 +658,8 @@
             scene.add( DiamondO1info );
             this.O1.from(DiamondO1people.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.5");
             this.O1.from(DiamondO1info.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.35");
-            this.O1.to(DiamondO1people.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},7);
-            this.O1.to(DiamondO1info.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},7.15);
+            this.O1.to(DiamondO1people.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},6);
+            this.O1.to(DiamondO1info.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},6.15);
         }
         if(DName == "R1W"){
             this.R1W = new TimelineMax();
