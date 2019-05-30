@@ -452,9 +452,8 @@
 	TweenMax.to(object.rotation,600 , {y:360,x:0,z:0 , ease: Power0.easeNone , repeat:-1} );
         console.log("Name"+object.name +"Color"+ ModelColor + "object.position"+object.position.y);
         });
-
         var cubegeometry = new THREE.BoxGeometry( 15 , 15 , 15 );
-        var cubematerial = new THREE.MeshBasicMaterial( {  color: 0xFFF000,  transparent : true,  opacity:0 });
+        var cubematerial = new THREE.MeshBasicMaterial( {  color: 0xFFF000,  transparent : true,  opacity:0.1 });
         var cubemesh = new THREE.Mesh( cubegeometry, cubematerial );
         cubemesh.position.set(x,y+5,z) ;
 	cubemesh.lookAt( camera.position );
@@ -483,13 +482,19 @@
             //定義寶石名稱
             DiamondR1 = scene.getObjectByName("DiamondR1"); 
             this.R1.to(DiamondR1.scale, 0.5 , { x:0 , y:0 , z:0 , ease:Expo.easeOut},"-=0.5");
+      	    // Pivot point
+  	    var R1P = new THREE.Object3D();
+  	    DiamondR1.add(R1P);
+		
             var geometry = new THREE.PlaneGeometry( 13.35 , 30.54 );
             var material = new THREE.MeshBasicMaterial( { map: R1texture ,transparent: true, opacity: 0.95 } );
             DiamondR1people = new THREE.Mesh( geometry, material );
-            DiamondR1people.position.copy(DiamondR1.position);   
-            DiamondR1people.lookAt( camera.position );
+//            DiamondR1people.position.copy(DiamondR1.position);   
+//            DiamondR1people.lookAt( camera.position );
 	    DiamondR1people.renderOrder = 1;
             scene.add( DiamondR1people );
+	    DiamondR1people.position.x= 10;
+	    R1P.add(DiamondR1people);
             var geometry = new THREE.PlaneGeometry( 70,70 );
             if( Language == "Chinese"){
                 var material = new THREE.MeshBasicMaterial( { map: R1infotexture ,transparent: true, opacity: 0.95 } );
