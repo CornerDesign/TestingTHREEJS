@@ -465,7 +465,7 @@
 
     //生成planet
     function AddPlanet( TextureName ,x,y,z){
- 	var geometry = new THREE.PlaneGeometry( 20,20);
+ 	var geometry = new THREE.PlaneGeometry(20,20);
    	var material = new THREE.MeshBasicMaterial( { map: TextureName } );
     	planemesh = new THREE.Mesh( geometry, material );
     	planemesh.position.set( x , y , z);
@@ -490,7 +490,7 @@
 	    DiamondR1people.renderOrder = 1;
             scene.add( DiamondR1people );
 		
-            var geometry = new THREE.PlaneGeometry( 35,35 );
+            var geometry = new THREE.PlaneGeometry( 70,70 );
             if( Language == "Chinese"){
                 var material = new THREE.MeshBasicMaterial( { map: R1infotexture ,transparent: true, opacity: 0.95 } );
             }else if(Language == "English"){
