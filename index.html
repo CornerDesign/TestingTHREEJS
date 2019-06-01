@@ -324,48 +324,6 @@
 
         controls = new THREE.DeviceOrientationControls( camera );
         scene.add(camera);
-    
-        //handle arToolkitSource
-        var arToolkitSource = new THREEx.ArToolkitSource({
-            sourceType : 'webcam',        
-        })
-        
-        arToolkitSource.init(function onReady(){
-            onResize()
-        })
-    
-        // handle resize
-        window.addEventListener('resize', function(){
-            onResize()
-        })
-        
-        function onResize(){
-            arToolkitSource.onResize()    
-            arToolkitSource.copySizeTo(renderer.domElement)    
-            if( arToolkitContext.arController !== null ){
-                arToolkitSource.copySizeTo(arToolkitContext.arController.canvas)    
-        }    
-    }
-	    
-    //initialize arToolkitContext
-    // create atToolkitContext
-    var arToolkitContext = new THREEx.ArToolkitContext({
-        cameraParametersUrl: THREEx.ArToolkitContext.baseURL + '../data/data/camera_para.dat',
-        detectionMode: 'mono',
-    })
-    // initialize it
-    arToolkitContext.init(function onCompleted(){
-        // copy projection matrix to camera
-        camera.projectionMatrix.copy( arToolkitContext.getProjectionMatrix() );
-    })
-    // update artoolkit on every frame
-    onRenderFcts.push(function(){
-        if( arToolkitSource.ready === false )    return
-        arToolkitContext.update( arToolkitSource.domElement )
-        
-        // update scene.visible if the marker is seen
-        scene.visible = camera.visible
-    })
 	    
     // add an object in the scene
     var ColorArray = new Array();
@@ -465,7 +423,7 @@
     }
     
     function onWindowResize() {
-	
+	/*
 	    if(camera.inPerspectiveMode){
         camera.cameraP.aspect = window.innerWidth / window.innerHeight;
         camera.cameraP.updateProjectionMatrix();
@@ -476,16 +434,16 @@
         camera.cameraO.top = window.innerHeight / 2;
         camera.cameraO.bottom = window.innerHeight / - 2;
         camera.cameraO.updateProjectionMatrix();
-    }
+    }*/
 
 //    renderer.setSize( window.innerWidth, window.innerHeight );
 	    
 
-	   /* 
+	   
         camera.aspect = window.innerWidth / window.innerHeight;
         camera.updateProjectionMatrix();
         renderer.setSize( window.innerWidth, window.innerHeight );
-	*/
+	
     }
 	
     function LoadImageFirst(){
