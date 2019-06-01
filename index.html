@@ -118,27 +118,29 @@
     }
 	
     video {
-		position: fixed;
-		top:0;
-		left:0;
-		height: 100%;
-		width: auto;
-		pointer-events: none;
-		-webkit-filter: brightness(0.9);
-		filter: brightness(0.9) ;
-	};
+        position: fixed;
+        top:0;
+        left:0;
+        height: 100%;
+        width: auto;
+        pointer-events: none;
+        -webkit-filter: brightness(0.9);
+        filter: brightness(0.9) ;
+    };
     .blur {
-		-webkit-filter: blur(30px);
-		  -moz-filter: blur(30px);
-		  -o-filter: blur(30px);
-		  -ms-filter: blur(30px);
-		  filter: blur(30px);
-	}
+        -webkit-filter: blur(30px);
+          -moz-filter: blur(30px);
+          -o-filter: blur(30px);
+          -ms-filter: blur(30px);
+          filter: blur(30px);
+    }
     video::-webkit-media-controls {
-		  display: none;
-	}
-
-
+          display: none;
+    }
+	
+	
+	
+	
 	
 </style>
 <body>
@@ -150,8 +152,6 @@
             <button class ="mybtn clickmybtn" onclick="LanguageFunction(1)"> 繁體中文 </button>
             <button class ="mybtn clickmybtn" onclick="LanguageFunction(2)"> English </button>
         </div>
-	<video id="vid" class="blur" width="100%" height="100%" autoplay></video>
-	    
         <div id="Loading">
 	<img id = "Rolling" src="textures/Rolling.png" alt="Rolling" width="50" > <br/>
 	    
@@ -163,12 +163,14 @@
         </div>
         
 	<div id="EndingGame">
-            <button class ="mybtn clickmybtn" onclick="location.href='https://docs.google.com/forms/d/e/1FAIpQLSdDrTTr6yz4Ap72q2m4cH3GHSu1n42DRT4Smn1DGNLDj_WsCg/viewform'"> 點我來去抽獎！ </button>
+            <input class="mybtn clickmybtn" id = "EndingButton" type="button" onclick="EndGameLink()" value="來去抽獎" />
         </div>
-        
+       
         <div id="Debug">
-            <p id="Counting"></p>
-        </div>    
+             <p id="Counting"></p>
+        </div>
+	<video id="vid" class="blur" width="100%" height="100%" autoplay></video>
+	      
     </div>
         
     <script src="build/three.js"></script>
@@ -177,7 +179,6 @@
     <script src="js/WebGL.js"></script>
     <script src="js/threex.domevents.js"></script>
     <script src="js/TweenMax.min.js"></script>
-    <script src="js/GLTFLoader.js"></script>
     <script src="js/OBJLoader.js"></script>
     <script src="js/MTLLoader.js"></script>
 
@@ -205,10 +206,12 @@
         if(language == 1){
             Language = "Chinese";
             document.getElementById("tutorialtext").innerHTML = "旋轉手機尋找能力寶石" ;
+	    document.getElementById("EndingButton").value = "來去抽獎";
             console.log("chinese");
         }if(language == 2){
             Language = "English";
             document.getElementById("tutorialtext").innerHTML = "Turn your Phone to find power stone" ;
+	    document.getElementById("EndingButton").value = "Go for lottery";
             console.log("English");
         }
         StartGamefunction();
@@ -242,8 +245,7 @@
         domEvents.addEventListener(scene.getObjectByName("DiamondM3cube"), 'touchstart' , event =>{ infoanim("M3"); })
         
     }
-	
-	//video
+	 //video
      video = document.getElementById('vid');
      video.style.width = document.width + 'px';
      video.style.height = document.height + 'px';
@@ -251,40 +253,46 @@
      video.setAttribute('muted', '');
      video.setAttribute('playsinline', '');
      var constraints = {
-	audio: false,
-	video: {facingMode: 'environment'}
+    audio: false,
+    video: {facingMode: 'environment'}
      }
      getCAM = function() {
-	navigator.mediaDevices.getUserMedia(constraints).then(function success(stream) {
-		video.srcObject = stream;
-	//	trackMe('Grant camera access');
-	DetectRTC.load(function() {
-	     if (DetectRTC.isWebsiteHasWebcamPermissions) {
-		console.log("has permission");
-	     }
-     	})
+    navigator.mediaDevices.getUserMedia(constraints).then(function success(stream) {
+        video.srcObject = stream;
+    //    trackMe('Grant camera access');
+    DetectRTC.load(function() {
+         if (DetectRTC.isWebsiteHasWebcamPermissions) {
+        console.log("has permission");
+         }
+         })
      }).catch(function(err) {
-	// handle the error
-	errorMessage = String(err).split(':').shift();
-	console.log("error:" + errorMessage);
-	if (errorMessage == "NotAllowedError") {
-	     console.log("user denied");
-	//     trackMe('Deny camera access');
-	}
+    // handle the error
+    errorMessage = String(err).split(':').shift();
+    console.log("error:" + errorMessage);
+    if (errorMessage == "NotAllowedError") {
+         console.log("user denied");
+    //     trackMe('Deny camera access');
+    }
      });
      document.addEventListener("gesturestart", function(e) {
-	e.preventDefault();
-	document.body.style.zoom = 0.99;
+    e.preventDefault();
+    document.body.style.zoom = 0.99;
      });
      document.addEventListener("gesturechange", function(e) {
-	e.preventDefault();
-	document.body.style.zoom = 0.99;
+    e.preventDefault();
+    document.body.style.zoom = 0.99;
      });
      document.addEventListener("gestureend", function(e) {
-	e.preventDefault();
-	document.body.style.zoom = 1;
-     })	
+    e.preventDefault();
+    document.body.style.zoom = 1;
+     })    
    }
+	
+	
+	
+	
+	
+	
 	
     var camera, scene, renderer, controls;
     
@@ -294,9 +302,13 @@
             antialias: true,
             alpha: true
         });
+	//renderer.setPixelRatio(window.devicePixelRatio);
+	    
         renderer.setClearColor(new THREE.Color('lightgrey'), 0)
-	//renderer.setSize( 640, 480 );
-	renderer.setSize(window.innerWidth, window.innerHeight);
+	renderer.setSize( 1280, 960 );
+        //renderer.setSize( 960, 720 );
+	    //renderer.setSize( 640, 480 );
+	//renderer.setSize(window.innerWidth/2, window.innerHeight/2)
         renderer.domElement.style.position = 'absolute'
         renderer.domElement.style.top = '0px'
         renderer.domElement.style.left = '0px'
@@ -311,6 +323,48 @@
 
         controls = new THREE.DeviceOrientationControls( camera );
         scene.add(camera);
+    
+        //handle arToolkitSource
+        var arToolkitSource = new THREEx.ArToolkitSource({
+            sourceType : 'webcam',        
+        })
+        
+        arToolkitSource.init(function onReady(){
+            onResize()
+        })
+    
+        // handle resize
+        window.addEventListener('resize', function(){
+            onResize()
+        })
+        
+        function onResize(){
+            arToolkitSource.onResize()    
+            arToolkitSource.copySizeTo(renderer.domElement)    
+            if( arToolkitContext.arController !== null ){
+                arToolkitSource.copySizeTo(arToolkitContext.arController.canvas)    
+        }    
+    }
+	    
+    //initialize arToolkitContext
+    // create atToolkitContext
+    var arToolkitContext = new THREEx.ArToolkitContext({
+        cameraParametersUrl: THREEx.ArToolkitContext.baseURL + '../data/data/camera_para.dat',
+        detectionMode: 'mono',
+    })
+    // initialize it
+    arToolkitContext.init(function onCompleted(){
+        // copy projection matrix to camera
+        camera.projectionMatrix.copy( arToolkitContext.getProjectionMatrix() );
+    })
+    // update artoolkit on every frame
+    onRenderFcts.push(function(){
+        if( arToolkitSource.ready === false )    return
+        arToolkitContext.update( arToolkitSource.domElement )
+        
+        // update scene.visible if the marker is seen
+        scene.visible = camera.visible
+    })
 	    
     // add an object in the scene
     var ColorArray = new Array();
@@ -367,7 +421,7 @@
     //錯的    
     AddNewModel( NameArray[6] , ColorArray[6] ,-40,15,110);    //紅
     AddNewModel( NameArray[7] , ColorArray[7] ,110,-60,-30);    //綠
-    AddNewModel( NameArray[8] , ColorArray[8] ,0,20,-110);     //藍
+    AddNewModel( NameArray[8] , ColorArray[8] ,0,50,-110);     //藍
     AddNewModel( NameArray[9] , ColorArray[9] ,-110,-20,40);   //紫
     AddNewModel( NameArray[10] , ColorArray[10] ,0,-25,110);   //黃
     //random
@@ -404,16 +458,33 @@
 }
     //////////////////////////////////////////////////////////////////////////////////     
     function animate() {
-
         window.requestAnimationFrame( animate );
         controls.update();
         renderer.render( scene, camera );
     }
     
     function onWindowResize() {
+	
+	    if(camera.inPerspectiveMode){
+        camera.cameraP.aspect = window.innerWidth / window.innerHeight;
+        camera.cameraP.updateProjectionMatrix();
+    }
+    else{
+        camera.cameraO.left = window.innerWidth / - 2;
+        camera.cameraO.right = window.innerWidth / 2;
+        camera.cameraO.top = window.innerHeight / 2;
+        camera.cameraO.bottom = window.innerHeight / - 2;
+        camera.cameraO.updateProjectionMatrix();
+    }
+
+//    renderer.setSize( window.innerWidth, window.innerHeight );
+	    
+
+	   /* 
         camera.aspect = window.innerWidth / window.innerHeight;
         camera.updateProjectionMatrix();
         renderer.setSize( window.innerWidth, window.innerHeight );
+	*/
     }
 	
     function LoadImageFirst(){
@@ -421,8 +492,8 @@
     	var textureLoader = new THREE.TextureLoader();
     	//對的
     	R1texture = textureLoader.load( 'textures/redpeople.png' );       
-    	R1infotexture = textureLoader.load( 'textures/info/white/redinfo.png' );
-    	R1info2texture = textureLoader.load( 'textures/info/white/redinfo2.png' );
+    	R1infotexture = textureLoader.load( 'textures/info/new1/redinfo.png' );
+    	R1info2texture = textureLoader.load( 'textures/info/new1/redinfo2.png' );
     	G1texture = textureLoader.load( 'textures/greenpeople.png' );       
     	G1infotexture = textureLoader.load( 'textures/info/new1/greeninfo.png' );
     	G1info2texture = textureLoader.load( 'textures/info/new1/greeninfo2.png' );
@@ -863,7 +934,7 @@
     
     function EndGameCountDown(){
         CountNumber++;
-        document.getElementById("Counting").innerHTML = CountNumber;
+        //document.getElementById("Counting").innerHTML = CountNumber;
         if(CountNumber >= 5){
             controls.enable = false;
             var EndGameAnim = new TimelineLite();
@@ -875,6 +946,15 @@
             }},5.5);
          }    
      }
+    function EndGameLink(){
+	if( Language == "Chinese"){
+	    document.getElementById("EndingButton").onclick = location.href='https://forms.gle/cK1ZuS3sZY1g1B846';
+        }if( Language == "English"){
+	    document.getElementById("EndingButton").onclick = location.href='https://forms.gle/MLKgCqDP7Ywd6Zkx9';
+        }
+     }
+	
+	
         </script>
     </body>
 </html>
