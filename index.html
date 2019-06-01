@@ -116,6 +116,30 @@
         border: 2px solid #e6e6e6;
         color: #1a1a1a;
     }
+	
+    video {
+		position: fixed;
+		top:0;
+		left:0;
+		height: 100%;
+		width: auto;
+		pointer-events: none;
+		-webkit-filter: brightness(0.9);
+		filter: brightness(0.9) ;
+	};
+    .blur {
+		-webkit-filter: blur(30px);
+		  -moz-filter: blur(30px);
+		  -o-filter: blur(30px);
+		  -ms-filter: blur(30px);
+		  filter: blur(30px);
+	}
+    video::-webkit-media-controls {
+		  display: none;
+	}
+
+
+	
 </style>
 <body>
     <div id = "container">
@@ -126,6 +150,8 @@
             <button class ="mybtn clickmybtn" onclick="LanguageFunction(1)"> 繁體中文 </button>
             <button class ="mybtn clickmybtn" onclick="LanguageFunction(2)"> English </button>
         </div>
+	<video id="vid" class="blur" width="100%" height="100%" autoplay></video>
+	    
         <div id="Loading">
 	<img id = "Rolling" src="textures/Rolling.png" alt="Rolling" width="50" > <br/>
 	    
@@ -189,6 +215,7 @@
     }
     
     function StartGamefunction(){
+	getCAM();
         StartGame = true;
         TweenMax.to("#Background", 0.5 , { y:-5,opacity:0});
         TweenMax.to("#Main", 0.5 , { y:-5,opacity:0,delay:0.25});
@@ -240,47 +267,58 @@
         controls = new THREE.DeviceOrientationControls( camera );
         scene.add(camera);
     
-        //handle arToolkitSource
-        var arToolkitSource = new THREEx.ArToolkitSource({
-            sourceType : 'webcam',        
-        })
         
-        arToolkitSource.init(function onReady(){
-            onResize()
-        })
-    
-        // handle resize
-        window.addEventListener('resize', function(){
-            onResize()
-        })
-        
-        function onResize(){
-            arToolkitSource.onResize()    
-            arToolkitSource.copySizeTo(renderer.domElement)    
-            if( arToolkitContext.arController !== null ){
-                arToolkitSource.copySizeTo(arToolkitContext.arController.canvas)    
-        }    
     }
-        
-    //initialize arToolkitContext
-    // create atToolkitContext
-    var arToolkitContext = new THREEx.ArToolkitContext({
-        cameraParametersUrl: THREEx.ArToolkitContext.baseURL + '../data/data/camera_para.dat',
-        detectionMode: 'mono',
-    })
-    // initialize it
-    arToolkitContext.init(function onCompleted(){
-        // copy projection matrix to camera
-        camera.projectionMatrix.copy( arToolkitContext.getProjectionMatrix() );
-    })
-    // update artoolkit on every frame
-    onRenderFcts.push(function(){
-        if( arToolkitSource.ready === false )    return
-        arToolkitContext.update( arToolkitSource.domElement )
-        
-        // update scene.visible if the marker is seen
-        scene.visible = camera.visible
-    })
+
+			//video
+     video = document.getElementById('vid');
+     video.style.width = document.width + 'px';
+     video.style.height = document.height + 'px';
+     video.setAttribute('autoplay', '');
+     video.setAttribute('muted', '');
+     video.setAttribute('playsinline', '');
+     var constraints = {
+	audio: false,
+	video: {facingMode: 'environment'}
+     }
+     getCAM = function() {
+	navigator.mediaDevices.getUserMedia(constraints).then(function success(stream) {
+		video.srcObject = stream;
+	//	trackMe('Grant camera access');
+	DetectRTC.load(function() {
+	     if (DetectRTC.isWebsiteHasWebcamPermissions) {
+		console.log("has permission");
+	     }
+     	})
+     }).catch(function(err) {
+	// handle the error
+	errorMessage = String(err).split(':').shift();
+	console.log("error:" + errorMessage);
+	if (errorMessage == "NotAllowedError") {
+	     console.log("user denied");
+	//     trackMe('Deny camera access');
+	}
+     });
+     document.addEventListener("gesturestart", function(e) {
+	e.preventDefault();
+	document.body.style.zoom = 0.99;
+     });
+     document.addEventListener("gesturechange", function(e) {
+	e.preventDefault();
+	document.body.style.zoom = 0.99;
+     });
+     document.addEventListener("gestureend", function(e) {
+	e.preventDefault();
+	document.body.style.zoom = 1;
+     })
+
+}
+	
+	
+	
+	
+	
+	
 	    
     // add an object in the scene
     var ColorArray = new Array();
