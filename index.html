@@ -84,6 +84,23 @@
         box-sizing: border-box;
         z-index = 1;
     }
+    #EndBackground {
+        background-color: #000000;
+        background-image:url("textures/BackgroundEnd.jpg");
+	background-reapeat:no-repeat;
+	background-size:100% 100%;
+        height: -webkit-fill-available;
+        position: absolute;
+        top: 0px; width: 100%;
+        color: #ffffff;
+        padding: 5px;
+        font-family:Monospace;
+        font-size:13px;
+        font-weight: bold;
+        text-align:center;
+        box-sizing: border-box;
+	z-index = 1;
+    }
     
     a {
         color: #ff8800;
@@ -146,13 +163,13 @@
 <body>
     <div id = "container">
         
-        
+        <div id="Background"></div>
         <div id="Main">
             <button class ="mybtn clickmybtn" onclick="LanguageFunction(1)"> 繁體中文 </button>
             <button class ="mybtn clickmybtn" onclick="LanguageFunction(2)"> English </button>
         </div>
 	<video id="vid" class="blur" width="100%" height="100%" autoplay></video>
-	<div id="Background"></div>
+	<div id="EndBackground"></div>
         <div id="Loading">
 	<img id = "Rolling" src="textures/Rolling.png" alt="Rolling" width="50" > <br/>
 	</div>
@@ -184,6 +201,7 @@
 
 <script>
     Tutorial.style.display = "none";
+    EndBackground.style.display = "none";
     EndingGame.style.display = "none";
     Main.style.display = "none";
     TweenMax.from("#Background", 0.5 , { y:-5,opacity:0});
@@ -222,7 +240,7 @@
         StartGame = true;
         TweenMax.to("#Background", 0.5 , { y:-5,opacity:0});
         TweenMax.to("#Main", 0.5 , { y:-5,opacity:0,delay:0.25});
-        document.getElementById("Background").style.backgroundImage = "url(textures/BackgroundEnd.jpg)";
+//        document.getElementById("Background").style.backgroundImage = "url(textures/BackgroundEnd.jpg)";
         TweenMax.from("#Tutorial", 0.5 , { y:-5,opacity:0 ,delay:1} );
         TweenMax.to("#Tutorial", 0.5 , { opacity:0 ,delay:5} );
         init();
@@ -897,10 +915,10 @@
             controls.enable = false;
             var EndGameAnim = new TimelineLite();
             EndGameAnim.to("#EndingGame", 0.5 , { y:0,opacity:1 ,onComplete: function() {
-            document.getElementById("Background").style.display = "block";
-            TweenMax.to("#Background", 0.5 , { y:0,opacity:1});
+            document.getElementById("EndBackground").style.display = "block";
+            TweenMax.from("#EndBackground", 0.5 , { y:0,opacity:0});
             document.getElementById("EndingGame").style.display = "block";
-            renderer.domElement.style.top = '1000px';
+//            renderer.domElement.style.top = '1000px';
             }},5.5);
 	 console.log("ending");
          }    
